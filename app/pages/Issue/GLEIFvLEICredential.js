@@ -1,19 +1,5 @@
 import m from 'mithril';
-import {
-    Button,
-    Callout,
-    Classes,
-    Colors,
-    Form,
-    FormGroup,
-    FormLabel,
-    Icon,
-    Icons,
-    Input,
-    Intent,
-    Size,
-    Toaster, ToasterPosition
-} from "construct-ui";
+import {Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input, Toaster} from "construct-ui";
 import Container from "../../components/Container";
 import xhring from "../../helpers/xhring";
 
@@ -24,48 +10,15 @@ function GLEIFvLEICredential() {
     let lei = '';
 
     function handleSubmit() {
-        return xhring.gaccRequest({
+        return xhring.exnRequest({
             "LEI": lei,
             "schema": schemaSAID,
             "type": "GLEIFvLEICredential"
         }).then(function (res) {
             return xhring.agentPost(res['date'], res['attachment'], res['d'])
-        }).then(function () {
-            console.log("toasting", AppToaster)
-            AppToaster.show({
-                message: `Timestamp: ${Date.now()}`,
-                icon: Icons.CHECK,
-                intent: Intent.POSITIVE,
-                size: Size.DEFAULT,
-                position: ToasterPosition.TOP,
-                timeout: 3000,
-                inline: true,
-            });
-            console.log("bar");
         }).catch(function (e) {
-            //alert
             console.log("caught", e)
-            AppToaster.show({
-                message: `Timestamp: ${Date.now()}`,
-                icon: Icons.ALERT_TRIANGLE,
-                intent: Intent.NEGATIVE,
-                size: Size.DEFAULT,
-                position: ToasterPosition.TOP,
-                timeout: 3000
-            });
         })
-    }
-
-    function getEXN() {
-        return xhring.gaccRequest({
-            "LEI": lei,
-            "schema": schemaSAID,
-            "type": "GLEIFvLEICredential"
-        })
-    }
-
-    function post(res) {
-        return xhring.agentPost(res['date'], res['attachment'], res['d'])
     }
 
     return {

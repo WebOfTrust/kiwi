@@ -9,36 +9,15 @@ function QualifiedvLEIIssuervLEICredential() {
     let lei = '';
 
     function handleSubmit() {
-        // getEXN()
-        //     .then(post)
-        //     .catch(function (e) {
-        //         console.log(e)
-        //     })
-
-        return m.request({
-            "method": "POST",
-            "url": "http://localhost:8000/issue/credential",
-            "body": {
-                "LEI": lei,
-                "schema": schemaSAID,
-                "type": "QualifiedvLEIIssuervLEICredential"
-            },
-        }).then(function (r) {
-            console.log(r)
-        }).catch(function (e) {
-        })
-    }
-
-    function getEXN() {
-        return xhring.gaccRequest({
+        return xhring.exnRequest({
             "LEI": lei,
             "schema": schemaSAID,
-            "type": "GLEIFvLEICredential"
+            "type": "QualifiedvLEIIssuervLEICredential"
+        }).then(function (res) {
+            return xhring.agentPost(res['date'], res['attachment'], res['d'])
+        }).catch(function (e) {
+            console.log("caught", e)
         })
-    }
-
-    function post(res) {
-        return xhring.agentPost(res['date'], res['attachment'], res['d'])
     }
 
     return {

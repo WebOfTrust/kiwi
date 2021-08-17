@@ -11,38 +11,17 @@ function LegalEntityEngagementContextRolevLEICredential() {
     let engagementContextRole = '';
 
     function handleSubmit() {
-        // getEXN()
-        //     .then(post)
-        //     .catch(function (e) {
-        //         console.log(e)
-        //     })
-
-        return m.request({
-            "method": "POST",
-            "url": "http://localhost:8000/issue/credential",
-            "body": {
-                "schema": schemaSAID,
-                "LEI": lei,
-                "personLegalName": personLegalName,
-                "engagementContextRole": engagementContextRole,
-                "type": "LegalEntityEngagementContextRolevLEICredential"
-            },
-        }).then(function (r) {
-            console.log(r)
-        }).catch(function (e) {
-        })
-    }
-
-    function getEXN() {
-        return xhring.gaccRequest({
-            "LEI": lei,
+        return xhring.exnRequest({
             "schema": schemaSAID,
-            "type": "GLEIFvLEICredential"
+            "LEI": lei,
+            "personLegalName": personLegalName,
+            "engagementContextRole": engagementContextRole,
+            "type": "LegalEntityEngagementContextRolevLEICredential"
+        }).then(function (res) {
+            return xhring.agentPost(res['date'], res['attachment'], res['d'])
+        }).catch(function (e) {
+            console.log("caught", e)
         })
-    }
-
-    function post(res) {
-        return xhring.agentPost(res['date'], res['attachment'], res['d'])
     }
 
     return {

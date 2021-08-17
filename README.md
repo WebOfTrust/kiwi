@@ -1,4 +1,6 @@
-# GACC
+# KIWI
+
+KERI Interactive Web Interface
 
 Mithril, construct-ui based user interface
 

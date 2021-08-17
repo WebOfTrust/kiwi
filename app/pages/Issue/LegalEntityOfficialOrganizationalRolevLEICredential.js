@@ -11,36 +11,17 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
     let officialRole = '';
 
     function handleSubmit() {
-        // getEXN()
-        //     .then(post)
-        //     .catch(function (e) {
-        //         console.log(e)
-        //     })
-
-        return m.request({
-            "method": "POST",
-            "url": "http://localhost:8000/issue/credential",
-            "body": {
-                "LEI": lei,
-                "schema": schemaSAID,
-                "type": "LegalEntityOfficialOrganizationalRolevLEICredential"
-            },
-        }).then(function (r) {
-            console.log(r)
-        }).catch(function (e) {
-        })
-    }
-
-    function getEXN() {
-        return xhring.gaccRequest({
-            "LEI": lei,
+        return xhring.exnRequest({
             "schema": schemaSAID,
-            "type": "GLEIFvLEICredential"
+            "LEI": lei,
+            "personLegalName": personLegalName,
+            "officialRole": officialRole,
+            "type": "LegalEntityOfficialOrganizationalRolevLEICredential"
+        }).then(function (res) {
+            return xhring.agentPost(res['date'], res['attachment'], res['d'])
+        }).catch(function (e) {
+            console.log("caught", e)
         })
-    }
-
-    function post(res) {
-        return xhring.agentPost(res['date'], res['attachment'], res['d'])
     }
 
     return {

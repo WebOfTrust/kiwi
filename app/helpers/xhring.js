@@ -1,7 +1,7 @@
 import m from 'mithril';
 
 export default class xhring {
-    static gaccRequest(body) {
+    static exnRequest(body) {
         return m.request({
             "method": "POST",
             "url": "http://localhost:8000/issue/credential",
