@@ -7,7 +7,7 @@ function IssuedCredentials() {
     return {
         view: function () {
             return m('', {style: {background: Colors.WHITE}},
-                m(List, {interactive: this.interactive, size: this.size}, creds.map(
+                m(List, creds.map(
                     s => m(ListItem, {
                         style: {paddingLeft: "16px"},
                         label: `${s.title}`

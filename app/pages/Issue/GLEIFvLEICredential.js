@@ -9,15 +9,16 @@ function GLEIFvLEICredential() {
     let isSubmitting = false;
     let lei = '';
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        e.preventDefault();
         return xhring.exnRequest({
             "LEI": lei,
             "schema": schemaSAID,
             "type": "GLEIFvLEICredential"
         }).then(function (res) {
             return xhring.agentPost(res['date'], res['attachment'], res['d'])
-        }).catch(function (e) {
-            console.log("caught", e)
+        }).catch(function (err) {
+            console.log("caught", err)
         })
     }
 

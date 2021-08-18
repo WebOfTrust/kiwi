@@ -4,9 +4,9 @@ import * as Header from './components/Header'
 import * as Footer from './components/Footer'
 import {Colors, Icon, Icons, TabItem, Tabs} from "construct-ui";
 
-let Issue = require('./pages/Issue')
-let Revoke = require('./pages/Revoke')
-let Verify = require('./pages/Verify')
+import Issue from './pages/Issue';
+import Revoke from './pages/Revoke';
+import Verify from './pages/Verify';
 
 let root = document.body;
 
