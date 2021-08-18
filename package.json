@@ -1,14 +1,14 @@
 {
   "devDependencies": {
+    "jsdom": "^17.0.0",
+    "jslint": "^0.12.1",
+    "mithril-query": "^4.0.1",
+    "ospec": "^4.1.1",
     "parcel": "^2.0.0-rc.0"
   },
   "dependencies": {
     "construct-ui": "^0.3.1",
-    "jsdom": "^17.0.0",
-    "jslint": "^0.12.1",
-    "mithril": "^2.0.4",
-    "mithril-query": "^4.0.1",
-    "ospec": "^4.1.1"
+    "mithril": "^2.0.4"
   },
   "scripts": {
     "build": "parcel build app/index.js",
