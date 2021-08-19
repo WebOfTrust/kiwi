@@ -4,10 +4,10 @@
  */
 
 module.exports = {
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['./jest.setup.js'],
-  globals: {
-    NODE_ENV: 'test',
-  },
-  verbose: true,
+    testEnvironment: 'jsdom',
+    setupFilesAfterEnv: ['./jest.setup.js'],
+    globals: {
+        NODE_ENV: 'test',
+    },
+    verbose: true,
 };
