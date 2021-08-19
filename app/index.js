@@ -15,8 +15,8 @@ function Layout() {
         view: (vnode) => {
             return m('main', [
                 m(Header, [
-                    m('h1', { style: { color: Colors.WHITE } }, 'GACC'),
-                    m('p', 'GLEIF Admin Console for vLEI Credentials'),
+                    m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
+                    m('p', 'KERI Interactive Web Interface'),
                 ]),
                 m(
                     'div',
