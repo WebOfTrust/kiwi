@@ -1,2 +1,2 @@
-export Mailbox from './Mailbox'
-export PresentationRequest from './PresentationRequest'
+export Mailbox from './Mailbox';
+export PresentationRequest from './PresentationRequest';
