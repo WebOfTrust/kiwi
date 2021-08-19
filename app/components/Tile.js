@@ -5,7 +5,7 @@ import {Colors} from "construct-ui";
 function Tile() {
     return {
         view: function (vnode) {
-            return m('', {
+            return m('.tile', {
                     style: {
                         background: Colors.WHITE,
                         boxShadow: "0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)",
