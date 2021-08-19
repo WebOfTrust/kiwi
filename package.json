@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "jsdom": "^17.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+    "jest": "^27.0.6",
     "jslint": "^0.12.1",
     "mithril-query": "^4.0.1",
-    "ospec": "^4.1.1",
     "parcel": "^2.0.0-rc.0"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
   "scripts": {
     "build": "parcel build app/index.js",
     "serve": "parcel ./app/index.html",
+    "test": "jest",
     "clear-build-cache": "rm -rf .cache/ dist/"
   }
 }
