@@ -1,10 +1,10 @@
 import m from 'mithril';
 import mq from 'mithril-query';
-import Recipient from '../../../pages/verify/Recipient';
+import Verify from '../../pages/Verify';
 
-describe('Recipient component', () => {
+describe('Verify component', () => {
     it('Should create', () => {
-        let out = mq(m(Recipient));
+        let out = mq(m(Verify));
         expect(out).toBeTruthy();
     });
 });
