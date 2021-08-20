@@ -9,7 +9,7 @@ describe('PresentationRequest component', () => {
     });
     it('Should initialize select with "GLEIF vLEI Credential" option selected', () => {
         let out = mq(m(PresentationRequest));
-        let selected = out.first('option[selected=""]');
+        let selected = out.first('option[selected]');
         expect(selected.text).toBe('GLEIF vLEI Credential');
     });
 });
