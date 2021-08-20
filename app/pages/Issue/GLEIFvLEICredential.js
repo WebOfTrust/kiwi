@@ -12,8 +12,8 @@ import {
     Input,
     Toaster,
 } from 'construct-ui';
-import Container from '../../components/Container';
-import xhring from '../../helpers/xhring';
+import { Container } from '../../components';
+import { xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const AppToaster = new Toaster();

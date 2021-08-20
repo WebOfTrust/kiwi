@@ -1,12 +1,10 @@
-import 'construct-ui/lib/index.css';
 import m from 'mithril';
-import * as Header from './components/Header';
-import * as Footer from './components/Footer';
 import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
 
-import Issue from './pages/Issue';
-import Revoke from './pages/Revoke';
-import Verify from './pages/Verify';
+import { Header, Footer } from './components';
+import { Issue, Revoke, Verify } from './pages';
+
+import 'construct-ui/lib/index.css';
 
 let root = document.body;
 

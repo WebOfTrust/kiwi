@@ -1,8 +1,14 @@
 import m from 'mithril';
-import Container from '../components/Container';
-import Tile from '../components/Tile';
+import { Container, Tile } from '../components';
 import { Col, Grid, Intent } from 'construct-ui';
-import * as partials from './Issue/Partials';
+import {
+    Help,
+    GLEIFvLEICredential,
+    QualifiedvLEIIssuervLEICredential,
+    LegalEntityvLEICredential,
+    LegalEntityOfficialOrganizationalRolevLEICredential,
+    LegalEntityEngagementContextRolevLEICredential,
+} from './Issue';
 
 function Issue() {
     const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };
@@ -16,7 +22,7 @@ function Issue() {
                 Container,
                 {},
                 m(Grid, gridAttrs, [
-                    m(Col, colAttrs, m(cell, m(Tile, { title: 'Credential Schema', ...cardAttrs }, m(partials.Help)))),
+                    m(Col, colAttrs, m(cell, m(Tile, { title: 'Credential Schema', ...cardAttrs }, m(Help)))),
                     m(
                         Col,
                         colAttrs,
@@ -29,7 +35,7 @@ function Issue() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.GLEIFvLEICredential)
+                                m(GLEIFvLEICredential)
                             )
                         )
                     ),
@@ -45,7 +51,7 @@ function Issue() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.QualifiedvLEIIssuervLEICredential)
+                                m(QualifiedvLEIIssuervLEICredential)
                             )
                         )
                     ),
@@ -61,7 +67,7 @@ function Issue() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.LegalEntityvLEICredential)
+                                m(LegalEntityvLEICredential)
                             )
                         )
                     ),
@@ -77,7 +83,7 @@ function Issue() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.LegalEntityOfficialOrganizationalRolevLEICredential)
+                                m(LegalEntityOfficialOrganizationalRolevLEICredential)
                             )
                         )
                     ),
@@ -93,7 +99,7 @@ function Issue() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.LegalEntityEngagementContextRolevLEICredential)
+                                m(LegalEntityEngagementContextRolevLEICredential)
                             )
                         )
                     ),

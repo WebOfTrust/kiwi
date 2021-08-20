@@ -1,8 +1,7 @@
 import m from 'mithril';
-import Container from '../components/Container';
-import Tile from '../components/Tile';
+import { Container, Tile } from '../components';
 import { Col, Grid, Intent } from 'construct-ui';
-import * as partials from './Revoke/Partials';
+import { IssuedCredentials, RevokedCredentials } from './Revoke';
 
 function Revoke() {
     const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };
@@ -28,7 +27,7 @@ function Revoke() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.IssuedCredentials)
+                                m(IssuedCredentials)
                             )
                         )
                     ),
@@ -44,7 +43,7 @@ function Revoke() {
                                     intent: Intent.PRIMARY,
                                     ...cardAttrs,
                                 },
-                                m(partials.RevokedCredentials)
+                                m(RevokedCredentials)
                             )
                         )
                     ),

@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
-import Container from '../../components/Container';
-import xhring from '../../helpers/xhring';
+import { Container } from '../../components';
+import { xhring } from '../../helpers/xhring';
 
 function QualifiedvLEIIssuervLEICredential() {
     const schemaSAID = 'E9bX8Do0nb1Eq986HvoJ2iNO00TjC6J_2En8Du9L-hYU';

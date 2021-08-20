@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
-import Container from '../../components/Container';
-import xhring from '../../helpers/xhring';
+import { Container } from '../../components';
+import { xhring } from '../../helpers';
 
 function LegalEntityEngagementContextRolevLEICredential() {
     const schemaSAID = 'EWPMkW-_BU6gh1Y8kizXHchFdmvu_i1wYlYbAC3aJABk';
