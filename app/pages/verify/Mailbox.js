@@ -1,6 +1,7 @@
 import m from 'mithril';
 import { Card, Colors, EmptyState, Icons, List, ListItem } from 'construct-ui';
 import { Container } from '../../components';
+// import mockMessages from '../../tests/pages/verify/mock/mock-messages';
 
 let MINSNIFFSIZE = 30;
 
@@ -51,6 +52,7 @@ function Mailbox() {
             source.addEventListener('data', this.displayData, false);
         },
         oninit: function () {
+            // messages = mockMessages;
             messages = [];
             source = new EventSource(
                 process.env.CONTROLLER_URL + '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM'
