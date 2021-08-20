@@ -3,6 +3,10 @@ import mq from 'mithril-query';
 import Header from '../../components/Header';
 
 describe('Header component', () => {
+    it('Should create', () => {
+        let out = mq(m(Header, m('p', 'test')));
+        expect(out).toBeTruthy();
+    });
     it('Should render vnode.children', () => {
         let out = mq(m(Header, m('h1', 'test')));
         let container = out.first('div');

@@ -3,6 +3,10 @@ import mq from 'mithril-query';
 import Footer from '../../components/Footer';
 
 describe('Footer component', () => {
+    it('Should create', () => {
+        let out = mq(m(Footer, m('p', 'test')));
+        expect(out).toBeTruthy();
+    });
     it('Should render vnode.children', () => {
         let out = mq(m(Footer, m('p', 'test')));
         let container = out.first('div');

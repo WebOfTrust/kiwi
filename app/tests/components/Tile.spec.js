@@ -16,14 +16,15 @@ describe('Tile component', () => {
         tileHeader = out.first('.tileHeader');
     });
 
+    it('Should create', () => {
+        expect(out).toBeTruthy();
+    });
     it('Should pass "title" vnode arg to TileHeader', () => {
         expect(tileHeader.innerHTML).toContain(vnodeArgs.title);
     });
-
     it('Should pass "intent" vnode arg to TileHeader', () => {
         expect(tileHeader.style['background']).toBe(Colors.INDIGO400);
     });
-
     it('Should render vnode.children', () => {
         expect(out.rootEl.innerHTML).toContain('<p>Tile content</p>');
     });

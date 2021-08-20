@@ -4,6 +4,15 @@ import { Colors, Intent } from 'construct-ui';
 import TileHeader from '../../components/TileHeader';
 
 describe('TileHeader component', () => {
+    it('Should create', () => {
+        let out = mq(
+            m(TileHeader, {
+                title: 'Test title',
+                intent: Intent.PRIMARY,
+            })
+        );
+        expect(out).toBeTruthy();
+    });
     it('Should render "title" from vnode args', () => {
         let out = mq(
             m(TileHeader, {
@@ -14,7 +23,6 @@ describe('TileHeader component', () => {
         let tileHeaderDiv = out.first('.tileHeader');
         expect(tileHeaderDiv.innerHTML).toBe('Test title');
     });
-
     it('Should render as different color based off of "intent" vnode arg', () => {
         let out1 = mq(
             m(TileHeader, {
