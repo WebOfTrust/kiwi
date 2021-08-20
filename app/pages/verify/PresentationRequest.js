@@ -34,7 +34,7 @@ function PresentationRequest() {
         // TODO: Move to helpers/xring
         m.request({
             method: 'POST',
-            url: GACC_SERVER_URL + '/presentation/request',
+            url: process.env.GACC_SERVER_URL + '/presentation/request',
             body: {
                 schema,
             },
@@ -42,7 +42,7 @@ function PresentationRequest() {
             .then((res) => {
                 m.request({
                     method: 'POST',
-                    url: CONTROLLER_URL + '/exn/cmd/presentation/request',
+                    url: process.env.CONTROLLER_URL + '/exn/cmd/presentation/request',
                     headers: {
                         'CESR-DATE': res['date'],
                         'CESR-ATTACHMENT': res['attachment'],

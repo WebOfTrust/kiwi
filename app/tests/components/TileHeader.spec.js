@@ -13,7 +13,7 @@ describe('TileHeader component', () => {
         );
         expect(out).toBeTruthy();
     });
-    it('Should render "title" from vnode args', () => {
+    it('Should render "title" from vnode attrs', () => {
         let out = mq(
             m(TileHeader, {
                 title: 'Test title',
@@ -23,7 +23,7 @@ describe('TileHeader component', () => {
         let tileHeaderDiv = out.first('.tileHeader');
         expect(tileHeaderDiv.innerHTML).toBe('Test title');
     });
-    it('Should render as different color based off of "intent" vnode arg', () => {
+    it('Should render as different color based off of "intent" vnode attr', () => {
         let out1 = mq(
             m(TileHeader, {
                 title: 'TileHeader 1',
