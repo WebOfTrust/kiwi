@@ -12,4 +12,19 @@ describe('Container component', () => {
         let containerDiv = out.first('div');
         expect(containerDiv.innerHTML).toBe('<p>test</p>');
     });
+    it('Should accept styles passed from "style" vnode attr', () => {
+        let out = mq(
+            m(
+                Container,
+                {
+                    style: {
+                        position: 'relative',
+                    },
+                },
+                m('p', 'test')
+            )
+        );
+        let containerDiv = out.first('div');
+        expect(containerDiv.style['position']).toBe('relative');
+    });
 });
