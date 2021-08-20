@@ -9,10 +9,10 @@ function Header() {
                 'div',
                 {
                     style: {
-                        'background': Colors.INDIGO400,
-                        'color': Colors.WHITE,
-                        'padding-top': '16px',
-                        'padding-bottom': '16px',
+                        background: Colors.INDIGO400,
+                        color: Colors.WHITE,
+                        paddingTop: '16px',
+                        paddingBottom: '16px',
                     },
                 },
                 m(Container, vnode.children)

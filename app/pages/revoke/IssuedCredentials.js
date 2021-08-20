@@ -7,16 +7,12 @@ function IssuedCredentials() {
     return {
         view: function () {
             return m(
-                '',
-                { style: { background: Colors.WHITE } },
-                m(
-                    List,
-                    creds.map((s) =>
-                        m(ListItem, {
-                            style: { paddingLeft: '16px' },
-                            label: `${s.title}`,
-                        })
-                    )
+                List,
+                creds.map((s) =>
+                    m(ListItem, {
+                        style: { paddingLeft: '16px' },
+                        label: `${s.title}`,
+                    })
                 )
             );
         },

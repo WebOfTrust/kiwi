@@ -20,93 +20,81 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                 officialRole: officialRole,
                 type: 'LegalEntityOfficialOrganizationalRolevLEICredential',
             })
-            .then(function (res) {
+            .then((res) => {
                 return xhring.agentPost(res['date'], res['attachment'], res['d']);
             })
-            .catch(function (err) {
+            .catch((err) => {
                 console.log('caught', err);
             });
     }
 
     return {
         view: function () {
-            return m(
-                '',
-                { style: { paddingTop: '16px' } },
+            return m(Container, { style: { padding: '16px' } }, [
+                m(Callout, {
+                    content:
+                        'A vLEI Role Credential issued by a Qualified vLEI issuer to official representatives of a Legal Entity',
+                }),
                 m(
-                    Container,
-                    m(Callout, {
-                        content:
-                            'A vLEI Role Credential issued by a Qualified vLEI issuer to official representatives of a Legal Entity',
-                    })
-                ),
-                m(
-                    Container,
-                    { style: { background: Colors.WHITE } },
+                    Form,
+                    {
+                        gutter: 16,
+                        onsubmit: handleSubmit,
+                        style: { marginTop: '16px' },
+                    },
                     m(
-                        Form,
-                        {
-                            gutter: 15,
-                            onsubmit: handleSubmit,
-                            style: { paddingTop: '16px', paddingBottom: '16px' },
-                        },
-                        m(
-                            FormGroup,
-                            { style: { paddingBottom: '16px' } },
-                            m(FormLabel, { for: 'lei' }, 'LEI'),
-                            m(Input, {
-                                contentLeft: m(Icon, { name: Icons.HASH }),
-                                id: 'lei',
-                                name: 'LEI',
-                                placeholder: '506700GE1G29325QX363',
-                                fluid: true,
-                                oninput: (e) => {
-                                    lei = e.target.value;
-                                },
-                            })
-                        ),
-                        m(
-                            FormGroup,
-                            { style: { paddingBottom: '16px' } },
-                            m(FormLabel, { for: 'personLegalName' }, 'Person Legal name'),
-                            m(Input, {
-                                contentLeft: m(Icon, { name: Icons.USER }),
-                                id: 'personLegalName',
-                                name: 'personLegalName',
-                                placeholder: '',
-                                fluid: true,
-                                oninput: (e) => {
-                                    personLegalName = e.target.value;
-                                },
-                            })
-                        ),
-                        m(
-                            FormGroup,
-                            { style: { paddingBottom: '16px' } },
-                            m(FormLabel, { for: 'officialRole' }, 'Official Role'),
-                            m(Input, {
-                                contentLeft: m(Icon, { name: Icons.GLOBE }),
-                                id: 'officialRole',
-                                name: 'officialRole',
-                                placeholder: '',
-                                fluid: true,
-                                oninput: (e) => {
-                                    officialRole = e.target.value;
-                                },
-                            })
-                        ),
-                        m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
-                            m(Button, {
-                                iconRight: Icons.CHEVRON_RIGHT,
-                                type: 'submit',
-                                label: 'Issue',
-                                intent: 'primary',
-                                loading: isSubmitting,
-                            }),
-                        ])
-                    )
-                )
-            );
+                        FormGroup,
+                        m(FormLabel, { for: 'lei' }, 'LEI'),
+                        m(Input, {
+                            contentLeft: m(Icon, { name: Icons.HASH }),
+                            id: 'lei',
+                            name: 'LEI',
+                            placeholder: '506700GE1G29325QX363',
+                            fluid: true,
+                            oninput: (e) => {
+                                lei = e.target.value;
+                            },
+                        })
+                    ),
+                    m(
+                        FormGroup,
+                        m(FormLabel, { for: 'personLegalName' }, 'Person Legal name'),
+                        m(Input, {
+                            contentLeft: m(Icon, { name: Icons.USER }),
+                            id: 'personLegalName',
+                            name: 'personLegalName',
+                            placeholder: '',
+                            fluid: true,
+                            oninput: (e) => {
+                                personLegalName = e.target.value;
+                            },
+                        })
+                    ),
+                    m(
+                        FormGroup,
+                        m(FormLabel, { for: 'officialRole' }, 'Official Role'),
+                        m(Input, {
+                            contentLeft: m(Icon, { name: Icons.GLOBE }),
+                            id: 'officialRole',
+                            name: 'officialRole',
+                            placeholder: '',
+                            fluid: true,
+                            oninput: (e) => {
+                                officialRole = e.target.value;
+                            },
+                        })
+                    ),
+                    m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
+                        m(Button, {
+                            iconRight: Icons.CHEVRON_RIGHT,
+                            type: 'submit',
+                            label: 'Issue',
+                            intent: 'primary',
+                            loading: isSubmitting,
+                        }),
+                    ])
+                ),
+            ]);
         },
     };
 }

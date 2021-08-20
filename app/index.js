@@ -17,50 +17,52 @@ function Layout() {
                     m('p', 'KERI Interactive Web Interface'),
                 ]),
                 m(
-                    'div',
-                    { style: { background: Colors.GREY50 } },
+                    Tabs,
+                    {
+                        fluid: false,
+                        align: 'left',
+                        bordered: true,
+                        size: 'lg',
+                        style: { background: Colors.GREY50 },
+                    },
                     m(
-                        Tabs,
-                        { fluid: true, align: 'left', bordered: true, size: 'lg', ...vnode.attrs },
-                        m(
-                            m.route.Link,
-                            { href: 'issue' },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.ARROW_RIGHT_CIRCLE,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Issue',
-                                ],
-                            })
-                        ),
-                        m(
-                            m.route.Link,
-                            { href: 'revoke' },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.MINUS_CIRCLE,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Revoke',
-                                ],
-                            })
-                        ),
-                        m(
-                            m.route.Link,
-                            { href: 'verify' },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.CHECK_CIRCLE,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Verify',
-                                ],
-                            })
-                        )
+                        m.route.Link,
+                        { href: 'issue' },
+                        m(TabItem, {
+                            label: [
+                                m(Icon, {
+                                    name: Icons.ARROW_RIGHT_CIRCLE,
+                                    style: 'margin-right: 10px',
+                                }),
+                                'Issue',
+                            ],
+                        })
+                    ),
+                    m(
+                        m.route.Link,
+                        { href: 'revoke' },
+                        m(TabItem, {
+                            label: [
+                                m(Icon, {
+                                    name: Icons.MINUS_CIRCLE,
+                                    style: 'margin-right: 10px',
+                                }),
+                                'Revoke',
+                            ],
+                        })
+                    ),
+                    m(
+                        m.route.Link,
+                        { href: 'verify' },
+                        m(TabItem, {
+                            label: [
+                                m(Icon, {
+                                    name: Icons.CHECK_CIRCLE,
+                                    style: 'margin-right: 10px',
+                                }),
+                                'Verify',
+                            ],
+                        })
                     )
                 ),
                 m('section', vnode.children),

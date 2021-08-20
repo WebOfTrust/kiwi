@@ -3,48 +3,37 @@ import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
 import { PresentationRequest, Mailbox } from './verify';
 
-export default function Verify() {
-    const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };
-    const colAttrs = { span: 6, style: { 'margin-top': '16px', 'margin-bottom': '16px' } };
-    const cardAttrs = { fluid: true };
-    const cell = '.cui-example-grid-col';
+function Verify() {
+    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
+    const colAttrs = { span: 6, style: { margin: '16px 0' } };
 
     return {
         view: function () {
             return m(
                 Container,
-                {},
                 m(Grid, gridAttrs, [
                     m(
                         Col,
                         colAttrs,
                         m(
-                            cell,
-                            m(
-                                Tile,
-                                {
-                                    title: 'Presentation Request',
-                                    intent: Intent.PRIMARY,
-                                    ...cardAttrs,
-                                },
-                                m(PresentationRequest)
-                            )
+                            Tile,
+                            {
+                                title: 'Presentation Request',
+                                intent: Intent.PRIMARY,
+                            },
+                            m(PresentationRequest)
                         )
                     ),
                     m(
                         Col,
                         colAttrs,
                         m(
-                            cell,
-                            m(
-                                Tile,
-                                {
-                                    title: 'Mailbox',
-                                    intent: Intent.PRIMARY,
-                                    ...cardAttrs,
-                                },
-                                m(Mailbox)
-                            )
+                            Tile,
+                            {
+                                title: 'Mailbox',
+                                intent: Intent.PRIMARY,
+                            },
+                            m(Mailbox)
                         )
                     ),
                 ])
@@ -52,3 +41,5 @@ export default function Verify() {
         },
     };
 }
+
+module.exports = Verify;
