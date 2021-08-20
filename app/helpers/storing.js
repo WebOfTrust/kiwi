@@ -11,5 +11,3 @@ export default class storing {
         }
     }
 }
-
-module.exports = storing;

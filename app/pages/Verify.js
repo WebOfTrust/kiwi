@@ -1,9 +1,9 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { PresentationRequest, Mailbox } from './Verify';
+import { PresentationRequest, Mailbox } from './verify';
 
-function Verify() {
+export default function Verify() {
     const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };
     const colAttrs = { span: 6, style: { 'margin-top': '16px', 'margin-bottom': '16px' } };
     const cardAttrs = { fluid: true };
@@ -52,5 +52,3 @@ function Verify() {
         },
     };
 }
-
-module.exports = Verify;

@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Container, Tile } from '../components';
 import { Col, Grid, Intent } from 'construct-ui';
-import { IssuedCredentials, RevokedCredentials } from './Revoke';
+import { IssuedCredentials, RevokedCredentials } from './revoke';
 
 function Revoke() {
     const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };

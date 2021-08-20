@@ -8,7 +8,7 @@ import {
     LegalEntityvLEICredential,
     LegalEntityOfficialOrganizationalRolevLEICredential,
     LegalEntityEngagementContextRolevLEICredential,
-} from './Issue';
+} from './issue';
 
 function Issue() {
     const gridAttrs = { gutter: { xs: 0, sm: 10, md: 20, lg: 30, xl: 40 } };
