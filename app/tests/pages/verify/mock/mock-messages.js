@@ -21,6 +21,7 @@ const mockMessages = [
                 },
             ],
         },
+        status: 'Issued',
     },
     {
         vc: {
@@ -44,6 +45,7 @@ const mockMessages = [
                 },
             ],
         },
+        status: 'Issued',
     },
     {
         vc: {
@@ -60,6 +62,46 @@ const mockMessages = [
                 type: ['VerifiableCredential', 'GLEIFvLEICredential'],
             },
         },
+        status: 'Issued',
+    },
+    {
+        vc: {
+            v: 'ACDC10JSON00011c_',
+            i: 'EBdXt3gIXOf2BBWNHdSXCJnFJL5OuQPyM5K0neuniccM',
+            ti: 'did:keri:EmkPreYpZfFk66jpf3uFv7vklXKhzBrAqjsKAn2EDIPM',
+            x: 'E46jrVPTzlSkUPqGGeIZ8a8FWS7a6s4reAXRZOkogZ2A',
+            d: {
+                i: 'EgveY4-9XgOcLxUderzwLIr9Bf7V_NHwY1lkFrn9y2PY',
+                si: 'did:keri:EQzFVaMasUf4cZZBKA0pUbRc9T8yUXRFLyM1JDASYqAA',
+                issuanceDate: '2021-06-09T17:35:54.169967+00:00',
+                credentialStatus: 'did:keri:EymRy7xMwsxUelUauaXtMxTfPAMPAI6FkekwlOjkggt',
+                LEI: '254900OPPU84GM83MG36',
+                type: ['VerifiableCredential', 'LegalEntityvLEICredential'],
+            },
+            s: [
+                {
+                    qualifiedvLEIIssuervLEICredential: 'EBDmgKOAEwnMGsofWg2m0l63J1awfJafqJyCzTnVkdSw',
+                },
+            ],
+        },
+        status: 'Issued',
+    },
+    {
+        vc: {
+            v: 'ACDC10JSON00011c_',
+            i: 'EYo4R9I08Et5H5SWKG8ZMS83r8FmRtfahN0V9NbG9zdw',
+            ti: 'did:keri:Ei5csblWpTy22uVkbZrZxvSUORxPvIlrfpq2e1hKTtfA',
+            x: 'ECcj1CBn4dpo6ZOmZQNtAjXxT4_MsVXipt5VTPjvSAf0',
+            d: {
+                i: 'Ea4ny_YZAtAGUwGSyH7iFiKjpM3yFiDHcjrdomqt7Ryk',
+                si: 'did:keri:EP2ukuiw_0xcp943NWz4IRnNtxwx7rzROwV1D_ZRP0XQ',
+                issuanceDate: '2021-06-09T17:35:54.169967+00:00',
+                credentialStatus: 'did:keri:EymRy7xMwsxUelUauaXtMxTfPAMPAI6FkekwlOjkggt',
+                LEI: '5493001KJTIIGC8Y1R12',
+                type: ['VerifiableCredential', 'QualifiedvLEIIssuervLEICredential'],
+            },
+        },
+        status: 'Issued',
     },
 ];
 

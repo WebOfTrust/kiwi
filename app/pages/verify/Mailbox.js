@@ -25,8 +25,11 @@ let sniff = (raw) => {
 };
 
 function Mailbox() {
-    let messages = [];
-    let source;
+    let messages = mockMessages;
+    // let messages = [];
+    let source = new EventSource(
+        process.env.CONTROLLER_URL + '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM'
+    );
     let cardOptions = {
         elevation: 1,
         fluid: true,
@@ -51,12 +54,8 @@ function Mailbox() {
         oncreate: function () {
             source.addEventListener('data', this.displayData, false);
         },
-        oninit: function () {
-            // messages = mockMessages;
-            messages = [];
-            source = new EventSource(
-                process.env.CONTROLLER_URL + '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM'
-            );
+        onremove: function () {
+            source.removeEventListener('data', this.displayData, false);
         },
         view: function () {
             return m(
