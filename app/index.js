@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
-
-import { Header, Footer } from './components';
+import { Socket } from 'net-socket.io';
+import { Footer, Header } from './components';
 import { Issue, Revoke, Verify } from './pages';
 
 import 'construct-ui/lib/index.css';
@@ -9,12 +9,32 @@ import 'construct-ui/lib/index.css';
 let root = document.body;
 
 function Layout() {
+    const socketPath = '/tmp/uds_socket';
+    const socket = Socket(socketPath);
+
+    socket.on('message', function (data) {
+        console.log('message', data);
+    });
+    socket.on('broadcast', function (data) {
+        console.log('broadcast', data);
+    });
+
+    socket.on('error', function (error) {
+        console.log(error);
+    });
+
+    socket.on('ready', function () {
+        console.log(`ready: ${socketPath}`);
+        socket.emit('hello', true);
+    });
+
     return {
         view: (vnode) => {
             return m('main', [
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
+                    m(Button, 'send socket'),
                 ]),
                 m(
                     Tabs,

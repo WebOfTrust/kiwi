@@ -10,7 +10,8 @@
     },
     "dependencies": {
         "construct-ui": "^0.3.1",
-        "mithril": "^2.0.4"
+        "mithril": "^2.0.4",
+        "net-socket.io": "^1.0.1"
     },
     "scripts": {
         "build": "parcel build app/index.js",

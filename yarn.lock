@@ -5757,6 +5757,13 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
+"json-stream@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "json-stream@npm:1.0.0"
+  checksum: 2738069c6e8c66a7a49bf07be619ea05a45cfcf535090089efd955ed0c726de41013293eae417585639f36c2e1ddd00370f20cccc71381ba50c68ec1bee9d512
+  languageName: node
+  linkType: hard
+
 "json-stringify-safe@npm:~5.0.1":
   version: 5.0.1
   resolution: "json-stringify-safe@npm:5.0.1"
@@ -6401,6 +6408,15 @@ fsevents@^2.3.2:
   bin:
     ncp: ./bin/ncp
   checksum: ea9b19221da1d1c5529bdb9f8e85c9d191d156bcaae408cce5e415b7fbfd8744c288e792bd7faf1fe3b70fd44c74e22f0d43c39b209bc7ac1fb8016f70793a16
+  languageName: node
+  linkType: hard
+
+"net-socket.io@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "net-socket.io@npm:1.0.1"
+  dependencies:
+    json-stream: ^1.0.0
+  checksum: 79cf24ef127c5ec446e42bb6be21d0bf3a40aabacebbcd9eb43e856af77395ab2a31952b840a88b19ebc65cede57b1466f71ab4590ecabec3186200b46e85d7a
   languageName: node
   linkType: hard
 
@@ -8045,6 +8061,7 @@ resolve@^1.20.0:
     jslint: ^0.12.1
     mithril: ^2.0.4
     mithril-query: ^4.0.1
+    net-socket.io: ^1.0.1
     parcel: ^2.0.0-rc.0
     prettier: ^2.3.2
   languageName: unknown

@@ -17,13 +17,11 @@ function Help() {
         },
         {
             title: 'Legal Entity Official Organizational Role vLEI Credential',
-            link:
-                'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/legal-entity-official-organizational-role-vLEI-credential.json',
+            link: 'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/legal-entity-official-organizational-role-vLEI-credential.json',
         },
         {
             title: 'Legal Entity Engagement Context Role vLEI Credential',
-            link:
-                'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/legal-entity-engagement-context-role-vLEI-credential.json',
+            link: 'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/legal-entity-engagement-context-role-vLEI-credential.json',
         },
     ];
 
