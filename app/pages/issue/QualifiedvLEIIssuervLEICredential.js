@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { xhring } from '../../helpers/xhring';
+import { storing, xhring } from '../../helpers/xhring';
 
 function QualifiedvLEIIssuervLEICredential() {
     const schemaSAID = 'E9bX8Do0nb1Eq986HvoJ2iNO00TjC6J_2En8Du9L-hYU';
@@ -17,7 +17,8 @@ function QualifiedvLEIIssuervLEICredential() {
                 type: 'QualifiedvLEIIssuervLEICredential',
             })
             .then((res) => {
-                return xhring.agentPost(res['date'], res['attachment'], res['d']);
+                xhring.agentPost(res['date'], res['attachment'], res['d']);
+                storing.addCredential(res['said'], JSON.stringify(res));
             })
             .catch((err) => {
                 console.log('caught', err);

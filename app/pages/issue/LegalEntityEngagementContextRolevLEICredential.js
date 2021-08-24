@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { xhring } from '../../helpers';
+import { storing, xhring } from '../../helpers';
 
 function LegalEntityEngagementContextRolevLEICredential() {
     const schemaSAID = 'EWPMkW-_BU6gh1Y8kizXHchFdmvu_i1wYlYbAC3aJABk';
@@ -21,7 +21,8 @@ function LegalEntityEngagementContextRolevLEICredential() {
                 type: 'LegalEntityEngagementContextRolevLEICredential',
             })
             .then((res) => {
-                return xhring.agentPost(res['date'], res['attachment'], res['d']);
+                xhring.agentPost(res['date'], res['attachment'], res['d']);
+                storing.addCredential(res['said'], JSON.stringify(res));
             })
             .catch((err) => {
                 console.log('caught', err);

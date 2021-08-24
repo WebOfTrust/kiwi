@@ -11,8 +11,7 @@ function Footer() {
                     style: {
                         background: Colors.INDIGO400,
                         color: Colors.WHITE,
-                        paddingTop: '16px',
-                        paddingBottom: '16px',
+                        padding: '16px 0',
                     },
                 },
                 m(Container, vnode.children)
