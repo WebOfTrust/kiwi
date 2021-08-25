@@ -1,2 +1,2 @@
-export { default as IssuedCredentials } from './IssuedCredentials';
-export { default as RevokedCredentials } from './RevokedCredentials';
+export { default as Credential } from './Credential';
+export { default as CredentialList } from './CredentialList';

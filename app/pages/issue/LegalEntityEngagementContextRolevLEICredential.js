@@ -12,7 +12,7 @@ function LegalEntityEngagementContextRolevLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        return xhring
+        xhring
             .exnRequest({
                 schema: schemaSAID,
                 LEI: lei,

@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { storing, xhring } from '../../helpers';
+import { mocking, storing, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
@@ -10,7 +10,9 @@ function GLEIFvLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        return xhring
+        // mocking.mockGLEIFvLEICredentialSubmit();
+
+        xhring
             .exnRequest({
                 LEI: lei,
                 schema: schemaSAID,

@@ -10,7 +10,7 @@ function LegalEntityvLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        return xhring
+        xhring
             .exnRequest({
                 LEI: lei,
                 schema: schemaSAID,
