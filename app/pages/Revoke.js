@@ -32,28 +32,13 @@ function Revoke() {
         // TODO: Move to helpers/xhring
         m.request({
             method: 'POST',
-            url: process.env.GACC_SERVER_URL + '/revoke/credential',
-            body: { said: cred.said },
+            url: process.env.CONTROLLER_URL + '/credential/revoke',
+            body: { said: cred.i },
         })
             .then((res) => {
-                m.request({
-                    method: 'POST',
-                    url: process.env.CONTROLLER_URL + '/exn/cmd/credential/revoke',
-                    headers: {
-                        'CESR-DATE': res['date'],
-                        'CESR-ATTACHMENT': res['attachment'],
-                        'Content-Type': 'application/cesr+json',
-                    },
-                    body: res['d'],
-                })
-                    .then(() => {
-                        storing.revokeCredential(cred.said);
-                        loadCredsFromStorage();
-                        m.redraw();
-                    })
-                    .catch((e) => {
-                        console.log(e);
-                    });
+                storing.revokeCredential(cred.i);
+                loadCredsFromStorage();
+                m.redraw();
             })
             .catch((e) => {
                 console.log(e);

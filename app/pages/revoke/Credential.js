@@ -36,14 +36,14 @@ function Credential() {
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'Credential:'), m('div', vnode.attrs.cred.said)]
+                                [m(FormLabel, {}, 'Credential:'), m('div', vnode.attrs.cred.i)]
                             ),
                             m(
                                 FormGroup,
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.d.data.LEI)]
+                                [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.d.data?.LEI)]
                             ),
                             !vnode.attrs.isRevoked
                                 ? m(

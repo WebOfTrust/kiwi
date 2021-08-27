@@ -5,7 +5,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: 'http://localhost:8000/issue/credential',
+                url: process.env.CONTROLLER_URL + '/credential/issue',
                 body: body,
             })
             .catch(function (e) {

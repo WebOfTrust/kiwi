@@ -19,8 +19,7 @@ function GLEIFvLEICredential() {
                 type: 'GLEIFvLEICredential',
             })
             .then((res) => {
-                xhring.agentPost(res['date'], res['attachment'], res['d']);
-                storing.addCredential(res['said'], JSON.stringify(res));
+                storing.addCredential(res['i'], JSON.stringify(res));
             })
             .catch((err) => {
                 console.log('caught', err);
