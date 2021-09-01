@@ -6,7 +6,7 @@ import { mocking, storing, xhring } from '../../helpers';
 function GLEIFvLEICredential() {
     const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
     let isSubmitting = false;
-    let lei = '';
+    let lei = '506700GE1G29325QX363';
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,6 +17,8 @@ function GLEIFvLEICredential() {
                 LEI: lei,
                 schema: schemaSAID,
                 type: 'GLEIFvLEICredential',
+                registry: "gleif",
+                recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
             })
             .then((res) => {
                 storing.addCredential(res['i'], JSON.stringify(res));

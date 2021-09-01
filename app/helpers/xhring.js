@@ -29,4 +29,21 @@ export default class xhring {
                 console.log('agentPost error: ', e);
             });
     }
+
+    static multisigInceptPost(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: process.env.CONTROLLER_URL + '/multisig/incept',
+                headers: {
+                    'Signature': "no-sig",
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            })
+            .catch(function (e) {
+                console.log('agentPost error: ', e);
+            });
+    }
+
 }

@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
 
 import { Header, Footer } from './components';
-import { Issue, Revoke, Verify } from './pages';
+import { Issue, Revoke, Verify, Group, Mailbox} from './pages';
 
 import 'construct-ui/lib/index.css';
 
@@ -15,6 +15,7 @@ function Layout() {
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
+                    m(Mailbox)
                 ]),
                 m(
                     Tabs,
@@ -63,6 +64,19 @@ function Layout() {
                                 'Verify',
                             ],
                         })
+                    ),
+                    m(
+                        m.route.Link,
+                        { href: 'group' },
+                        m(TabItem, {
+                            label: [
+                                m(Icon, {
+                                    name: Icons.USERS,
+                                    style: 'margin-right: 10px',
+                                }),
+                                'Group Identifier',
+                            ],
+                        })
                     )
                 ),
                 m('section', vnode.children),
@@ -86,6 +100,11 @@ m.route(root, '/issue', {
     '/verify': {
         render: (vnode) => {
             return m(Layout, m(Verify, vnode.attrs));
+        },
+    },
+    '/group': {
+        render: (vnode) => {
+            return m(Layout, m(Group, vnode.attrs));
         },
     },
 });

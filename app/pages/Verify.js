@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { PresentationRequest, Mailbox } from './verify';
+import { PresentationRequest} from './verify';
 
 function Verify() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
@@ -23,19 +23,7 @@ function Verify() {
                             },
                             m(PresentationRequest)
                         )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Mailbox',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(Mailbox)
-                        )
-                    ),
+                    )
                 ])
             );
         },
