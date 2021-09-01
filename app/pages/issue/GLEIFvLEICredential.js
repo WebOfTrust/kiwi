@@ -17,8 +17,8 @@ function GLEIFvLEICredential() {
                 LEI: lei,
                 schema: schemaSAID,
                 type: 'GLEIFvLEICredential',
-                registry: "gleif",
-                recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
+                registry: 'gleif',
+                recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
                 storing.addCredential(res['i'], JSON.stringify(res));

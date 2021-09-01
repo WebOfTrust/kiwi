@@ -19,8 +19,8 @@ function LegalEntityEngagementContextRolevLEICredential() {
                 personLegalName: personLegalName,
                 engagementContextRole: engagementContextRole,
                 type: 'LegalEntityEngagementContextRolevLEICredential',
-                registry: "gleif",
-                recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
+                registry: 'gleif',
+                recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
                 storing.addCredential(res['i'], JSON.stringify(res));

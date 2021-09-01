@@ -12,9 +12,9 @@ import {
     Input,
     Intent,
     List,
-    ListItem
+    ListItem,
 } from 'construct-ui';
-import {storing} from '../../helpers';
+import { storing } from '../../helpers';
 
 function Group() {
     return {
@@ -59,57 +59,77 @@ function Group() {
                                 },
                                 [m(FormLabel, {}, 'Identifier:'), m('div', vnode.attrs.group.prefix)]
                             ),
+                            m(FormGroup, {
+                                span: 6,
+                            }),
                             m(
                                 FormGroup,
                                 {
                                     span: 6,
                                 },
+                                [
+                                    m(FormLabel, {}, 'Participants:'),
+                                    m(
+                                        'List',
+                                        {
+                                            interactive: true,
+                                            size: 5,
+                                        },
+                                        vnode.attrs.group.aids.map((aid, index) =>
+                                            m(ListItem, { label: index + 1 + '.  ' + aid })
+                                        )
+                                    ),
+                                ]
                             ),
+                            m(FormGroup, {
+                                span: 6,
+                            }),
                             m(
                                 FormGroup,
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'Participants:'),
-                                    m('List', {
-                                        interactive: true,
-                                        size: 5
-                                    }, vnode.attrs.group.aids.map((aid, index) => m(ListItem, {label: (index + 1) + ".  " + aid})))]
+                                [
+                                    m(FormLabel, {}, 'Public Keys:'),
+                                    m(
+                                        'List',
+                                        {
+                                            interactive: true,
+                                            size: 5,
+                                        },
+                                        vnode.attrs.group.public_keys.map((key, index) =>
+                                            m(ListItem, { label: index + 1 + '.  ' + key })
+                                        )
+                                    ),
+                                ]
                             ),
+                            m(FormGroup, {
+                                span: 6,
+                            }),
                             m(
                                 FormGroup,
                                 {
                                     span: 6,
                                 },
-                            ),
-                            m(
-                                FormGroup,
-                                {
-                                    span: 6,
-                                },
-                                [m(FormLabel, {}, 'Public Keys:'),
-                                    m('List', {
-                                        interactive: true,
-                                        size: 5
-                                    }, vnode.attrs.group.public_keys.map((key, index) => m(ListItem, {label: (index + 1) + ".  " + key})))]
-                            ),
-                            m(
-                                FormGroup,
-                                {
-                                    span: 6,
-                                },
-                            ),
-                            m(
-                                FormGroup,
-                                {
-                                    span: 6,
-                                },
-                                [m(FormLabel, {},
-                                    'Witnesses: (Threshold: ' + vnode.attrs.group.toad + "  /  Current Receipts: " + vnode.attrs.group.receipts + ")"),
-                                    m('List', {
-                                        interactive: true,
-                                        size: 5
-                                    }, vnode.attrs.group.witnesses.map(wit => m(ListItem, {label: wit})))]
+                                [
+                                    m(
+                                        FormLabel,
+                                        {},
+                                        'Witnesses: (Threshold: ' +
+                                            vnode.attrs.group.toad +
+                                            '  /  Current Receipts: ' +
+                                            vnode.attrs.group.receipts +
+                                            ')'
+                                    ),
+                                    m(
+                                        'List',
+                                        {
+                                            interactive: true,
+                                            size: 5,
+                                        },
+                                        vnode.attrs.group.witnesses.map((wit) => m(ListItem, { label: wit }))
+                                    ),
+                                ]
                             ),
                             m(
                                 FormGroup,
@@ -124,7 +144,7 @@ function Group() {
                                         intent: Intent.PRIMARY,
                                     }),
                                 ]
-                            )
+                            ),
                         ]
                     ),
                 ]
