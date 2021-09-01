@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { storing, xhring } from '../../helpers';
+import { storing, toaster, xhring } from '../../helpers';
 
 function LegalEntityOfficialOrganizationalRolevLEICredential() {
     const schemaSAID = 'EUZ_F1do5sG78zeeA_8CChT5utRpOXQK4GYnv0WGRfuU';
@@ -12,6 +12,7 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        isSubmitting = true;
         xhring
             .exnRequest({
                 schema: schemaSAID,
@@ -23,10 +24,14 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
+                isSubmitting = false;
                 storing.addCredential(res['i'], JSON.stringify(res));
+                toaster.success('LegalEntityOfficialOrganizationalRolevLEICredential issued');
             })
             .catch((err) => {
+                isSubmitting = false;
                 console.log('caught', err);
+                toaster.error('Failed to issue LegalEntityOfficialOrganizationalRolevLEICredential');
             });
     }
 

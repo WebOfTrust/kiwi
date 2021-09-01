@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { mocking, storing, xhring } from '../../helpers';
+import { storing, toaster, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
@@ -10,8 +10,7 @@ function GLEIFvLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // mocking.mockGLEIFvLEICredentialSubmit();
-
+        isSubmitting = true;
         xhring
             .exnRequest({
                 LEI: lei,
@@ -21,10 +20,14 @@ function GLEIFvLEICredential() {
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
+                isSubmitting = false;
                 storing.addCredential(res['i'], JSON.stringify(res));
+                toaster.success('GLEIFvLEICredential issued');
             })
             .catch((err) => {
+                isSubmitting = false;
                 console.log('caught', err);
+                toaster.error('Failed to issue GLEIFvLEICredential');
             });
     }
 

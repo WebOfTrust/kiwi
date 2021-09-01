@@ -1,7 +1,7 @@
 import m from 'mithril';
-import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
+import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent } from 'construct-ui';
 import { Container } from '../../components';
-import { storing, xhring } from '../../helpers';
+import { storing, toaster, xhring } from '../../helpers';
 
 function QualifiedvLEIIssuervLEICredential() {
     const schemaSAID = 'E9bX8Do0nb1Eq986HvoJ2iNO00TjC6J_2En8Du9L-hYU';
@@ -10,6 +10,7 @@ function QualifiedvLEIIssuervLEICredential() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        isSubmitting = true;
         xhring
             .exnRequest({
                 LEI: lei,
@@ -19,10 +20,14 @@ function QualifiedvLEIIssuervLEICredential() {
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
+                isSubmitting = false;
                 storing.addCredential(res['i'], JSON.stringify(res));
+                toaster.success('QualifiedvLEIIssuervLEICredential issued');
             })
             .catch((err) => {
+                isSubmitting = false;
                 console.log('caught', err);
+                toaster.error('Failed to issue QualifiedvLEIIssuervLEICredential');
             });
     }
 

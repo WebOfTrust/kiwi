@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { storing } from '../helpers';
+import { storing, toaster, xhring } from '../helpers';
 import { CredentialList } from './revoke';
 
 function Revoke() {
@@ -29,18 +29,19 @@ function Revoke() {
     }
 
     function revokeCredential(cred) {
-        // TODO: Move to helpers/xhring
-        m.request({
-            method: 'POST',
-            url: process.env.CONTROLLER_URL + '/credential/revoke',
-            body: { said: cred.i, registry: 'gleif' },
-        })
+        xhring
+            .revokeRequest({
+                said: cred.i,
+                registry: 'gleif',
+            })
             .then((res) => {
                 storing.revokeCredential(cred.i);
+                toaster.success(`Revoked ${cred.i}`);
                 loadCredsFromStorage();
                 m.redraw();
             })
-            .catch((e) => {
+            .catch(() => {
+                toaster.error(`Failed to revoke ${cred.i}`);
                 console.log(e);
             });
     }

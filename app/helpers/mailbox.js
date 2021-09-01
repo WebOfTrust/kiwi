@@ -50,7 +50,7 @@ export default class mailbox {
         this.source = new EventSource(
             process.env.CONTROLLER_URL +
                 ':' +
-                xhring.port +
+                this.port +
                 '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0'
         );
         this.source.addEventListener('/credential', this.displayData, false);

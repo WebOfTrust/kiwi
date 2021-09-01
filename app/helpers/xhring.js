@@ -15,6 +15,18 @@ export default class xhring {
             });
     }
 
+    static revokeRequest(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/revoke`,
+                body: body,
+            })
+            .catch(function (e) {
+                console.log('revokeRequest error: ', e);
+            });
+    }
+
     static presentationRequest(body) {
         return m
             .request({

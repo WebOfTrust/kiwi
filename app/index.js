@@ -3,7 +3,7 @@ import { Button, Colors, Icon, Icons, Input, Intent, TabItem, Tabs } from 'const
 
 import { Header, Footer } from './components';
 import { Issue, Revoke, Verify, Group, Mailbox } from './pages';
-import { mailbox, xhring } from './helpers';
+import { mailbox, toaster, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
 
@@ -40,6 +40,11 @@ function Layout() {
     return {
         view: (vnode) => {
             return m('main', [
+                m(toaster.AppToaster, {
+                    clearOnEscapeKey: true,
+                    inline: false,
+                    position: 'top-end',
+                }),
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
