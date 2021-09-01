@@ -13,6 +13,18 @@ export default class xhring {
             });
     }
 
+    static presentationRequest(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: process.env.CONTROLLER_URL + '/presentation/request',
+                body: body,
+            })
+            .catch(function (e) {
+                console.log('presentationRequest error: ', e);
+            });
+    }
+
     static agentPost(date, attachment, body) {
         return m
             .request({

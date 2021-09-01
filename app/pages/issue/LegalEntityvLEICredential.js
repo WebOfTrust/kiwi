@@ -20,7 +20,6 @@ function LegalEntityvLEICredential() {
 
             })
             .then((res) => {
-                xhring.agentPost(res['date'], res['attachment'], res['d']);
                 storing.addCredential(res['said'], JSON.stringify(res));
             })
             .catch((err) => {

@@ -2,6 +2,7 @@ import m from 'mithril';
 import { Button, Card, Classes, Colors, Form, FormGroup, FormLabel, Icons, List, ListItem, Select } from 'construct-ui';
 import { Container } from '../../components';
 import Recipient from './Recipient';
+import {storing, xhring} from "../../helpers";
 
 function PresentationRequest() {
     let schema = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
@@ -31,31 +32,17 @@ function PresentationRequest() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // TODO: Move to helpers/xring
-        m.request({
-            method: 'POST',
-            url: process.env.GACC_SERVER_URL + '/presentation/request',
-            body: {
-                schema,
-            },
-        })
+        xhring
+            .presentationRequest({
+                schema: schema,
+                recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
+            })
             .then((res) => {
-                m.request({
-                    method: 'POST',
-                    url: process.env.CONTROLLER_URL + '/exn/cmd/presentation/request',
-                    headers: {
-                        'CESR-DATE': res['date'],
-                        'CESR-ATTACHMENT': res['attachment'],
-                        'Content-Type': 'application/cesr+json',
-                    },
-                    body: JSON.parse(res['data']),
-                }).catch((err) => {
-                    console.log(err);
-                });
             })
             .catch((err) => {
-                console.log(err);
+                console.log('caught', err);
             });
+
     }
 
     return {

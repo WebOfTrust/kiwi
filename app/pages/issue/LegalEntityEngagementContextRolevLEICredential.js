@@ -23,7 +23,6 @@ function LegalEntityEngagementContextRolevLEICredential() {
                 recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
             })
             .then((res) => {
-                xhring.agentPost(res['date'], res['attachment'], res['d']);
                 storing.addCredential(res['said'], JSON.stringify(res));
             })
             .catch((err) => {
