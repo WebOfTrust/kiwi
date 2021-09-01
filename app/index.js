@@ -1,12 +1,40 @@
 import m from 'mithril';
-import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
+import { Button, Colors, Icon, Icons, Input, Intent, TabItem, Tabs } from 'construct-ui';
 
 import { Header, Footer } from './components';
-import { Issue, Revoke, Verify, Group, Mailbox} from './pages';
+import { Issue, Revoke, Verify, Group, Mailbox } from './pages';
+import { mailbox, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
 
 let root = document.body;
+
+function PortInput() {
+    let inputValue = xhring.port;
+
+    return {
+        view: (vnode) => {
+            return m(Input, {
+                contentRight: m(Button, {
+                    label: 'Set Port',
+                    intent: Intent.PRIMARY,
+                    onclick: (e) => {
+                        xhring.port = parseInt(inputValue);
+                        mailbox.port = parseInt(inputValue);
+                    },
+                }),
+                defaultValue: inputValue,
+                style: {
+                    marginLeft: '1rem',
+                },
+                type: 'number',
+                onchange: (e) => {
+                    inputValue = e.target.value;
+                },
+            });
+        },
+    };
+}
 
 function Layout() {
     return {
@@ -15,7 +43,10 @@ function Layout() {
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
-                    m(Mailbox)
+                    m(Mailbox, {
+                        port: xhring.port,
+                    }),
+                    m(PortInput),
                 ]),
                 m(
                     Tabs,

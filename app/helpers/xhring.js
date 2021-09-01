@@ -1,11 +1,13 @@
 import m from 'mithril';
 
 export default class xhring {
+    static port = 5623;
+
     static exnRequest(body) {
         return m
             .request({
                 method: 'POST',
-                url: process.env.CONTROLLER_URL + '/credential/issue',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/issue`,
                 body: body,
             })
             .catch(function (e) {
@@ -17,7 +19,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: process.env.CONTROLLER_URL + '/presentation/request',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/presentation/request`,
                 body: body,
             })
             .catch(function (e) {
@@ -29,7 +31,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: process.env.CONTROLLER_URL + '/exn/cmd/credential/issue',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/exn/cmd/credential/issue`,
                 headers: {
                     'CESR-DATE': date,
                     'CESR-ATTACHMENT': attachment,
@@ -46,9 +48,9 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: process.env.CONTROLLER_URL + '/multisig/incept',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig/incept`,
                 headers: {
-                    'Signature': "no-sig",
+                    'Signature': 'no-sig',
                     'Content-Type': 'application/json',
                 },
                 body: body,
@@ -57,5 +59,4 @@ export default class xhring {
                 console.log('agentPost error: ', e);
             });
     }
-
 }
