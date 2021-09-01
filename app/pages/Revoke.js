@@ -33,16 +33,15 @@ function Revoke() {
         m.request({
             method: 'POST',
             url: process.env.CONTROLLER_URL + '/credential/revoke',
-            body: { said: cred.i },
+            body: { said: cred.i, registry: "gleif" },
         })
-            .then((res) => {
-                storing.revokeCredential(cred.i);
-                loadCredsFromStorage();
-                m.redraw();
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        .then((res) => {
+            storing.revokeCredential(cred.i);
+            m.redraw();
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     }
 
     return {

@@ -19,7 +19,7 @@ function QualifiedvLEIIssuervLEICredential() {
                 recipient: "EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8"
             })
             .then((res) => {
-                storing.addCredential(res['said'], JSON.stringify(res));
+                storing.addCredential(res['i'], JSON.stringify(res));
             })
             .catch((err) => {
                 console.log('caught', err);
