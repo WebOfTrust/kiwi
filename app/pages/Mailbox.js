@@ -28,7 +28,7 @@ function Mailbox() {
             mailbox.messages && mailbox.messages.length > 0
                 ? mailbox.messages.map((msg) => {
                       if (msg.r === '/incept') {
-                          return m(Card, cardOptions, m('h3', 'MultiSig Group Request'), [
+                          return m(Card, cardOptions, m('h3', 'Group Membership Request'), [
                               m(Input, {
                                   autofocus: true,
                                   fluid: true,
@@ -50,7 +50,20 @@ function Mailbox() {
                               }),
                           ]);
                       } else if (msg.r === '/rotate') {
-                          return m(Card, cardOptions, m('h3', 'MultiSig Group Rotate Request'), []);
+                          return m(Card, cardOptions, m('h3', 'Group Key Rotatation Request'), [
+                              m(Button, {
+                                  iconLeft: Icons.USER_PLUS,
+                                  label: 'Accept Rotation',
+                                  type: 'submit',
+                                  intent: 'primary',
+                                  onclick: () => {
+                                      mailbox.rotateGroup(msg["name"])
+                                      let idx = mailbox.messages.indexOf(msg);
+                                      mailbox.messages.splice(idx, 1);
+                                  },
+                              }),
+
+                          ]);
                       } else if (msg.vc.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
                           return m(Card, cardOptions, m('h3', 'Proof Recieved'), [
                               m('div', [m('span', m('b', 'From: ')), m('span', msg.vc.ti)]),

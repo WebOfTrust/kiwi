@@ -68,12 +68,13 @@ export default class mailbox {
     static joinGroup = (msg) => {
         xhring
             .multisigInceptPost({
-                group: groupName,
+                group: this.groupName,
                 aids: msg.aids,
                 witnesses: msg.witnesses,
                 toad: msg.toad,
                 sith: msg.sith,
                 nsith: msg.nsith,
+                notify: false
             })
             .then((res) => {
                 alert('Multisig Group Join Initiated');
@@ -82,6 +83,20 @@ export default class mailbox {
                 console.log('caught', err);
             });
     };
+
+
+    static rotateGroup = (group) => {
+        xhring
+        .multisigRotatePost({
+            group: group,
+        })
+        .then((res) => {
+        })
+        .catch((err) => {
+            console.log('caught', err);
+        });
+
+    }
 
     static get port() {
         return this._port;

@@ -34,15 +34,23 @@ let nsith = 3;
 let toad = 3;
 
 let witness = '';
-let witnesses = [];
+let witnesses = [
+    "BGKVzj4ve0VSd8z_AmvhLg4lqcC_9WYX90k03q-R_Ydo",
+    "BuyRFMideczFZoapylLIyCjSdhtqVb31wZkRKvPfNqkw",
+    "Bgoq68HCmYNUDgOz4Skvlu306o_NY-NrYuKAVhk3Zh9c"
+];
 
 let participant = '';
-let participants = [];
+let participants = [
+    "Eu_se69BU6tYdF2o-YD411OzwbvImOfu1m023Bu8FM_I",
+    "EEWuHgyO9iTgfz43mtY1IaRH-TrmV-YpcbpPoKKSpz8U",
+    "E5JuUB6iOaKV5-0EeADj0S3KCvvkUZDnuLw8VPK8Qang"
+];
 
 const span = {
     xs: 12,
     sm: 12,
-    md: 8,
+    md: 10,
 };
 
 function GroupList() {
@@ -66,7 +74,6 @@ function GroupList() {
                         nsith: nsith,
                     })
                     .then((res) => {
-                        alert('Multisig Group Initiated');
                     })
                     .catch((err) => {
                         console.log('caught', err);
@@ -194,6 +201,7 @@ function GroupList() {
                                                   id: 'toad',
                                                   name: 'toad',
                                                   placeholder: 'Number...',
+                                                  value: toad,
                                               }),
                                           ]),
 
@@ -204,6 +212,7 @@ function GroupList() {
                                                   id: 'sith',
                                                   name: 'sith',
                                                   placeholder: 'Number...',
+                                                  value: sith
                                               }),
                                           ]),
 
@@ -214,6 +223,7 @@ function GroupList() {
                                                   id: 'nsith',
                                                   name: 'nsith',
                                                   placeholder: 'Number...',
+                                                  value: nsith
                                               }),
                                           ]),
                                       ]),

@@ -71,4 +71,35 @@ export default class xhring {
                 console.log('agentPost error: ', e);
             });
     }
+
+    static multisigRotatePost(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig/rotate`,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            })
+            .catch(function (e) {
+                console.log('agentPost error: ', e);
+            });
+    }
+
+    static multisig() {
+        return m
+            .request({
+                method: 'GET',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig`,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                }
+            })
+            .catch(function (e) {
+                console.log('agentPost error: ', e);
+            });
+    }
 }

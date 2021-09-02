@@ -1,20 +1,6 @@
 import m from 'mithril';
-import {
-    Button,
-    Card,
-    Classes,
-    Dialog,
-    Form,
-    FormGroup,
-    FormLabel,
-    Icon,
-    Icons,
-    Input,
-    Intent,
-    List,
-    ListItem,
-} from 'construct-ui';
-import { storing } from '../../helpers';
+import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem,} from 'construct-ui';
+import {xhring} from "../../helpers";
 
 function Group() {
     return {
@@ -34,7 +20,15 @@ function Group() {
                             gutter: 16,
                             onsubmit: (e) => {
                                 e.preventDefault();
-                                vnode.attrs.revokeCredential(vnode.attrs.group);
+                                xhring
+                                    .multisigRotatePost({
+                                        group: vnode.attrs.group.name,
+                                    })
+                                    .then((res) => {
+                                    })
+                                    .catch((err) => {
+                                        console.log('caught', err);
+                                    });
                             },
                         },
                         [
