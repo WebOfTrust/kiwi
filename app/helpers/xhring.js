@@ -88,6 +88,21 @@ export default class xhring {
             });
     }
 
+    static identifiers() {
+        return m
+            .request({
+                method: 'GET',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/id`,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                }
+            })
+            .catch(function (e) {
+                console.log('agentPost error: ', e);
+            });
+    }
+
     static multisig() {
         return m
             .request({

@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Button, Colors, Icon, Icons, Input, Intent, TabItem, Tabs } from 'construct-ui';
 
 import { Header, Footer } from './components';
-import { Issue, Revoke, Verify, Group, Mailbox } from './pages';
+import { Issue, Revoke, Verify, Group, Mailbox, Settings } from './pages';
 import { mailbox, toaster, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
@@ -113,6 +113,22 @@ function Layout() {
                                 'Group Identifier',
                             ],
                         })
+                    ),
+                    m(
+                        m.route.Link,
+                        {
+                            href: 'settings',
+                            style: "margin-left: auto",
+                        },
+                        m(TabItem, {
+                            label: [
+                                m(Icon, {
+                                    name: Icons.SETTINGS,
+                                    style: 'margin-right: 10px',
+                                }),
+                                'Settings',
+                            ],
+                        })
                     )
                 ),
                 m('section', vnode.children),
@@ -141,6 +157,11 @@ m.route(root, '/issue', {
     '/group': {
         render: (vnode) => {
             return m(Layout, m(Group, vnode.attrs));
+        },
+    },
+    '/settings': {
+        render: (vnode) => {
+            return m(Layout, m(Settings, vnode.attrs));
         },
     },
 });

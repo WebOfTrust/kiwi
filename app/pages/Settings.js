@@ -1,20 +1,21 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { GroupList } from './group';
-import {storing, xhring} from "../helpers";
+import { IdentifierList } from './settings';
+import { xhring} from "../helpers";
 
-function Group() {
+function Settings() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
     const colAttrs = { span: 8, style: { margin: '16px 0' } };
 
-    let groups = [];
+    let identifiers = [];
 
-    function loadGroups() {
+    function loadIdentifiers() {
         xhring
-            .multisig()
+            .identifiers()
             .then((res) => {
-                groups = res
+                console.log(res)
+                identifiers = res
             })
             .catch((err) => {
                 console.log('caught', err);
@@ -24,7 +25,7 @@ function Group() {
 
     return {
         oninit: function () {
-            loadGroups();
+            loadIdentifiers();
         },
         view: function () {
             return m(
@@ -36,12 +37,12 @@ function Group() {
                         m(
                             Tile,
                             {
-                                title: 'Group Identifier',
+                                title: 'Identifier',
                                 intent: Intent.PRIMARY,
                             },
-                            m(GroupList, {
-                                groups: groups,
-                                emptyStateHeader: 'No Group Identifiers',
+                            m(IdentifierList, {
+                                identifiers: identifiers,
+                                emptyStateHeader: 'No Identifiers',
                             })
                         )
                     ),
@@ -51,4 +52,4 @@ function Group() {
     };
 }
 
-module.exports = Group;
+module.exports = Settings;
