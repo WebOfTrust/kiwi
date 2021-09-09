@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
 import { GroupList } from './group';
-import {storing, xhring} from "../helpers";
+import { storing, xhring } from '../helpers';
 
 function Group() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
@@ -14,7 +14,7 @@ function Group() {
         xhring
             .multisig()
             .then((res) => {
-                groups = res
+                groups = res;
             })
             .catch((err) => {
                 console.log('caught', err);

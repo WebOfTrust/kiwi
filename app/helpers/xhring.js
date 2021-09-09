@@ -96,7 +96,7 @@ export default class xhring {
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
-                }
+                },
             })
             .catch(function (e) {
                 console.log('agentPost error: ', e);
@@ -111,7 +111,7 @@ export default class xhring {
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
-                }
+                },
             })
             .catch(function (e) {
                 console.log('agentPost error: ', e);

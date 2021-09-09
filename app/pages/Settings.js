@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
 import { IdentifierList } from './settings';
-import { xhring} from "../helpers";
+import { xhring } from '../helpers';
 
 function Settings() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
@@ -14,8 +14,8 @@ function Settings() {
         xhring
             .identifiers()
             .then((res) => {
-                console.log(res)
-                identifiers = res
+                console.log(res);
+                identifiers = res;
             })
             .catch((err) => {
                 console.log('caught', err);

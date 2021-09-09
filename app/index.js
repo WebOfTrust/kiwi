@@ -118,7 +118,7 @@ function Layout() {
                         m.route.Link,
                         {
                             href: 'settings',
-                            style: "margin-left: auto",
+                            style: 'margin-left: auto',
                         },
                         m(TabItem, {
                             label: [

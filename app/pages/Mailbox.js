@@ -57,12 +57,11 @@ function Mailbox() {
                                   type: 'submit',
                                   intent: 'primary',
                                   onclick: () => {
-                                      mailbox.rotateGroup(msg["name"])
+                                      mailbox.rotateGroup(msg['name']);
                                       let idx = mailbox.messages.indexOf(msg);
                                       mailbox.messages.splice(idx, 1);
                                   },
                               }),
-
                           ]);
                       } else if (msg.vc.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
                           return m(Card, cardOptions, m('h3', 'Proof Recieved'), [
