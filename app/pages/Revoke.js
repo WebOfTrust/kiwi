@@ -1,12 +1,12 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { storing, toaster, xhring } from '../helpers';
+import { CredentialNames, storing, toaster, xhring } from '../helpers';
 import { CredentialList } from './revoke';
 
 function Revoke() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
-    const colAttrs = { span: 6, style: { margin: '16px 0' } };
+    const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     let issued = [];
     let revoked = [];
@@ -36,12 +36,12 @@ function Revoke() {
             })
             .then((res) => {
                 storing.revokeCredential(cred.i);
-                toaster.success(`Revoked ${cred.i}`);
+                toaster.success(`Revoked ${CredentialNames[cred.x]}`);
                 loadCredsFromStorage();
                 m.redraw();
             })
             .catch(() => {
-                toaster.error(`Failed to revoke ${cred.i}`);
+                toaster.error(`Failed to revoke ${CredentialNames[cred.x]}`);
                 console.log(e);
             });
     }

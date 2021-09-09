@@ -60,7 +60,7 @@ function Layout() {
                         align: 'left',
                         bordered: true,
                         size: 'lg',
-                        style: { background: Colors.GREY50 },
+                        style: { background: Colors.GREY50, overflowX: 'auto' },
                     },
                     m(
                         m.route.Link,

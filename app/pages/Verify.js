@@ -5,7 +5,7 @@ import { PresentationRequest } from './verify';
 
 function Verify() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
-    const colAttrs = { span: 6, style: { margin: '16px 0' } };
+    const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     return {
         view: function () {

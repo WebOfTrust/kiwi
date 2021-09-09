@@ -6,7 +6,7 @@ import { storing, toaster, xhring } from '../../helpers';
 function LegalEntityOfficialOrganizationalRolevLEICredential() {
     const schemaSAID = 'EUZ_F1do5sG78zeeA_8CChT5utRpOXQK4GYnv0WGRfuU';
     let isSubmitting = false;
-    let lei = '';
+    let lei = '506700GE1G29325QX363';
     let personLegalName = '';
     let officialRole = '';
 
@@ -56,11 +56,11 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                             contentLeft: m(Icon, { name: Icons.HASH }),
                             id: 'lei',
                             name: 'LEI',
-                            placeholder: '506700GE1G29325QX363',
                             fluid: true,
                             oninput: (e) => {
                                 lei = e.target.value;
                             },
+                            defaultValue: lei,
                         })
                     ),
                     m(

@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Button, Card, Classes, Colors, Form, FormGroup, FormLabel, Icons, List, ListItem, Select } from 'construct-ui';
 import { Container } from '../../components';
 import Recipient from './Recipient';
-import { storing, xhring } from '../../helpers';
+import { storing, toaster, xhring } from '../../helpers';
 
 function PresentationRequest() {
     let schema = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
@@ -30,15 +30,25 @@ function PresentationRequest() {
     ];
     let isSubmitting = false;
 
+    function getLabelForSchema(schemaValue) {
+        return schemaOptions.filter((option) => option.value === schemaValue)[0].label;
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
+        isSubmitting = true;
         xhring
             .presentationRequest({
                 schema: schema,
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
-            .then((res) => {})
+            .then((res) => {
+                isSubmitting = false;
+                toaster.success(`Request succeeded for ${getLabelForSchema(schema)}`);
+            })
             .catch((err) => {
+                isSubmitting = false;
+                toaster.error(`Request failed for ${getLabelForSchema(schema)}`);
                 console.log('caught', err);
             });
     }

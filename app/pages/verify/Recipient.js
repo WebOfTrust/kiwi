@@ -5,7 +5,7 @@ function Recipient() {
     return {
         view: function () {
             return m(FormGroup, [
-                m(FormLabel, 'Holder: (Sam Smith)'),
+                m(FormLabel, 'Holder: (Jordan Price)'),
                 m(Input, {
                     contentLeft: m(Icon, { name: Icons.HASH }),
                     fluid: true,

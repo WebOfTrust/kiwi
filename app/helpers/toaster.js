@@ -13,8 +13,8 @@ export default class toaster {
     static primary(message, timeout = 3000) {
         this.AppToaster.show({
             message,
-            timeout,
             intent: Intent.PRIMARY,
+            timeout,
         });
     }
 

@@ -6,7 +6,7 @@ import { storing, toaster, xhring } from '../../helpers';
 function LegalEntityvLEICredential() {
     const schemaSAID = 'E-BRq9StLuC9DxGgiFiy2XND0fFgzyn8cjptlcdvGEFY';
     let isSubmitting = false;
-    let lei = '';
+    let lei = '506700GE1G29325QX363';
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -51,7 +51,7 @@ function LegalEntityvLEICredential() {
                             contentLeft: m(Icon, { name: Icons.HASH }),
                             id: 'lei',
                             name: 'LEI',
-                            placeholder: '506700GE1G29325QX363',
+                            defaultValue: '506700GE1G29325QX363',
                             fluid: true,
                             oninput: (e) => {
                                 lei = e.target.value;

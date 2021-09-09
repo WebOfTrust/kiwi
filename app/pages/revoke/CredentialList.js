@@ -13,6 +13,8 @@ function CredentialList() {
                         padding: '16px',
                         position: 'relative',
                         minHeight: '150px',
+                        maxHeight: '600px',
+                        overflowY: 'auto',
                     },
                 },
                 vnode.attrs.credentials.length > 0
