@@ -56,6 +56,9 @@ const span = {
 function GroupList() {
     return {
         view: function (vnode) {
+            if (!vnode.attrs.groups) {
+                return null;
+            }
             let close = () => {
                 isOpen = false;
                 isSubmitting = false;

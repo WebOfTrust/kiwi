@@ -1,9 +1,12 @@
 import m from 'mithril';
-import {Card, Form, FormGroup, FormLabel, ListItem,} from 'construct-ui';
+import { Card, Form, FormGroup, FormLabel, ListItem } from 'construct-ui';
 
 function Identifier() {
     return {
         view: function (vnode) {
+            if (!vnode.attrs.identifier) {
+                return null;
+            }
             return m(
                 Card,
                 {
@@ -92,7 +95,7 @@ function Identifier() {
                                         vnode.attrs.identifier.witnesses.map((wit) => m(ListItem, { label: wit }))
                                     ),
                                 ]
-                            )
+                            ),
                         ]
                     ),
                 ]

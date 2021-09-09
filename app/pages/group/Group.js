@@ -1,10 +1,13 @@
 import m from 'mithril';
-import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem,} from 'construct-ui';
-import {xhring} from "../../helpers";
+import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem } from 'construct-ui';
+import { xhring } from '../../helpers';
 
 function Group() {
     return {
         view: function (vnode) {
+            if (!vnode.attrs.group) {
+                return null;
+            }
             return m(
                 Card,
                 {
@@ -24,8 +27,7 @@ function Group() {
                                     .multisigRotatePost({
                                         group: vnode.attrs.group.name,
                                     })
-                                    .then((res) => {
-                                    })
+                                    .then((res) => {})
                                     .catch((err) => {
                                         console.log('caught', err);
                                     });
