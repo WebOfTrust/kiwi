@@ -133,6 +133,7 @@ function GroupList() {
                                                   style: {
                                                       marginBottom: '1rem',
                                                   },
+                                                  id: 'participant',
                                                   placeholder: 'Participant identifier...',
                                                   oninput: (e) => {
                                                       participant = e.target.value;
@@ -205,7 +206,7 @@ function GroupList() {
                                                   contentLeft: m(Icon, { name: Icons.USERS }),
                                                   id: 'toad',
                                                   name: 'toad',
-                                                  placeholder: 'Number...',
+                                                  type: 'number',
                                                   value: toad,
                                               }),
                                           ]),
@@ -215,7 +216,7 @@ function GroupList() {
                                                   contentLeft: m(Icon, { name: Icons.USERS }),
                                                   id: 'sith',
                                                   name: 'sith',
-                                                  placeholder: 'Number...',
+                                                  type: 'number',
                                                   value: sith,
                                               }),
                                           ]),
@@ -225,7 +226,7 @@ function GroupList() {
                                                   contentLeft: m(Icon, { name: Icons.USERS }),
                                                   id: 'nsith',
                                                   name: 'nsith',
-                                                  placeholder: 'Number...',
+                                                  type: 'number',
                                                   value: nsith,
                                               }),
                                           ]),
