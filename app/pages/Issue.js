@@ -1,6 +1,7 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
+import { UserTypes } from '../helpers';
 import {
     Help,
     GLEIFvLEICredential,
@@ -19,67 +20,79 @@ function Issue() {
             return m(
                 Container,
                 m(Grid, gridAttrs, [
-                    m(Col, colAttrs, m(Tile, { title: 'Credential Schema' }, m(Help))),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'GLEIF vLEI Credential',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(GLEIFvLEICredential)
-                        )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Qualified vLEI Issuer vLEI Credential',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(QualifiedvLEIIssuervLEICredential)
-                        )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Legal Entity vLEI Credential',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(LegalEntityvLEICredential)
-                        )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Legal Entity Official Organizational Role vLEI Credential',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(LegalEntityOfficialOrganizationalRolevLEICredential)
-                        )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Legal Entity Engagement Context Role vLEI Credential',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(LegalEntityEngagementContextRolevLEICredential)
-                        )
-                    ),
+                    UserTypes.userTypeIn(['developer'])
+                        ? m(Col, colAttrs, m(Tile, { title: 'Credential Schema' }, m(Help)))
+                        : null,
+                    UserTypes.userTypeIn(['developer', 'gleif'])
+                        ? m(
+                              Col,
+                              colAttrs,
+                              m(
+                                  Tile,
+                                  {
+                                      title: 'GLEIF vLEI Credential',
+                                      intent: Intent.PRIMARY,
+                                  },
+                                  m(GLEIFvLEICredential)
+                              )
+                          )
+                        : null,
+                    UserTypes.userTypeIn(['developer', 'gleif'])
+                        ? m(
+                              Col,
+                              colAttrs,
+                              m(
+                                  Tile,
+                                  {
+                                      title: 'Qualified vLEI Issuer vLEI Credential',
+                                      intent: Intent.PRIMARY,
+                                  },
+                                  m(QualifiedvLEIIssuervLEICredential)
+                              )
+                          )
+                        : null,
+                    UserTypes.userTypeIn(['developer', 'qvi'])
+                        ? m(
+                              Col,
+                              colAttrs,
+                              m(
+                                  Tile,
+                                  {
+                                      title: 'Legal Entity vLEI Credential',
+                                      intent: Intent.PRIMARY,
+                                  },
+                                  m(LegalEntityvLEICredential)
+                              )
+                          )
+                        : null,
+                    UserTypes.userTypeIn(['developer', 'qvi'])
+                        ? m(
+                              Col,
+                              colAttrs,
+                              m(
+                                  Tile,
+                                  {
+                                      title: 'Legal Entity Official Organizational Role vLEI Credential',
+                                      intent: Intent.PRIMARY,
+                                  },
+                                  m(LegalEntityOfficialOrganizationalRolevLEICredential)
+                              )
+                          )
+                        : null,
+                    UserTypes.userTypeIn(['developer', 'qvi', 'legal-entity'])
+                        ? m(
+                              Col,
+                              colAttrs,
+                              m(
+                                  Tile,
+                                  {
+                                      title: 'Legal Entity Engagement Context Role vLEI Credential',
+                                      intent: Intent.PRIMARY,
+                                  },
+                                  m(LegalEntityEngagementContextRolevLEICredential)
+                              )
+                          )
+                        : null,
                 ])
             );
         },

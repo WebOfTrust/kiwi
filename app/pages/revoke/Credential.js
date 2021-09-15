@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { Button, Card, Classes, Dialog, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent } from 'construct-ui';
-import { CredentialNames, storing } from '../../helpers';
+import { CredentialNames, storing, UserTypes } from '../../helpers';
 
 const AddressBook = {
     'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8': 'Jordan Price',
@@ -83,7 +83,7 @@ function Credential() {
                 ]);
             }
 
-            if (!vnode.attrs.isRevoked) {
+            if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
                 fields.push(
                     m(
                         FormGroup,
