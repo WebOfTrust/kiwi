@@ -1,10 +1,15 @@
 import m from 'mithril';
 import mq from 'mithril-query';
+import xhring from '../../helpers/xhring';
 import Settings from '../../pages/Settings';
 
 describe('Settings component', () => {
     beforeAll(() => {
-        jest.spyOn(Settings.prototype, 'loadIdentifiers').mockImplementation(() => {});
+        jest.spyOn(xhring, 'identifiers').mockImplementation(() => {
+            return new Promise((resolve, reject) => {
+                resolve([]); // TODO: Resolve mock response
+            });
+        });
     });
     afterAll(() => {
         jest.restoreAllMocks();
