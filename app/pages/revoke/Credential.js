@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { Button, Card, Classes, Dialog, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent } from 'construct-ui';
+import { Button, Card, Classes, Dialog, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent, ListItem} from 'construct-ui';
 import { CredentialNames, storing, UserTypes } from '../../helpers';
 
 const AddressBook = {
@@ -15,25 +15,25 @@ function Credential() {
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.d.si])]
+                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.sad.d.si])]
                 ),
                 m(
                     FormGroup,
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'Credential:'), m('div', CredentialNames[vnode.attrs.cred.x])]
+                    [m(FormLabel, {}, 'Credential:'), m('div', CredentialNames[vnode.attrs.cred.sad.x])]
                 ),
                 m(
                     FormGroup,
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.d.LEI)]
+                    [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.sad.d.LEI)]
                 ),
             ];
 
-            if (vnode.attrs.cred.d.type[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential') {
+            if (vnode.attrs.cred.sad.d.type[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential') {
                 fields = fields.concat([
                     m(
                         FormGroup,
@@ -57,7 +57,7 @@ function Credential() {
                         [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.d.officialRole)]
                     ),
                 ]);
-            } else if (vnode.attrs.cred.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
+            } else if (vnode.attrs.cred.sad.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
                 fields = fields.concat([
                     m(
                         FormGroup,
@@ -82,6 +82,29 @@ function Credential() {
                     ),
                 ]);
             }
+
+            fields = fields.concat([
+                m(
+                    FormGroup,
+                    {
+                        span: 12,
+                    },
+                    [
+                        m(FormLabel, {}, 'Verified Signatures:'),
+                        m(
+                            'List',
+                            {
+                                interactive: true,
+                                size: 5,
+                                style: "font-size: 14px"
+                            },
+                            vnode.attrs.cred.sigers.map((key, index) =>
+                                m(ListItem, { label: index + 1 + '.  ' + key })
+                            )
+                        ),
+                    ]
+                ),
+            ])
 
             if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
                 fields.push(

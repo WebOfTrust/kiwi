@@ -13,7 +13,9 @@ function QualifiedvLEIIssuervLEICredential() {
         isSubmitting = true;
         xhring
             .exnRequest({
-                LEI: lei,
+                credentialData: {
+                    LEI: lei,
+                },
                 schema: schemaSAID,
                 type: 'QualifiedvLEIIssuervLEICredential',
                 registry: 'gleif',

@@ -1,5 +1,5 @@
 import m from 'mithril';
-import { xhring } from '../helpers';
+import {toaster, xhring} from '../helpers';
 
 export default class mailbox {
     static MINSNIFFSIZE = 30;
@@ -72,7 +72,7 @@ export default class mailbox {
                 aids: msg.aids,
                 witnesses: msg.witnesses,
                 toad: msg.toad,
-                sith: msg.sith,
+                isith: msg.isith,
                 nsith: msg.nsith,
                 notify: false,
             })
@@ -83,6 +83,27 @@ export default class mailbox {
                 console.log('caught', err);
             });
     };
+
+    static joinIssue = (schema, data, typ, recipient) => {
+        xhring
+            .exnRequest({
+                credentialData: data,
+                schema: schema,
+                type: typ,
+                registry: 'gleif',
+                recipient: recipient,
+                notify: false
+            })
+            .then((res) => {
+                toaster.success(typ + ' signed and submitted');
+            })
+            .catch((err) => {
+                console.log('caught', err);
+                toaster.error('Failed to issue ' + typ);
+            });
+    };
+
+
 
     static rotateGroup = (group) => {
         xhring

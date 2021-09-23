@@ -25,7 +25,7 @@ function GroupList() {
     let isSubmitting = false;
 
     let groupName = '';
-    let sith = 3;
+let isith = 3;
     let nsith = 3;
     let toad = 3;
 
@@ -62,7 +62,7 @@ function GroupList() {
                         aids: participants,
                         witnesses: witnesses,
                         toad: toad,
-                        sith: sith,
+                        isith: isith,
                         nsith: nsith,
                     })
                     .then((res) => {})
@@ -211,17 +211,17 @@ function GroupList() {
                                               }),
                                           ]),
                                           m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
-                                              m(FormLabel, { for: 'sith' }, 'Signature Threshold'),
+                                              m(FormLabel, { for: 'isith' }, 'Signature Threshold'),
                                               m(Input, {
                                                   contentLeft: m(Icon, { name: Icons.USERS }),
-                                                  id: 'sith',
-                                                  name: 'sith',
+                                                  id: 'isith',
+                                                  name: 'isith',
                                                   type: 'number',
-                                                  value: sith,
+                                                  value: isith,
                                               }),
                                           ]),
                                           m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
-                                              m(FormLabel, { for: 'sith' }, 'Next Signature Threshold'),
+                                              m(FormLabel, { for: 'nsith' }, 'Next Signature Threshold'),
                                               m(Input, {
                                                   contentLeft: m(Icon, { name: Icons.USERS }),
                                                   id: 'nsith',

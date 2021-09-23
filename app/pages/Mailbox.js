@@ -1,7 +1,12 @@
 import m from 'mithril';
 import { Button, Card, EmptyState, Icons, Input, Popover } from 'construct-ui';
 import { Container } from '../components';
-import { mailbox, xhring } from '../helpers';
+import {CredentialNames, mailbox, xhring} from '../helpers';
+
+
+const AddressBook = {
+    'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8': 'Jordan Price',
+};
 
 function Mailbox() {
     let cardOptions = {
@@ -63,6 +68,26 @@ function Mailbox() {
                                   },
                               }),
                           ]);
+                      } else if (msg.r === '/issue') {
+                          return m(Card, cardOptions, m('h3', 'Group Credential Issuance Proposal'), [
+                              m('div', [m('span', m('b', 'To: ')), m('span', AddressBook[msg.data.si])]),
+                              m('div', [m('span', m('b', 'Credential: ')), m('span', CredentialNames[msg.schema])]),
+                              m('br'),
+                              m('div', [m('span', m('b', 'LEI: ')), m('span', msg.data.LEI)]),
+                              m('br'),
+                              m(Button, {
+                                  iconLeft: Icons.CHECK_CIRCLE,
+                                  label: 'Sign Credential',
+                                  type: 'submit',
+                                  intent: 'primary',
+                                  onclick: () => {
+                                      mailbox.joinIssue(msg.schema, msg.data, msg.typ, msg.data.si);
+
+                                      let idx = mailbox.messages.indexOf(msg);
+                                      mailbox.messages.splice(idx, 1);
+                                  },
+                              }),
+                          ]);
                       } else if (msg.vc.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
                           return m(Card, cardOptions, m('h3', 'Proof Recieved'), [
                               m('div', [m('span', m('b', 'From: ')), m('span', msg.vc.ti)]),
@@ -91,6 +116,8 @@ function Mailbox() {
                               m('div', [m('span', m('b', 'Type: ')), m('span', msg.vc.d.type[1])]),
                           ]);
                       } else {
+                          console.log(msg.r)
+                          console.log("fuck off")
                           return m(Card, cardOptions, m('h3', 'Proof Received'), [
                               m('div', m('b', 'From: '), m('span', msg.vc.ti)),
                               m('div', m('b', 'To: '), m('span', msg.vc.d.si)),

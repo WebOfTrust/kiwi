@@ -16,9 +16,11 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
         xhring
             .exnRequest({
                 schema: schemaSAID,
-                LEI: lei,
-                personLegalName: personLegalName,
-                officialRole: officialRole,
+                credentialData: {
+                    LEI: lei,
+                    personLegalName: personLegalName,
+                    officialRole: officialRole,
+                },
                 type: 'LegalEntityOfficialOrganizationalRolevLEICredential',
                 registry: 'gleif',
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',

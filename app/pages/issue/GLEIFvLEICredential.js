@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
-import { storing, toaster, xhring } from '../../helpers';
+import { toaster, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
@@ -13,7 +13,9 @@ function GLEIFvLEICredential() {
         isSubmitting = true;
         xhring
             .exnRequest({
-                LEI: lei,
+                credentialData: {
+                    LEI: lei,
+                },
                 schema: schemaSAID,
                 type: 'GLEIFvLEICredential',
                 registry: 'gleif',
@@ -21,7 +23,6 @@ function GLEIFvLEICredential() {
             })
             .then((res) => {
                 isSubmitting = false;
-                storing.addCredential(res['i'], JSON.stringify(res));
                 toaster.success('GLEIFvLEICredential issued');
             })
             .catch((err) => {

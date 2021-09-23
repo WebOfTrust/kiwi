@@ -13,7 +13,9 @@ function LegalEntityvLEICredential() {
         isSubmitting = true;
         xhring
             .exnRequest({
-                LEI: lei,
+                credentialData: {
+                    LEI: lei,
+                },
                 schema: schemaSAID,
                 type: 'LegalEntityvLEICredential',
                 registry: 'gleif',

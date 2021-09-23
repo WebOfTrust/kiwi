@@ -16,9 +16,11 @@ function LegalEntityEngagementContextRolevLEICredential() {
         xhring
             .exnRequest({
                 schema: schemaSAID,
-                LEI: lei,
-                personLegalName: personLegalName,
-                engagementContextRole: engagementContextRole,
+                credentialData: {
+                    LEI: lei,
+                    personLegalName: personLegalName,
+                    engagementContextRole: engagementContextRole,
+                },
                 type: 'LegalEntityEngagementContextRolevLEICredential',
                 registry: 'gleif',
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
