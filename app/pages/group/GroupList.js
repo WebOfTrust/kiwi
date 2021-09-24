@@ -17,15 +17,15 @@ import {
     Size,
 } from 'construct-ui';
 import { Container } from '../../components';
-import Group from './Group';
 import { storing, xhring } from '../../helpers';
+import Group from './Group';
 
 function GroupList() {
     let isOpen = false;
     let isSubmitting = false;
 
     let groupName = '';
-let isith = 3;
+    let isith = 3;
     let nsith = 3;
     let toad = 3;
 

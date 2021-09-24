@@ -9,7 +9,9 @@ function QualifiedvLEIIssuervLEICredential() {
     let lei = '254900OPPU84GM83MG36';
 
     function handleSubmit(e) {
-        e.preventDefault();
+        if (e) {
+            e.preventDefault();
+        }
         isSubmitting = true;
         xhring
             .exnRequest({
@@ -34,6 +36,7 @@ function QualifiedvLEIIssuervLEICredential() {
     }
 
     return {
+        handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
                 m(Callout, {

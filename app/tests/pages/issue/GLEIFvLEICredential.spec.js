@@ -1,8 +1,8 @@
 import m from 'mithril';
 import mq from 'mithril-query';
 import xhring from '../../../helpers/xhring';
-import { GLEIF_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
 import GLEIFvLEICredential from '../../../pages/issue/GLEIFvLEICredential';
+import { GLEIF_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
 
 describe('GLEIFvLEICredential component', () => {
     let exnRequestSpy;

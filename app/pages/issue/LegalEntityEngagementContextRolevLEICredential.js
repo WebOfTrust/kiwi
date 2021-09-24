@@ -10,8 +10,10 @@ function LegalEntityEngagementContextRolevLEICredential() {
     let personLegalName = '';
     let engagementContextRole = '';
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit(e = null) {
+        if (e) {
+            e.preventDefault();
+        }
         isSubmitting = true;
         xhring
             .exnRequest({
@@ -38,6 +40,7 @@ function LegalEntityEngagementContextRolevLEICredential() {
     }
 
     return {
+        handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
                 m(Callout, {

@@ -11,7 +11,9 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
     let officialRole = '';
 
     function handleSubmit(e) {
-        e.preventDefault();
+        if (e) {
+            e.preventDefault();
+        }
         isSubmitting = true;
         xhring
             .exnRequest({
@@ -38,6 +40,7 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
     }
 
     return {
+        handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
                 m(Callout, {

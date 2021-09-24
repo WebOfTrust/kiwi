@@ -3,75 +3,75 @@ import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Inpu
 import { Container } from '../../components';
 import { toaster, xhring } from '../../helpers';
 
-class GLEIFvLEICredential {
-    constructor() {
-        this.schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
-        this.lei = '506700GE1G29325QX363';
-        this.isSubmitting = false;
-    }
+function GLEIFvLEICredential() {
+    const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
+    const lei = '506700GE1G29325QX363';
+    let isSubmitting = false;
 
-    handleSubmit(e = null) {
+    function handleSubmit(e = null) {
         if (e) {
             e.preventDefault();
         }
-        this.isSubmitting = true;
+        isSubmitting = true;
         xhring
             .exnRequest({
                 credentialData: {
-                    LEI: this.lei,
+                    LEI: lei,
                 },
-                schema: this.schemaSAID,
+                schema: schemaSAID,
                 type: 'GLEIFvLEICredential',
                 registry: 'gleif',
                 recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
             })
             .then((res) => {
-                this.isSubmitting = false;
+                isSubmitting = false;
                 toaster.success('GLEIFvLEICredential issued');
             })
             .catch((err) => {
-                this.isSubmitting = false;
+                isSubmitting = false;
                 console.log('caught', err);
                 toaster.error('Failed to issue GLEIFvLEICredential');
             });
     }
-
-    view() {
-        return m(Container, { style: { padding: '16px' } }, [
-            m(Callout, {
-                content: 'The vLEI Credential issued to GLEIF',
-            }),
-            m(
-                Form,
-                {
-                    gutter: 16,
-                    onsubmit: (e) => this.handleSubmit(e),
-                    style: { marginTop: '16px' },
-                },
+    return {
+        handleSubmit,
+        view: function () {
+            return m(Container, { style: { padding: '16px' } }, [
+                m(Callout, {
+                    content: 'The vLEI Credential issued to GLEIF',
+                }),
                 m(
-                    FormGroup,
-                    m(FormLabel, { for: 'lei' }, 'LEI'),
-                    m(Input, {
-                        contentLeft: m(Icon, { name: Icons.HASH }),
-                        id: 'lei',
-                        name: 'LEI',
-                        readOnly: true,
-                        fluid: true,
-                        value: '506700GE1G29325QX363',
-                    })
+                    Form,
+                    {
+                        gutter: 16,
+                        onsubmit: (e) => handleSubmit(e),
+                        style: { marginTop: '16px' },
+                    },
+                    m(
+                        FormGroup,
+                        m(FormLabel, { for: 'lei' }, 'LEI'),
+                        m(Input, {
+                            contentLeft: m(Icon, { name: Icons.HASH }),
+                            id: 'lei',
+                            name: 'LEI',
+                            readOnly: true,
+                            fluid: true,
+                            value: '506700GE1G29325QX363',
+                        })
+                    ),
+                    m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
+                        m(Button, {
+                            iconRight: Icons.CHEVRON_RIGHT,
+                            type: 'submit',
+                            label: 'Issue',
+                            intent: 'primary',
+                            loading: isSubmitting,
+                        }),
+                    ])
                 ),
-                m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
-                    m(Button, {
-                        iconRight: Icons.CHEVRON_RIGHT,
-                        type: 'submit',
-                        label: 'Issue',
-                        intent: 'primary',
-                        loading: this.isSubmitting,
-                    }),
-                ])
-            ),
-        ]);
-    }
+            ]);
+        },
+    };
 }
 
 module.exports = GLEIFvLEICredential;
