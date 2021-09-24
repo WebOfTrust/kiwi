@@ -22,6 +22,9 @@ const AddressBook = {
 function Credential() {
     return {
         view: function (vnode) {
+            if (!vnode.attrs.cred) {
+                return;
+            }
             let fields = [
                 m(
                     FormGroup,

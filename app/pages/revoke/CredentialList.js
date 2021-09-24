@@ -17,7 +17,7 @@ function CredentialList() {
                         overflowY: 'auto',
                     },
                 },
-                vnode.attrs.credentials.length > 0
+                vnode.attrs.credentials
                     ? vnode.attrs.credentials.map((cred) =>
                           m(Credential, {
                               cred,
