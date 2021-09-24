@@ -4,18 +4,25 @@ import xhring from '../../helpers/xhring';
 import Settings from '../../pages/Settings';
 
 describe('Settings component', () => {
-    beforeAll(() => {
-        jest.spyOn(xhring, 'identifiers').mockImplementation(() => {
+    let identifiersSpy;
+
+    beforeEach(() => {
+        identifiersSpy = jest.spyOn(xhring, 'identifiers').mockImplementation(() => {
             return new Promise((resolve, reject) => {
                 resolve([]); // TODO: Resolve mock response
             });
         });
     });
-    afterAll(() => {
+    afterEach(() => {
         jest.restoreAllMocks();
     });
     it('Should create', () => {
         let out = mq(m(Settings));
         expect(out).toBeTruthy();
+    });
+    it('Should call xhring.identifiers once in oninit', () => {
+        let controller = new Settings();
+        controller.oninit();
+        expect(identifiersSpy).toHaveBeenCalledTimes(1);
     });
 });

@@ -7,14 +7,14 @@ import { QVI_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
 describe('QualifiedvLEIIssuervLEICredential component', () => {
     let exnRequestSpy;
 
-    beforeAll(() => {
+    beforeEach(() => {
         exnRequestSpy = jest.spyOn(xhring, 'exnRequest').mockImplementation(() => {
             return new Promise((resolve, reject) => {
                 resolve(QVI_CREDENTIAL_ISSUE_RESPONSE);
             });
         });
     });
-    afterAll(() => {
+    afterEach(() => {
         jest.restoreAllMocks();
     });
     it('Should create', () => {

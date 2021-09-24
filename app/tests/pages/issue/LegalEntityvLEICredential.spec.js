@@ -7,14 +7,14 @@ import { LEGAL_ENTITY_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
 describe('LegalEntityvLEICredential component', () => {
     let exnRequestSpy;
 
-    beforeAll(() => {
+    beforeEach(() => {
         exnRequestSpy = jest.spyOn(xhring, 'exnRequest').mockImplementation(() => {
             return new Promise((resolve, reject) => {
                 resolve(LEGAL_ENTITY_CREDENTIAL_ISSUE_RESPONSE);
             });
         });
     });
-    afterAll(() => {
+    afterEach(() => {
         jest.restoreAllMocks();
     });
     it('Should create', () => {

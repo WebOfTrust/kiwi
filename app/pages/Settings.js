@@ -4,18 +4,16 @@ import { Container, Tile } from '../components';
 import { IdentifierList } from './settings';
 import { xhring } from '../helpers';
 
-class Settings {
-    constructor() {
-        this.gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
-        this.colAttrs = { span: 8, style: { margin: '16px 0' } };
-        this.identifiers = [];
-    }
+function Settings() {
+    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
+    const colAttrs = { span: 8, style: { margin: '16px 0' } };
+    let identifiers = [];
 
-    loadIdentifiers() {
+    function loadIdentifiers() {
         xhring
             .identifiers()
             .then((res) => {
-                this.identifiers = res;
+                identifiers = res;
             })
             .catch((err) => {
                 console.log('caught', err);
@@ -23,32 +21,34 @@ class Settings {
         m.redraw();
     }
 
-    oninit() {
-        this.loadIdentifiers();
-    }
+    return {
+        oninit: function () {
+            loadIdentifiers();
+        },
 
-    view() {
-        return m(
-            Container,
-            m(Grid, this.gridAttrs, [
-                m(
-                    Col,
-                    this.colAttrs,
+        view: function () {
+            return m(
+                Container,
+                m(Grid, gridAttrs, [
                     m(
-                        Tile,
-                        {
-                            title: 'Identifier',
-                            intent: Intent.PRIMARY,
-                        },
-                        m(IdentifierList, {
-                            identifiers: this.identifiers,
-                            emptyStateHeader: 'No Identifiers',
-                        })
-                    )
-                ),
-            ])
-        );
-    }
+                        Col,
+                        colAttrs,
+                        m(
+                            Tile,
+                            {
+                                title: 'Identifier',
+                                intent: Intent.PRIMARY,
+                            },
+                            m(IdentifierList, {
+                                identifiers: identifiers,
+                                emptyStateHeader: 'No Identifiers',
+                            })
+                        )
+                    ),
+                ])
+            );
+        },
+    };
 }
 
 module.exports = Settings;

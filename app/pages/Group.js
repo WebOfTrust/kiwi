@@ -4,18 +4,16 @@ import { Container, Tile } from '../components';
 import { GroupList } from './group';
 import { storing, xhring } from '../helpers';
 
-class Group {
-    constructor() {
-        this.gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
-        this.colAttrs = { span: 8, style: { margin: '16px 0' } };
-        this.groups = [];
-    }
+function Group() {
+    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
+    const colAttrs = { span: 8, style: { margin: '16px 0' } };
+    let groups = [];
 
-    loadGroups() {
+    function loadGroups() {
         xhring
             .multisig()
             .then((res) => {
-                this.groups = res;
+                groups = res;
             })
             .catch((err) => {
                 console.log('caught', err);
@@ -23,32 +21,33 @@ class Group {
         m.redraw();
     }
 
-    oninit() {
-        this.loadGroups();
-    }
-
-    view() {
-        return m(
-            Container,
-            m(Grid, this.gridAttrs, [
-                m(
-                    Col,
-                    this.colAttrs,
+    return {
+        oninit: function () {
+            loadGroups();
+        },
+        view: function () {
+            return m(
+                Container,
+                m(Grid, gridAttrs, [
                     m(
-                        Tile,
-                        {
-                            title: 'Group Identifier',
-                            intent: Intent.PRIMARY,
-                        },
-                        m(GroupList, {
-                            groups: this.groups,
-                            emptyStateHeader: 'No Group Identifiers',
-                        })
-                    )
-                ),
-            ])
-        );
-    }
+                        Col,
+                        colAttrs,
+                        m(
+                            Tile,
+                            {
+                                title: 'Group Identifier',
+                                intent: Intent.PRIMARY,
+                            },
+                            m(GroupList, {
+                                groups: groups,
+                                emptyStateHeader: 'No Group Identifiers',
+                            })
+                        )
+                    ),
+                ])
+            );
+        },
+    };
 }
 
 module.exports = Group;
