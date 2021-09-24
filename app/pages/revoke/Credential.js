@@ -1,5 +1,18 @@
 import m from 'mithril';
-import { Button, Card, Classes, Dialog, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent, ListItem} from 'construct-ui';
+import {
+    Button,
+    Card,
+    Classes,
+    Dialog,
+    Form,
+    FormGroup,
+    FormLabel,
+    Icon,
+    Icons,
+    Input,
+    Intent,
+    ListItem,
+} from 'construct-ui';
 import { CredentialNames, storing, UserTypes } from '../../helpers';
 
 const AddressBook = {
@@ -96,15 +109,13 @@ function Credential() {
                             {
                                 interactive: true,
                                 size: 5,
-                                style: "font-size: 14px"
+                                style: 'font-size: 14px',
                             },
-                            vnode.attrs.cred.sigers.map((key, index) =>
-                                m(ListItem, { label: index + 1 + '.  ' + key })
-                            )
+                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, { label: index + 1 + '.  ' + key }))
                         ),
                     ]
                 ),
-            ])
+            ]);
 
             if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
                 fields.push(

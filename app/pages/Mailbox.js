@@ -1,8 +1,7 @@
 import m from 'mithril';
 import { Button, Card, EmptyState, Icons, Input, Popover } from 'construct-ui';
 import { Container } from '../components';
-import {CredentialNames, mailbox, xhring} from '../helpers';
-
+import { CredentialNames, mailbox, xhring } from '../helpers';
 
 const AddressBook = {
     'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8': 'Jordan Price',
@@ -116,8 +115,8 @@ function Mailbox() {
                               m('div', [m('span', m('b', 'Type: ')), m('span', msg.vc.d.type[1])]),
                           ]);
                       } else {
-                          console.log(msg.r)
-                          console.log("fuck off")
+                          console.log(msg.r);
+                          console.log('fuck off');
                           return m(Card, cardOptions, m('h3', 'Proof Received'), [
                               m('div', m('b', 'From: '), m('span', msg.vc.ti)),
                               m('div', m('b', 'To: '), m('span', msg.vc.d.si)),

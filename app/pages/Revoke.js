@@ -1,12 +1,12 @@
 import m from 'mithril';
-import {Col, Grid, Intent} from 'construct-ui';
-import {Container, Tile} from '../components';
-import {CredentialNames, storing, toaster, xhring} from '../helpers';
-import {CredentialList} from './revoke';
+import { Col, Grid, Intent } from 'construct-ui';
+import { Container, Tile } from '../components';
+import { CredentialNames, storing, toaster, xhring } from '../helpers';
+import { CredentialList } from './revoke';
 
 function Revoke() {
-    const gridAttrs = {gutter: {xs: 0, sm: 8, md: 16, lg: 32, xl: 32}};
-    const colAttrs = {span: {xs: 12, md: 6}, style: {margin: '16px 0'}};
+    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
+    const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     let issued = [];
     let revoked = [];
@@ -18,12 +18,12 @@ function Revoke() {
             .credentials()
             .then((res) => {
                 res.map(function (cred) {
-                    if (cred.status === "issued") {
+                    if (cred.status === 'issued') {
                         issued.unshift(cred);
                     } else {
                         revoked.unshift(cred);
                     }
-                })
+                });
             })
             .catch((err) => {
                 console.log('caught', err);

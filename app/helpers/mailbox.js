@@ -1,5 +1,5 @@
 import m from 'mithril';
-import {toaster, xhring} from '../helpers';
+import { toaster, xhring } from '../helpers';
 
 export default class mailbox {
     static MINSNIFFSIZE = 30;
@@ -92,7 +92,7 @@ export default class mailbox {
                 type: typ,
                 registry: 'gleif',
                 recipient: recipient,
-                notify: false
+                notify: false,
             })
             .then((res) => {
                 toaster.success(typ + ' signed and submitted');
@@ -102,8 +102,6 @@ export default class mailbox {
                 toaster.error('Failed to issue ' + typ);
             });
     };
-
-
 
     static rotateGroup = (group) => {
         xhring

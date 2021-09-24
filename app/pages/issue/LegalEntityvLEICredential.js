@@ -7,13 +7,11 @@ function LegalEntityvLEICredential() {
     const schemaSAID = 'E-BRq9StLuC9DxGgiFiy2XND0fFgzyn8cjptlcdvGEFY';
     let isSubmitting = false;
     let lei = '506700GE1G29325QX363';
-    let testThis = null;
 
     function handleSubmit(e = null) {
         if (e) {
             e.preventDefault();
         }
-        testThis = 'asdf';
         isSubmitting = true;
         xhring
             .exnRequest({
@@ -38,7 +36,6 @@ function LegalEntityvLEICredential() {
     }
 
     return {
-        testThis,
         handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
