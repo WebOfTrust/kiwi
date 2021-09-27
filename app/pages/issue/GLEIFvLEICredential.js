@@ -4,7 +4,7 @@ import { Container } from '../../components';
 import { toaster, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
-    const schemaSAID = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
+    const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
     const lei = '506700GE1G29325QX363';
     let isSubmitting = false;
 

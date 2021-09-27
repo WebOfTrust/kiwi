@@ -1,10 +1,10 @@
 import m from 'mithril';
-import { Button, Callout, Classes, Colors, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
+import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
 import { storing, toaster, xhring } from '../../helpers';
 
 function LegalEntityOfficialOrganizationalRolevLEICredential() {
-    const schemaSAID = 'EUZ_F1do5sG78zeeA_8CChT5utRpOXQK4GYnv0WGRfuU';
+    const schemaSAID = 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw';
     let isSubmitting = false;
     let lei = '506700GE1G29325QX363';
     let personLegalName = '';
