@@ -1,10 +1,10 @@
 import m from 'mithril';
-import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input, Intent } from 'construct-ui';
+import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
 import { Container } from '../../components';
 import { storing, toaster, xhring } from '../../helpers';
 
 function QualifiedvLEIIssuervLEICredential() {
-    const schemaSAID = 'E9bX8Do0nb1Eq986HvoJ2iNO00TjC6J_2En8Du9L-hYU';
+    const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
     let isSubmitting = false;
     let lei = '254900OPPU84GM83MG36';
 

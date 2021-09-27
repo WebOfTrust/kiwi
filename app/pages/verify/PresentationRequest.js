@@ -1,30 +1,30 @@
 import m from 'mithril';
-import { Button, Card, Classes, Colors, Form, FormGroup, FormLabel, Icons, List, ListItem, Select } from 'construct-ui';
+import { Button, Classes, Form, FormGroup, FormLabel, Icons, Select } from 'construct-ui';
 import { Container } from '../../components';
 import Recipient from './Recipient';
-import { storing, toaster, xhring } from '../../helpers';
+import { toaster, xhring } from '../../helpers';
 
 function PresentationRequest() {
-    let schema = 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4';
+    let schema = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
     let schemaOptions = [
         {
-            value: 'E7brwlefuH-F_KU_FPWAZR78A3pmSVDlnfJUqnm8Lhr4',
+            value: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
             label: 'GLEIF vLEI Credential',
         },
         {
-            value: 'E9bX8Do0nb1Eq986HvoJ2iNO00TjC6J_2En8Du9L-hYU',
+            value: 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8',
             label: 'Qualified vLEI Issuer Credential',
         },
         {
-            value: 'E-BRq9StLuC9DxGgiFiy2XND0fFgzyn8cjptlcdvGEFY',
+            value: 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ',
             label: 'Legal Entity vLEI Credential',
         },
         {
-            value: 'EUZ_F1do5sG78zeeA_8CChT5utRpOXQK4GYnv0WGRfuU',
+            value: 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw',
             label: 'Legal Entity Official Organizational Role vLEI Credential',
         },
         {
-            value: 'EWPMkW-_BU6gh1Y8kizXHchFdmvu_i1wYlYbAC3aJABk',
+            value: 'EmaEqu_zIkxXKsrNJFTJq_s2c96McS8yzHhcvYDW8u5A',
             label: 'Legal Entity Engagement Context Role vLEI Credential',
         },
     ];
