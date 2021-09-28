@@ -1,12 +1,37 @@
 import m from 'mithril';
-import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
+import {
+    Button,
+    Callout,
+    Card,
+    Classes,
+    Colors,
+    Dialog,
+    Form,
+    FormGroup,
+    FormLabel,
+    Icon,
+    Icons,
+    Input,
+    Select,
+} from 'construct-ui';
 import { Container } from '../../components';
-import { toaster, xhring } from '../../helpers';
+import { AddressBook, toaster, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
-    const lei = '506700GE1G29325QX363';
+    let recipient = 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8';
+    let lei = '506700GE1G29325QX363';
+
     let isSubmitting = false;
+    let previewOpen = false;
+
+    function openPreview() {
+        previewOpen = true;
+    }
+
+    function closePreview() {
+        previewOpen = false;
+    }
 
     function handleSubmit(e = null) {
         if (e) {
@@ -21,11 +46,12 @@ function GLEIFvLEICredential() {
                 schema: schemaSAID,
                 type: 'GLEIFvLEICredential',
                 registry: 'gleif',
-                recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
+                recipient,
             })
             .then((res) => {
                 isSubmitting = false;
                 toaster.success('GLEIFvLEICredential issued');
+                closePreview();
             })
             .catch((err) => {
                 isSubmitting = false;
@@ -33,10 +59,46 @@ function GLEIFvLEICredential() {
                 toaster.error('Failed to issue GLEIFvLEICredential');
             });
     }
+
     return {
         handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
+                m(Dialog, {
+                    isOpen: previewOpen,
+                    onClose: () => closePreview(),
+                    title: 'Issue GLEIF vLEI Credential',
+                    content: [
+                        m('p', 'This GLEIF vLEI Credential will be issued to the following entity:'),
+                        m(Card, { fluid: true }, [
+                            m(Form, [
+                                m(FormGroup, [
+                                    m(FormLabel, 'Entity'),
+                                    m('p', `${AddressBook[recipient].name} (${recipient})`),
+                                ]),
+                                m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
+                            ]),
+                        ]),
+                        m(
+                            'p',
+                            { style: { color: Colors.RED700, marginTop: '1rem' } },
+                            'Verify that the information above is correct before issuing!'
+                        ),
+                    ],
+                    footer: m(`.${Classes.ALIGN_RIGHT}`, [
+                        m(Button, {
+                            label: 'Close',
+                            onclick: (e) => closePreview(),
+                        }),
+                        m(Button, {
+                            iconRight: Icons.CHEVRON_RIGHT,
+                            loading: isSubmitting,
+                            label: 'Issue',
+                            intent: 'primary',
+                            onclick: (e) => handleSubmit(e),
+                        }),
+                    ]),
+                }),
                 m(Callout, {
                     content: 'The vLEI Credential issued to GLEIF',
                 }),
@@ -44,28 +106,49 @@ function GLEIFvLEICredential() {
                     Form,
                     {
                         gutter: 16,
-                        onsubmit: (e) => handleSubmit(e),
                         style: { marginTop: '16px' },
                     },
+                    m(
+                        FormGroup,
+                        m(FormLabel, { for: 'entity' }, 'Entity'),
+                        m(Select, {
+                            contentLeft: m(Icon, { name: Icons.USER }),
+                            id: 'entity',
+                            name: 'entity',
+                            fluid: true,
+                            options: Object.keys(AddressBook).map((key) => {
+                                return {
+                                    label: `${AddressBook[key].name} (${key})`,
+                                    value: key,
+                                };
+                            }),
+                            defaultValue: recipient,
+                            onchange: (e) => {
+                                recipient = e.target.value;
+                            },
+                        })
+                    ),
                     m(
                         FormGroup,
                         m(FormLabel, { for: 'lei' }, 'LEI'),
                         m(Input, {
                             contentLeft: m(Icon, { name: Icons.HASH }),
                             id: 'lei',
-                            name: 'LEI',
-                            readOnly: true,
+                            name: 'lei',
                             fluid: true,
-                            value: '506700GE1G29325QX363',
+                            readOnly: true,
+                            defaultValue: lei,
+                            oninput: (e) => {
+                                lei = e.target.value;
+                            },
                         })
                     ),
                     m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
                         m(Button, {
-                            iconRight: Icons.CHEVRON_RIGHT,
-                            type: 'submit',
-                            label: 'Issue',
+                            type: 'button',
+                            label: 'Preview',
                             intent: 'primary',
-                            loading: isSubmitting,
+                            onclick: (e) => openPreview(),
                         }),
                     ])
                 ),

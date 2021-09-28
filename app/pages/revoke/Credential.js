@@ -13,11 +13,7 @@ import {
     Intent,
     ListItem,
 } from 'construct-ui';
-import { CredentialNames, storing, UserTypes } from '../../helpers';
-
-const AddressBook = {
-    'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8': 'Jordan Price',
-};
+import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
 
 function Credential() {
     return {

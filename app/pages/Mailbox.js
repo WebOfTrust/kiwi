@@ -1,11 +1,7 @@
 import m from 'mithril';
 import { Button, Card, EmptyState, Icons, Input, Popover } from 'construct-ui';
 import { Container } from '../components';
-import { CredentialNames, mailbox, xhring } from '../helpers';
-
-const AddressBook = {
-    'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8': 'Jordan Price',
-};
+import { AddressBook, CredentialNames, mailbox, xhring } from '../helpers';
 
 function Mailbox() {
     let cardOptions = {

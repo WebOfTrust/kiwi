@@ -1,14 +1,39 @@
 import m from 'mithril';
-import { Button, Callout, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input } from 'construct-ui';
+import {
+    Button,
+    Callout,
+    Card,
+    Classes,
+    Colors,
+    Dialog,
+    Form,
+    FormGroup,
+    FormLabel,
+    Icon,
+    Icons,
+    Input,
+    Select,
+} from 'construct-ui';
 import { Container } from '../../components';
-import { storing, toaster, xhring } from '../../helpers';
+import { AddressBook, toaster, xhring } from '../../helpers';
 
 function LegalEntityEngagementContextRolevLEICredential() {
     const schemaSAID = 'EmaEqu_zIkxXKsrNJFTJq_s2c96McS8yzHhcvYDW8u5A';
-    let isSubmitting = false;
+    let recipient = 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8';
     let lei = '506700GE1G29325QX363';
     let personLegalName = '';
     let engagementContextRole = '';
+
+    let isSubmitting = false;
+    let previewOpen = false;
+
+    function openPreview() {
+        previewOpen = true;
+    }
+
+    function closePreview() {
+        previewOpen = false;
+    }
 
     function handleSubmit(e = null) {
         if (e) {
@@ -25,12 +50,12 @@ function LegalEntityEngagementContextRolevLEICredential() {
                 },
                 type: 'LegalEntityEngagementContextRolevLEICredential',
                 registry: 'gleif',
-                recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
+                recipient,
             })
             .then((res) => {
                 isSubmitting = false;
-                storing.addCredential(res['i'], JSON.stringify(res));
                 toaster.success('LegalEntityEngagementContextRolevLEICredential issued');
+                closePreview();
             })
             .catch((err) => {
                 isSubmitting = false;
@@ -43,6 +68,46 @@ function LegalEntityEngagementContextRolevLEICredential() {
         handleSubmit,
         view: function () {
             return m(Container, { style: { padding: '16px' } }, [
+                m(Dialog, {
+                    isOpen: previewOpen,
+                    onClose: () => closePreview(),
+                    title: 'Issue Legal Entity Engagement Context Role vLEI Credential',
+                    content: [
+                        m(
+                            'p',
+                            'This Legal Entity Engagement Context Role vLEI Credential will be issued to the following entity:'
+                        ),
+                        m(Card, { fluid: true }, [
+                            m(Form, [
+                                m(FormGroup, [
+                                    m(FormLabel, 'Entity'),
+                                    m('p', `${AddressBook[recipient].name} (${recipient})`),
+                                ]),
+                                m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
+                                m(FormGroup, [m(FormLabel, 'Legal Name'), m('p', personLegalName)]),
+                                m(FormGroup, [m(FormLabel, 'Engagement Context Role'), m('p', engagementContextRole)]),
+                            ]),
+                        ]),
+                        m(
+                            'p',
+                            { style: { color: Colors.RED700, marginTop: '1rem' } },
+                            'Verify that the information above is correct before issuing!'
+                        ),
+                    ],
+                    footer: m(`.${Classes.ALIGN_RIGHT}`, [
+                        m(Button, {
+                            label: 'Close',
+                            onclick: (e) => closePreview(),
+                        }),
+                        m(Button, {
+                            iconRight: Icons.CHEVRON_RIGHT,
+                            loading: isSubmitting,
+                            label: 'Issue',
+                            intent: 'primary',
+                            onclick: (e) => handleSubmit(e),
+                        }),
+                    ]),
+                }),
                 m(Callout, {
                     content:
                         'A vLEI Role Credential issued to representatives of a Legal Entity in other than official roles but in functional or other context of engagement',
@@ -51,9 +116,28 @@ function LegalEntityEngagementContextRolevLEICredential() {
                     Form,
                     {
                         gutter: 16,
-                        onsubmit: handleSubmit,
                         style: { marginTop: '16px' },
                     },
+                    m(
+                        FormGroup,
+                        m(FormLabel, { for: 'entity' }, 'Entity'),
+                        m(Select, {
+                            contentLeft: m(Icon, { name: Icons.USER }),
+                            id: 'entity',
+                            name: 'entity',
+                            fluid: true,
+                            options: Object.keys(AddressBook).map((key) => {
+                                return {
+                                    label: `${AddressBook[key].name} (${key})`,
+                                    value: key,
+                                };
+                            }),
+                            defaultValue: recipient,
+                            onchange: (e) => {
+                                recipient = e.target.value;
+                            },
+                        })
+                    ),
                     m(
                         FormGroup,
                         m(FormLabel, { for: 'lei' }, 'LEI'),
@@ -62,10 +146,10 @@ function LegalEntityEngagementContextRolevLEICredential() {
                             id: 'lei',
                             name: 'LEI',
                             fluid: true,
+                            defaultValue: lei,
                             oninput: (e) => {
                                 lei = e.target.value;
                             },
-                            defaultValue: lei,
                         })
                     ),
                     m(
@@ -98,11 +182,10 @@ function LegalEntityEngagementContextRolevLEICredential() {
                     ),
                     m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
                         m(Button, {
-                            iconRight: Icons.CHEVRON_RIGHT,
-                            type: 'submit',
-                            label: 'Issue',
+                            type: 'button',
+                            label: 'Preview',
                             intent: 'primary',
-                            loading: isSubmitting,
+                            onclick: (e) => openPreview(),
                         }),
                     ])
                 ),
