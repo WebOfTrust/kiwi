@@ -6,6 +6,12 @@ import { LEGAL_ENTITY_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
 
 describe('LegalEntityvLEICredential component', () => {
     let exnRequestSpy;
+    let fakeQVICred = {
+        sad: {
+            d: 'testing-d',
+            i: 'testing-i',
+        },
+    };
 
     beforeEach(() => {
         exnRequestSpy = jest.spyOn(xhring, 'exnRequest').mockImplementation(() => {
@@ -18,12 +24,16 @@ describe('LegalEntityvLEICredential component', () => {
         jest.restoreAllMocks();
     });
     it('Should create', () => {
-        let out = mq(m(LegalEntityvLEICredential));
+        let out = mq(
+            m(LegalEntityvLEICredential, {
+                qualifiedvLEIIssuerCred: fakeQVICred,
+            })
+        );
         expect(out).toBeTruthy();
     });
     it('Should call xhring.exnRequest once in handleSubmit', () => {
         let controller = new LegalEntityvLEICredential();
-        controller.handleSubmit();
+        controller.handleSubmit(null, fakeQVICred);
         expect(exnRequestSpy).toHaveBeenCalledTimes(1);
     });
 });
