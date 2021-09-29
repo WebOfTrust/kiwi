@@ -1,4 +1,6 @@
 import m from 'mithril';
+import { UserTypes } from '../helpers';
+
 
 export default class xhring {
     static port = 5623;
@@ -104,10 +106,15 @@ export default class xhring {
     }
 
     static credentials() {
+        let userType = UserTypes.getUserType()
+        let registry = "gleif"
+        if (userType === "gleif") {
+            registry = "root"
+        }
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/issued?registry=gleif`,
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/issued?registry=`+registry,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',

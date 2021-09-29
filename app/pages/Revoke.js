@@ -34,17 +34,17 @@ function Revoke() {
     function revokeCredential(cred) {
         xhring
             .revokeRequest({
-                said: cred.i,
+                said: cred.d,
                 registry: 'gleif',
             })
             .then((res) => {
-                storing.revokeCredential(cred.i);
-                toaster.success(`Revoked ${CredentialNames[cred.x]}`);
+                storing.revokeCredential(cred.d);
+                toaster.success(`Revoked ${CredentialNames[cred.s]}`);
                 loadCreds();
                 m.redraw();
             })
             .catch(() => {
-                toaster.error(`Failed to revoke ${CredentialNames[cred.x]}`);
+                toaster.error(`Failed to revoke ${CredentialNames[cred.s]}`);
                 console.log(e);
             });
     }

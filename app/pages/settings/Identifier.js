@@ -30,7 +30,10 @@ function Identifier() {
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'identifier:'), m('div', vnode.attrs.identifier.name)]
+                                [
+                                    m(FormLabel, {}, vnode.attrs.identifier.delegated ? "Delegated Identifier" : 'Identifier:'),
+                                    m('div', vnode.attrs.identifier.name)
+                                ]
                             ),
                             m(
                                 FormGroup,
@@ -44,7 +47,7 @@ function Identifier() {
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'Identifier:'), m('div', vnode.attrs.identifier.prefix)]
+                                [m(FormLabel, {}, 'Prefix:'), m('div', vnode.attrs.identifier.prefix)]
                             ),
                             m(FormGroup, {
                                 span: 6,

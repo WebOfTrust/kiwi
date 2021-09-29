@@ -27,25 +27,25 @@ function Credential() {
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.sad.d.si])]
+                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.sad.a.i])]
                 ),
                 m(
                     FormGroup,
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'Credential:'), m('div', CredentialNames[vnode.attrs.cred.sad.x])]
+                    [m(FormLabel, {}, 'Credential:'), m('div', CredentialNames[vnode.attrs.cred.sad.s])]
                 ),
                 m(
                     FormGroup,
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.sad.d.LEI)]
+                    [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.sad.a.LEI)]
                 ),
             ];
 
-            if (vnode.attrs.cred.sad.d.type[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential') {
+            if (vnode.attrs.cred.sad.a.t[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential') {
                 fields = fields.concat([
                     m(
                         FormGroup,
@@ -59,17 +59,17 @@ function Credential() {
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.d.personLegalName)]
+                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.d.officialRole)]
+                        [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.a.officialRole)]
                     ),
                 ]);
-            } else if (vnode.attrs.cred.sad.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
+            } else if (vnode.attrs.cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {
                 fields = fields.concat([
                     m(
                         FormGroup,
@@ -83,14 +83,14 @@ function Credential() {
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.d.personLegalName)]
+                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Engagement Role:'), m('div', vnode.attrs.cred.d.engagementContextRole)]
+                        [m(FormLabel, {}, 'Engagement Role:'), m('div', vnode.attrs.cred.a.engagementContextRole)]
                     ),
                 ]);
             }

@@ -45,7 +45,7 @@ function QualifiedvLEIIssuervLEICredential() {
                 },
                 schema: schemaSAID,
                 type: 'QualifiedvLEIIssuervLEICredential',
-                registry: 'gleif',
+                registry: 'root',
                 recipient,
             })
             .then((res) => {

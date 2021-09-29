@@ -39,7 +39,10 @@ function Group() {
                                 {
                                     span: 6,
                                 },
-                                [m(FormLabel, {}, 'Group:'), m('div', vnode.attrs.group.name)]
+                                [
+                                    m(FormLabel, {}, vnode.attrs.group.delegated ? "Delegated Identifier" : 'Identifier:'),
+                                    m('div', vnode.attrs.group.prefix)
+                                ]
                             ),
                             m(
                                 FormGroup,
@@ -48,13 +51,9 @@ function Group() {
                                 },
                                 [m(FormLabel, {}, 'Event Sequence No:'), m('div', vnode.attrs.group.seq_no)]
                             ),
-                            m(
-                                FormGroup,
-                                {
-                                    span: 6,
-                                },
-                                [m(FormLabel, {}, 'Identifier:'), m('div', vnode.attrs.group.prefix)]
-                            ),
+                            m(FormGroup, {
+                                span: 6,
+                            }),
                             m(FormGroup, {
                                 span: 6,
                             }),
