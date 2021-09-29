@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Col, Grid, Intent } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { UserTypes } from '../helpers';
+import {UserTypes, xhring} from '../helpers';
 import {
     Help,
     GLEIFvLEICredential,
@@ -15,7 +15,29 @@ function Issue() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
     const colAttrs = { span: { xs: 12, md: 4 }, style: { margin: '16px 0' } };
 
+    let wallet = [];
+    let qualifiedvLEIIssuerCred = undefined
+
+    function loadCreds() {
+        wallet = [];
+        xhring
+            .credentials("received")
+            .then((credentials) => {
+                credentials.map((cred) => {
+                    wallet.unshift(cred);
+                });
+                qualifiedvLEIIssuerCred = wallet.find(c => c.sad.a.t.includes("QualifiedvLEIIssuervLEICredential"));
+                m.redraw();
+            })
+            .catch((err) => {
+                console.log('caught', err);
+            });
+    }
+
     return {
+        oninit: function () {
+            loadCreds();
+        },
         view: function () {
             return m(
                 Container,
@@ -61,7 +83,7 @@ function Issue() {
                                       title: 'Legal Entity vLEI Credential',
                                       intent: Intent.PRIMARY,
                                   },
-                                  m(LegalEntityvLEICredential)
+                                  m(LegalEntityvLEICredential, {qualifiedvLEIIssuerCred})
                               )
                           )
                         : null,
@@ -75,7 +97,7 @@ function Issue() {
                                       title: 'Legal Entity Official Organizational Role vLEI Credential',
                                       intent: Intent.PRIMARY,
                                   },
-                                  m(LegalEntityOfficialOrganizationalRolevLEICredential)
+                                  m(LegalEntityOfficialOrganizationalRolevLEICredential, {qualifiedvLEIIssuerCred})
                               )
                           )
                         : null,
@@ -89,7 +111,7 @@ function Issue() {
                                       title: 'Legal Entity Engagement Context Role vLEI Credential',
                                       intent: Intent.PRIMARY,
                                   },
-                                  m(LegalEntityEngagementContextRolevLEICredential)
+                                  m(LegalEntityEngagementContextRolevLEICredential, {qualifiedvLEIIssuerCred})
                               )
                           )
                         : null,

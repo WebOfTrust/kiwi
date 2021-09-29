@@ -76,7 +76,7 @@ function Mailbox() {
                                   type: 'submit',
                                   intent: 'primary',
                                   onclick: () => {
-                                      mailbox.joinIssue(msg.schema, msg.data, msg.typ, msg.data.si);
+                                      mailbox.joinIssue(msg.schema, msg.data, msg.typ, msg.recipient, msg.source);
 
                                       let idx = mailbox.messages.indexOf(msg);
                                       mailbox.messages.splice(idx, 1);

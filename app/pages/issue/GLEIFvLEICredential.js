@@ -19,7 +19,7 @@ import { AddressBook, toaster, xhring } from '../../helpers';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
-    let recipient = 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8';
+    let recipient = 'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg';
     let lei = '506700GE1G29325QX363';
 
     let isSubmitting = false;

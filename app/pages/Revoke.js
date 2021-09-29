@@ -15,7 +15,7 @@ function Revoke() {
         issued = [];
         revoked = [];
         xhring
-            .credentials()
+            .credentials("issued")
             .then((credentials) => {
                 credentials.map((cred) => {
                     if (cred.status === 'issued') {

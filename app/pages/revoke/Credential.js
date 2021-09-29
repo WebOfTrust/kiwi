@@ -13,7 +13,7 @@ import {
     Intent,
     ListItem,
 } from 'construct-ui';
-import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
+import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
 
 function Credential() {
     return {
@@ -59,14 +59,14 @@ function Credential() {
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.a.personLegalName)]
+                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.sad.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.a.officialRole)]
+                        [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.sad.a.officialRole)]
                     ),
                 ]);
             } else if (vnode.attrs.cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {
@@ -83,14 +83,14 @@ function Credential() {
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.a.personLegalName)]
+                        [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.sad.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Engagement Role:'), m('div', vnode.attrs.cred.a.engagementContextRole)]
+                        [m(FormLabel, {}, 'Engagement Role:'), m('div', vnode.attrs.cred.sad.a.engagementContextRole)]
                     ),
                 ]);
             }
@@ -110,11 +110,36 @@ function Credential() {
                                 size: 5,
                                 style: 'font-size: 14px',
                             },
-                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, { label: index + 1 + '.  ' + key }))
+                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, {label: index + 1 + '.  ' + key}))
                         ),
                     ]
                 ),
             ]);
+
+            if (vnode.attrs.cred.sad.p.length > 0) {
+                fields.push(
+                    m(
+                        FormGroup,
+                        {
+                            span: 12,
+                        },
+                        [
+                            m(FormLabel, {}, 'Credential Provenance Chains:'),
+                            m(
+                                'List',
+                                {
+                                    interactive: true,
+                                    size: 5,
+                                    style: 'font-size: 14px',
+                                },
+                                vnode.attrs.cred.sad.p.map((p, index) => m(
+                                    ListItem, {label: "Qualified vLEI Issuer Credential: Issued By: " + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name + "  Credential SAID:" + p.qualifiedvLEIIssuervLEICredential.i})
+                                )
+                            ),
+                        ]
+                    ),
+                );
+            }
 
             if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
                 fields.push(

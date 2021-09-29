@@ -33,7 +33,7 @@ function LegalEntityvLEICredential() {
         previewOpen = false;
     }
 
-    function handleSubmit(e = null) {
+    function handleSubmit(e = null, qualifiedvLEIIssuerCred) {
         if (e) {
             e.preventDefault();
         }
@@ -43,6 +43,14 @@ function LegalEntityvLEICredential() {
                 credentialData: {
                     LEI: lei,
                 },
+                source: [
+                    {
+                        "qualifiedvLEIIssuervLEICredential": {
+                            d:qualifiedvLEIIssuerCred.sad.d,
+                            i:qualifiedvLEIIssuerCred.sad.i,
+                        }
+                    }
+                ],
                 schema: schemaSAID,
                 type: 'LegalEntityvLEICredential',
                 registry: 'gleif',
@@ -62,7 +70,12 @@ function LegalEntityvLEICredential() {
 
     return {
         handleSubmit,
-        view: function () {
+        view: function (vnode) {
+            let issuerPrefix = ""
+            let isIssuer = vnode.attrs.qualifiedvLEIIssuerCred !== undefined
+            if (isIssuer) {
+                issuerPrefix = vnode.attrs.qualifiedvLEIIssuerCred.sad.d
+            }
             return m(Container, { style: { padding: '16px' } }, [
                 m(Dialog, {
                     isOpen: previewOpen,
@@ -77,6 +90,7 @@ function LegalEntityvLEICredential() {
                                     m('p', `${AddressBook[recipient].name} (${recipient})`),
                                 ]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
+                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer Credential'), m('p', issuerPrefix)]),
                             ]),
                         ]),
                         m(
@@ -93,9 +107,9 @@ function LegalEntityvLEICredential() {
                         m(Button, {
                             iconRight: Icons.CHEVRON_RIGHT,
                             loading: isSubmitting,
-                            label: 'Issue',
+                            label: 'Confirm',
                             intent: 'primary',
-                            onclick: (e) => handleSubmit(e),
+                            onclick: (e) => handleSubmit(e, vnode.attrs.qualifiedvLEIIssuerCred),
                         }),
                     ]),
                 }),
@@ -145,8 +159,10 @@ function LegalEntityvLEICredential() {
                     m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
                         m(Button, {
                             type: 'button',
-                            label: 'Preview',
+                            label: 'Issue',
                             intent: 'primary',
+                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer Credential Required',
+                            disabled: !isIssuer,
                             onclick: (e) => openPreview(),
                         }),
                     ])

@@ -14,7 +14,7 @@ export default class UserTypes {
     }
 
     static getUserType() {
-       return localStorage.getItem('userType');
+       return this.selectedType
     }
 
     static setUserType(type) {

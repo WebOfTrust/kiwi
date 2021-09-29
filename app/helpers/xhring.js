@@ -105,7 +105,7 @@ export default class xhring {
             });
     }
 
-    static credentials() {
+    static credentials(type) {
         let userType = UserTypes.getUserType()
         let registry = "gleif"
         if (userType === "gleif") {
@@ -114,7 +114,7 @@ export default class xhring {
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/issued?registry=`+registry,
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/`+type+`?registry=`+registry,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',

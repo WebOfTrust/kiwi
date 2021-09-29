@@ -84,7 +84,7 @@ export default class mailbox {
             });
     };
 
-    static joinIssue = (schema, data, typ, recipient) => {
+    static joinIssue = (schema, data, typ, recipient, source) => {
         xhring
             .exnRequest({
                 credentialData: data,
@@ -92,6 +92,7 @@ export default class mailbox {
                 type: typ,
                 registry: 'gleif',
                 recipient: recipient,
+                source: source,
                 notify: false,
             })
             .then((res) => {
