@@ -125,6 +125,26 @@ export default class xhring {
             });
     }
 
+    static myCredentials() {
+        let userType = UserTypes.getUserType()
+        let registry = "gleif"
+        if (userType === "gleif") {
+            registry = "root"
+        }
+        return m
+            .request({
+                method: 'GET',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/received?registry=`+registry,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                },
+            })
+            .catch(function (e) {
+                console.log('agentPost error: ', e);
+            });
+    }
+
     static multisig() {
         return m
             .request({

@@ -1,18 +1,5 @@
 import m from 'mithril';
-import {
-    Button,
-    Card,
-    Classes,
-    Dialog,
-    Form,
-    FormGroup,
-    FormLabel,
-    Icon,
-    Icons,
-    Input,
-    Intent,
-    ListItem,
-} from 'construct-ui';
+import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem,} from 'construct-ui';
 import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
 
 function Credential() {
@@ -141,23 +128,25 @@ function Credential() {
                 );
             }
 
-            if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
-                fields.push(
-                    m(
-                        FormGroup,
-                        {
-                            class: Classes.ALIGN_RIGHT,
-                        },
-                        [
-                            m(Button, {
-                                iconLeft: Icons.X_CIRCLE,
-                                label: 'Revoke',
-                                type: 'submit',
-                                intent: Intent.NEGATIVE,
-                            }),
-                        ]
-                    )
-                );
+            if (!vnode.attrs.isWallet) {
+                if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
+                    fields.push(
+                        m(
+                            FormGroup,
+                            {
+                                class: Classes.ALIGN_RIGHT,
+                            },
+                            [
+                                m(Button, {
+                                    iconLeft: Icons.X_CIRCLE,
+                                    label: 'Revoke',
+                                    type: 'submit',
+                                    intent: Intent.NEGATIVE,
+                                }),
+                            ]
+                        )
+                    );
+                }
             }
 
             return m(
