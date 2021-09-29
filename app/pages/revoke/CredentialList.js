@@ -23,6 +23,7 @@ function CredentialList() {
                               cred,
                               isRevoked: vnode.attrs.isRevoked,
                               revokeCredential: vnode.attrs.revokeCredential,
+                              isWallet: vnode.attrs.isWallet,
                           })
                       )
                     : m(EmptyState, {

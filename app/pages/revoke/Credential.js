@@ -136,23 +136,25 @@ function Credential() {
                 );
             }
 
-            if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
-                fields.push(
-                    m(
-                        FormGroup,
-                        {
-                            class: Classes.ALIGN_RIGHT,
-                        },
-                        [
-                            m(Button, {
-                                iconLeft: Icons.X_CIRCLE,
-                                label: 'Revoke',
-                                type: 'submit',
-                                intent: Intent.NEGATIVE,
-                            }),
-                        ]
-                    )
-                );
+            if (!vnode.attrs.isWallet) {
+                if (!vnode.attrs.isRevoked && !UserTypes.userTypeIn(['person', 'lei-data-user'])) {
+                    fields.push(
+                        m(
+                            FormGroup,
+                            {
+                                class: Classes.ALIGN_RIGHT,
+                            },
+                            [
+                                m(Button, {
+                                    iconLeft: Icons.X_CIRCLE,
+                                    label: 'Revoke',
+                                    type: 'submit',
+                                    intent: Intent.NEGATIVE,
+                                }),
+                            ]
+                        )
+                    );
+                }
             }
 
             return m(

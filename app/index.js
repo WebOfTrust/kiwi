@@ -2,7 +2,7 @@ import m from 'mithril';
 import { Button, Colors, Icon, Icons, Input, Intent, Select, TabItem, Tabs } from 'construct-ui';
 
 import { Header, Footer } from './components';
-import { Issue, Revoke, Verify, Group, Mailbox, Settings } from './pages';
+import { Issue, Revoke, Verify, Group, Mailbox, Settings, Wallet} from './pages';
 import { mailbox, toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
@@ -118,6 +118,21 @@ function Layout() {
                               })
                           )
                         : null,
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'person'])
+                        ? m(
+                            m.route.Link,
+                            { href: 'wallet' },
+                            m(TabItem, {
+                                label: [
+                                    m(Icon, {
+                                        name: Icons.BOOK_OPEN,
+                                        style: 'margin-right: 10px',
+                                    }),
+                                    'Wallet'
+                                ],
+                            })
+                        )
+                        : null,
                     UserTypes.userTypeIn(['developer', 'qvi', 'legal-entity', 'lei-data-user'])
                         ? m(
                               m.route.Link,
@@ -205,6 +220,11 @@ m.route(root, defaultRouteForUserType(), {
                 return;
             }
             return m(Layout, m(Revoke, vnode.attrs));
+        },
+    },
+    '/wallet': {
+        render: (vnode) => {
+            return m(Layout, m(Wallet, vnode.attrs));
         },
     },
     '/verify': {
