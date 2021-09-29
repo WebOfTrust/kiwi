@@ -27,7 +27,7 @@ function Credential() {
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.sad.a.i])]
+                    [m(FormLabel, {}, 'To:'), m('div', AddressBook[vnode.attrs.cred.sad.a.i].name)]
                 ),
                 m(
                     FormGroup,
