@@ -11,7 +11,6 @@ import {
     Form,
     FormGroup,
     FormLabel,
-    ControlGroup,
     List,
     ListItem,
     Size,
@@ -24,7 +23,7 @@ function GroupList() {
     let isOpen = false;
     let isSubmitting = false;
 
-    let groupName = '';
+    let delpre = "";
     let isith = 3;
     let nsith = 3;
     let toad = 3;
@@ -58,9 +57,9 @@ function GroupList() {
                 e.preventDefault();
                 xhring
                     .multisigInceptPost({
-                        group: groupName,
                         aids: participants,
                         witnesses: witnesses,
+                        delpre: delpre,
                         toad: toad,
                         isith: isith,
                         nsith: nsith,
@@ -107,17 +106,6 @@ function GroupList() {
                                   title: 'Join Multisig Group',
                                   content: [
                                       m(Form, { gutter: 16 }, [
-                                          m(FormGroup, [
-                                              m(FormLabel, { for: 'groupname' }, 'Group Name'),
-                                              m(Input, {
-                                                  contentLeft: m(Icon, { name: Icons.USERS }),
-                                                  name: 'groupname',
-                                                  placeholder: 'Group name...',
-                                                  oninput: (e) => {
-                                                      groupName = e.target.value;
-                                                  },
-                                              }),
-                                          ]),
                                           m(FormGroup, [
                                               m(FormLabel, { for: 'participant' }, 'Participants'),
                                               m(Input, {
@@ -200,6 +188,18 @@ function GroupList() {
                                                   )
                                               ),
                                           ]),
+                                          m(FormGroup, [
+                                              m(FormLabel, { for: 'delpre' }, 'Delegator (optional)'),
+                                              m(Input, {
+                                                  contentLeft: m(Icon, { name: Icons.USER }),
+                                                  name: 'delpre',
+                                                  placeholder: 'Delegator identifier...',
+                                                  oninput: (e) => {
+                                                      delpre = e.target.value;
+                                                  },
+                                              }),
+                                          ]),
+
                                           m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
                                               m(FormLabel, { for: 'toad' }, 'Withness Threshold'),
                                               m(Input, {
