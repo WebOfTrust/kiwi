@@ -1,11 +1,11 @@
 import m from 'mithril';
-import { Button, Colors, Icon, Icons, Input, Intent, Select, TabItem, Tabs } from 'construct-ui';
+import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
 
 import { Footer, Header, PortInput, UserTypeInput } from './components';
-import { GetStarted, Group, Mailbox, Manage, Revoke, Settings, Verify, Wallet } from './pages';
-import { mailbox, toaster, UserTypes, xhring } from './helpers';
+import { toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
+import { GetStarted, Group, Mailbox, Manage, Settings, Verify, Wallet } from './pages';
 
 let root = document.body;
 
