@@ -1,7 +1,7 @@
 import m from 'mithril';
 import { Button, Card, EmptyState, Icons, Input, Popover } from 'construct-ui';
 import { Container } from '../components';
-import { AddressBook, CredentialNames, mailbox, xhring } from '../helpers';
+import { AddressBook, CredentialNames, mailbox } from '../helpers';
 
 function Mailbox() {
     let cardOptions = {
@@ -50,7 +50,7 @@ function Mailbox() {
                               }),
                           ]);
                       } else if (msg.r === '/rotate') {
-                          return m(Card, cardOptions, m('h3', 'Group Key Rotatation Request'), [
+                          return m(Card, cardOptions, m('h3', 'Group Key Rotation Request'), [
                               m(Button, {
                                   iconLeft: Icons.USER_PLUS,
                                   label: 'Accept Rotation',
@@ -83,45 +83,8 @@ function Mailbox() {
                                   },
                               }),
                           ]);
-                      } else if (msg.vc.d.type[1] === 'LegalEntityEngagementContextRolevLEICredential') {
-                          return m(Card, cardOptions, m('h3', 'Proof Recieved'), [
-                              m('div', [m('span', m('b', 'From: ')), m('span', msg.vc.ti)]),
-                              m('div', [m('span', m('b', 'To: ')), m('span', msg.vc.d.si)]),
-                              m('div', [m('span', m('b', 'Credential: ')), m('span', msg.vc.i)]),
-                              m('div', m('b', 'Status: '), m('span', msg.status ? 'Issued' : 'Revoked')),
-                              m('br'),
-                              m('div', [m('span', m('b', 'LEI: ')), m('span', msg.vc.d.LEI)]),
-                              m('div', [m('span', m('b', 'Legal Name: ')), m('span', msg.vc.d.personLegalName)]),
-                              m('div', [
-                                  m('span', m('b', 'Context Role: ')),
-                                  m('span', msg.vc.d.engagementContextRole),
-                              ]),
-                              m('div', [m('span', m('b', 'Type: ')), m('span', msg.vc.d.type[1])]),
-                          ]);
-                      } else if (msg.vc.d.type[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential') {
-                          return m(Card, cardOptions, m('span', m('h3', 'Proof Received')), [
-                              m('div', [m('span', m('b', 'From: ')), m('span', msg.vc.ti)]),
-                              m('div', [m('span', m('b', 'To: ')), m('span', msg.vc.d.si)]),
-                              m('div', [m('span', m('b', 'Credential: ')), m('span', msg.vc.i)]),
-                              m('div', m('b', 'Status: '), m('span', msg.status ? 'Issued' : 'Revoked')),
-                              m('br'),
-                              m('div', [m('span', m('b', 'LEI: ')), m('span', msg.vc.d.LEI)]),
-                              m('div', [m('span', m('b', 'Legal Name: ')), m('span', msg.vc.d.personLegalName)]),
-                              m('div', [m('span', m('b', 'Official Role: ')), m('span', msg.vc.d.officialRole)]),
-                              m('div', [m('span', m('b', 'Type: ')), m('span', msg.vc.d.type[1])]),
-                          ]);
                       } else {
-                          console.log(msg.r);
-                          console.log('fuck off');
-                          return m(Card, cardOptions, m('h3', 'Proof Received'), [
-                              m('div', m('b', 'From: '), m('span', msg.vc.ti)),
-                              m('div', m('b', 'To: '), m('span', msg.vc.d.si)),
-                              m('div', m('b', 'Credential: '), m('span', msg.vc.i)),
-                              m('div', m('b', 'Status: '), m('span', msg.status ? 'Issued' : 'Revoked')),
-                              m('br'),
-                              m('div', m('b', 'LEI: '), m('span', msg.vc.d.LEI)),
-                              m('div', m('b', 'Type: '), m('span', msg.vc.d.type[1])),
-                          ]);
+                          console.log('Unhandled mail', msg);
                       }
                   })
                 : m(EmptyState, {

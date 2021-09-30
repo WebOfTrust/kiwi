@@ -1,9 +1,9 @@
 import m from 'mithril';
 import { EmptyState } from 'construct-ui';
 import { Container } from '../../components';
-import Credential from './Credential';
+import { PresentationRequest } from './index';
 
-function CredentialList() {
+function PresentationRequestList() {
     return {
         view: function (vnode) {
             return m(
@@ -17,10 +17,12 @@ function CredentialList() {
                         overflowY: 'auto',
                     },
                 },
-                vnode.attrs.credentials && vnode.attrs.credentials.length > 0
-                    ? vnode.attrs.credentials.map((cred) =>
-                          m(Credential, {
-                              cred,
+                vnode.attrs.msgs && vnode.attrs.msgs.length > 0
+                    ? vnode.attrs.msgs.map((msg) =>
+                          m(PresentationRequest, {
+                              cred: msg,
+                              isRevoked: vnode.attrs.isRevoked,
+                              revokeCredential: vnode.attrs.revokeCredential,
                               isWallet: vnode.attrs.isWallet,
                           })
                       )
@@ -33,4 +35,4 @@ function CredentialList() {
     };
 }
 
-module.exports = CredentialList;
+module.exports = PresentationRequestList;

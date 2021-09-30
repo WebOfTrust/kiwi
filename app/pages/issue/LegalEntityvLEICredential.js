@@ -45,11 +45,11 @@ function LegalEntityvLEICredential() {
                 },
                 source: [
                     {
-                        "qualifiedvLEIIssuervLEICredential": {
-                            d:qualifiedvLEIIssuerCred.sad.d,
-                            i:qualifiedvLEIIssuerCred.sad.i,
-                        }
-                    }
+                        qualifiedvLEIIssuervLEICredential: {
+                            d: qualifiedvLEIIssuerCred.sad.d,
+                            i: qualifiedvLEIIssuerCred.sad.i,
+                        },
+                    },
                 ],
                 schema: schemaSAID,
                 type: 'LegalEntityvLEICredential',
@@ -71,10 +71,10 @@ function LegalEntityvLEICredential() {
     return {
         handleSubmit,
         view: function (vnode) {
-            let issuerPrefix = ""
-            let isIssuer = vnode.attrs.qualifiedvLEIIssuerCred !== undefined
+            let issuerPrefix = '';
+            let isIssuer = vnode.attrs.qualifiedvLEIIssuerCred !== undefined;
             if (isIssuer) {
-                issuerPrefix = vnode.attrs.qualifiedvLEIIssuerCred.sad.d
+                issuerPrefix = vnode.attrs.qualifiedvLEIIssuerCred.sad.d;
             }
             return m(Container, { style: { padding: '16px' } }, [
                 m(Dialog, {
@@ -90,7 +90,10 @@ function LegalEntityvLEICredential() {
                                     m('p', `${AddressBook[recipient].name} (${recipient})`),
                                 ]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
-                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer vLEI Credential'), m('p', issuerPrefix)]),
+                                m(FormGroup, [
+                                    m(FormLabel, 'Authorizing Qualified vLEI Issuer vLEI Credential'),
+                                    m('p', issuerPrefix),
+                                ]),
                             ]),
                         ]),
                         m(

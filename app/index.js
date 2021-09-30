@@ -1,8 +1,8 @@
 import m from 'mithril';
 import { Button, Colors, Icon, Icons, Input, Intent, Select, TabItem, Tabs } from 'construct-ui';
 
-import { Header, Footer } from './components';
-import { Issue, Revoke, Verify, Group, Mailbox, Settings, Wallet} from './pages';
+import { Footer, Header } from './components';
+import { Group, Mailbox, Manage, Revoke, Settings, Verify, Wallet } from './pages';
 import { mailbox, toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
@@ -58,6 +58,8 @@ function PortInput() {
 }
 
 function Layout() {
+    let active = 'Manage';
+
     return {
         view: (vnode) => {
             return m('main', [
@@ -89,49 +91,42 @@ function Layout() {
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity'])
                         ? m(
                               m.route.Link,
-                              { href: 'issue' },
+                              {
+                                  href: 'manage',
+                                  outline: 'none',
+                              },
                               m(TabItem, {
                                   label: [
                                       m(Icon, {
-                                          name: Icons.ARROW_RIGHT_CIRCLE,
+                                          name: Icons.LAYERS,
                                           style: 'margin-right: 10px',
                                       }),
-                                      'Issue',
+                                      'Manage',
                                   ],
+                                  active: active === 'Manage',
+                                  onclick: () => (active = 'Manage'),
                               })
                           )
                         : null,
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'person'])
                         ? m(
                               m.route.Link,
-                              { href: 'revoke' },
+                              {
+                                  href: 'wallet',
+                                  outline: 'none',
+                              },
                               m(TabItem, {
                                   label: [
                                       m(Icon, {
-                                          name: Icons.MINUS_CIRCLE,
+                                          name: Icons.BOOK_OPEN,
                                           style: 'margin-right: 10px',
                                       }),
-                                      UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity'])
-                                          ? 'Revoke'
-                                          : 'Wallet',
+                                      'Wallet',
                                   ],
+                                  active: active === 'Wallet',
+                                  onclick: () => (active = 'Wallet'),
                               })
                           )
-                        : null,
-                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'person'])
-                        ? m(
-                            m.route.Link,
-                            { href: 'wallet' },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.BOOK_OPEN,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Wallet'
-                                ],
-                            })
-                        )
                         : null,
                     UserTypes.userTypeIn(['developer', 'qvi', 'legal-entity', 'lei-data-user'])
                         ? m(
@@ -145,6 +140,8 @@ function Layout() {
                                       }),
                                       'Verify',
                                   ],
+                                  active: active === 'Verify',
+                                  onclick: () => (active = 'Verify'),
                               })
                           )
                         : null,
@@ -160,6 +157,8 @@ function Layout() {
                                       }),
                                       'Group Identifier',
                                   ],
+                                  active: active === 'Group Identifier',
+                                  onclick: () => (active = 'Group Identifier'),
                               })
                           )
                         : null,
@@ -178,6 +177,8 @@ function Layout() {
                                       }),
                                       'Settings',
                                   ],
+                                  active: active === 'Settings',
+                                  onclick: () => (active = 'Settings'),
                               })
                           )
                         : null
@@ -195,7 +196,7 @@ let defaultRouteForUserType = () => {
         case 'gleif':
         case 'qvi':
         case 'legal-entity':
-            return '/issue';
+            return '/manage';
         case 'person':
             return '/revoke';
         case 'lei-data-user':
@@ -204,13 +205,13 @@ let defaultRouteForUserType = () => {
 };
 
 m.route(root, defaultRouteForUserType(), {
-    '/issue': {
+    '/manage': {
         render: (vnode) => {
             if (UserTypes.userTypeIn(['person', 'lei-data-user'])) {
                 m.route.set(defaultRouteForUserType());
                 return;
             }
-            return m(Layout, m(Issue, vnode.attrs));
+            return m(Layout, m(Manage, vnode.attrs));
         },
     },
     '/revoke': {

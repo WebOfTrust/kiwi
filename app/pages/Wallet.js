@@ -1,18 +1,19 @@
 import m from 'mithril';
-import {Col, Grid, Intent} from 'construct-ui';
-import {Container, Tile} from '../components';
-import {xhring} from '../helpers';
-import {CredentialList} from './revoke';
+import { Col, Grid, Intent } from 'construct-ui';
+import { Container, Tile } from '../components';
+import { mailbox, xhring } from '../helpers';
+import { CredentialList } from './revoke';
+import { PresentationRequestList } from './wallet';
 
 function Wallet() {
-    const gridAttrs = {gutter: {xs: 0, sm: 8, md: 16, lg: 32, xl: 32}};
-    const colAttrs = {span: {xs: 12, md: 6}, style: {margin: '16px 0'}};
+    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
+    const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     let wallet = [];
 
     function loadCreds() {
         xhring
-            .credentials("received")
+            .credentials('received')
             .then((credentials) => {
                 credentials.map((cred) => {
                     wallet.unshift(cred);
@@ -45,6 +46,21 @@ function Wallet() {
                                 credentials: wallet,
                                 emptyStateHeader: 'No Credentials',
                                 isWallet: true,
+                            })
+                        )
+                    ),
+                    m(
+                        Col,
+                        colAttrs,
+                        m(
+                            Tile,
+                            {
+                                title: 'Presentation Requests',
+                                intent: Intent.PRIMARY,
+                            },
+                            m(PresentationRequestList, {
+                                msgs: mailbox.messages,
+                                emptyStateHeader: 'No requests',
                             })
                         )
                     ),

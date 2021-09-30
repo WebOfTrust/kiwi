@@ -40,8 +40,12 @@ function Group() {
                                     span: 6,
                                 },
                                 [
-                                    m(FormLabel, {}, vnode.attrs.group.delegated ? "Delegated Identifier" : 'Identifier:'),
-                                    m('div', vnode.attrs.group.prefix)
+                                    m(
+                                        FormLabel,
+                                        {},
+                                        vnode.attrs.group.delegated ? 'Delegated Identifier' : 'Identifier:'
+                                    ),
+                                    m('div', vnode.attrs.group.prefix),
                                 ]
                             ),
                             m(

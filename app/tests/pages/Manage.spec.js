@@ -1,10 +1,11 @@
 import m from 'mithril';
 import mq from 'mithril-query';
 import xhring from '../../helpers/xhring';
-import Revoke from '../../pages/Revoke';
+import { Manage } from '../../pages';
 
-describe('Revoke component', () => {
+describe('Manage component', () => {
     let credentialsSpy;
+
     beforeEach(() => {
         credentialsSpy = jest.spyOn(xhring, 'credentials').mockImplementation(() => {
             return new Promise((resolve, reject) => {
@@ -15,13 +16,14 @@ describe('Revoke component', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
+
     it('Should create', () => {
-        let out = mq(m(Revoke));
+        let out = mq(m(Manage));
         expect(out).toBeTruthy();
     });
-    it('Should call xhring.credentials once in oninit', () => {
-        let controller = new Revoke();
+    it('Should call credentials on in oninit', () => {
+        let controller = new Manage();
         controller.oninit();
-        expect(credentialsSpy).toHaveBeenCalledTimes(1);
+        expect(credentialsSpy).toHaveBeenCalledTimes(2);
     });
 });

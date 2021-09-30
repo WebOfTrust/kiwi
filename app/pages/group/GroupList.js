@@ -23,7 +23,7 @@ function GroupList() {
     let isOpen = false;
     let isSubmitting = false;
 
-    let delpre = "";
+    let delpre = '';
     let isith = 3;
     let nsith = 3;
     let toad = 3;

@@ -1,4 +1,4 @@
-export { default as Issue } from './Issue';
+export { default as Manage } from './Manage';
 export { default as Revoke } from './Revoke';
 export { default as Verify } from './Verify';
 export { default as Group } from './Group';

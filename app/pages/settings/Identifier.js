@@ -31,8 +31,12 @@ function Identifier() {
                                     span: 6,
                                 },
                                 [
-                                    m(FormLabel, {}, vnode.attrs.identifier.delegated ? "Delegated Identifier" : 'Identifier:'),
-                                    m('div', vnode.attrs.identifier.name)
+                                    m(
+                                        FormLabel,
+                                        {},
+                                        vnode.attrs.identifier.delegated ? 'Delegated Identifier' : 'Identifier:'
+                                    ),
+                                    m('div', vnode.attrs.identifier.name),
                                 ]
                             ),
                             m(
