@@ -1,18 +1,5 @@
 import m from 'mithril';
-import {
-    Button,
-    Card,
-    Classes,
-    Dialog,
-    Form,
-    FormGroup,
-    FormLabel,
-    Icon,
-    Icons,
-    Input,
-    Intent,
-    ListItem,
-} from 'construct-ui';
+import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem,} from 'construct-ui';
 import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
 
 function Credential() {
@@ -126,14 +113,22 @@ function Credential() {
                         [
                             m(FormLabel, {}, 'Credential Provenance Chains:'),
                             m(
-                                'List',
+                                List,
                                 {
                                     interactive: true,
                                     size: 5,
                                     style: 'font-size: 14px',
                                 },
                                 vnode.attrs.cred.sad.p.map((p, index) => m(
-                                    ListItem, {label: "Qualified vLEI Issuer Credential: Issued By: " + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name + "  Credential SAID:" + p.qualifiedvLEIIssuervLEICredential.i})
+                                    ListItem, {
+                                        contentLeft: Icons.LINK_2,
+                                        contentRight: m("div", [
+                                                m("Qualified vLEI Issuer Credential"),
+                                                m("Issued By: " + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name),
+                                                m("Credential SAID:" + p.qualifiedvLEIIssuervLEICredential.i)
+                                            ]
+                                        )
+                                    })
                                 )
                             ),
                         ]
