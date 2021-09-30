@@ -13,7 +13,7 @@ function PresentationRequest() {
         },
         {
             value: 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8',
-            label: 'Qualified vLEI Issuer Credential',
+            label: 'Qualified vLEI Issuer vLEI Credential',
         },
         {
             value: 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ',

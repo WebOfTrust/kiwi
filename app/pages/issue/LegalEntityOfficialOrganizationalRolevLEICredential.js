@@ -99,7 +99,7 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
                                 m(FormGroup, [m(FormLabel, 'Legal Name'), m('p', personLegalName)]),
                                 m(FormGroup, [m(FormLabel, 'Official Role'), m('p', officialRole)]),
-                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer Credential'), m('p', issuerPrefix)]),
+                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer vLEI Credential'), m('p', issuerPrefix)]),
                             ]),
                         ]),
                         m(
@@ -199,7 +199,7 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                             type: 'button',
                             label: 'Issue',
                             intent: 'primary',
-                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer Credential Required',
+                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer vLEI Credential Required',
                             disabled: !isIssuer,
                             onclick: (e) => openPreview(),
                         }),

@@ -111,7 +111,7 @@ function Credential() {
                             span: 12,
                         },
                         [
-                            m(FormLabel, {style: 'margin-bottom: 0px'}, 'Credential Provenance Chains:'),
+                            m(FormLabel, {style: 'margin-bottom: 0px'}, 'Credential Provenance Chain:'),
                             m(
                                 List,
                                 {
@@ -122,7 +122,7 @@ function Credential() {
                                 vnode.attrs.cred.sad.p.map((p, index) => m(
                                     ListItem, {
                                         contentLeft: [
-                                            m("div", {style: 'vertical-align: text-top;'}, "Qualified vLEI Issuer Credential"),
+                                            m("div", {style: 'vertical-align: text-top;'}, "Qualified vLEI Issuer vLEI Credential"),
                                             m("div", "Issued By: " + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name),
                                             m("div", "Credential SAID: " + p.qualifiedvLEIIssuervLEICredential.i)
                                         ],

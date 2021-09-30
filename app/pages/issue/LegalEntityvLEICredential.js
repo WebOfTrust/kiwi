@@ -161,7 +161,7 @@ function LegalEntityvLEICredential() {
                             type: 'button',
                             label: 'Issue',
                             intent: 'primary',
-                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer Credential Required',
+                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer vLEI Credential Required',
                             disabled: !isIssuer,
                             onclick: (e) => openPreview(),
                         }),
