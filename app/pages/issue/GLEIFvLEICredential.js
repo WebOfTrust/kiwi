@@ -93,7 +93,7 @@ function GLEIFvLEICredential() {
                         m(Button, {
                             iconRight: Icons.CHEVRON_RIGHT,
                             loading: isSubmitting,
-                            label: 'Issue',
+                            label: 'Confirm',
                             intent: 'primary',
                             onclick: (e) => handleSubmit(e),
                         }),
@@ -146,7 +146,7 @@ function GLEIFvLEICredential() {
                     m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
                         m(Button, {
                             type: 'button',
-                            label: 'Preview',
+                            label: 'Issue',
                             intent: 'primary',
                             onclick: (e) => openPreview(),
                         }),

@@ -8,20 +8,14 @@ function Wallet() {
     const gridAttrs = {gutter: {xs: 0, sm: 8, md: 16, lg: 32, xl: 32}};
     const colAttrs = {span: {xs: 12, md: 6}, style: {margin: '16px 0'}};
 
-    let issued = [];
-    let revoked = [];
+    let wallet = [];
 
     function loadCreds() {
-        issued = [];
         xhring
             .credentials("received")
             .then((credentials) => {
                 credentials.map((cred) => {
-                    if (cred.status === 'issued') {
-                        issued.unshift(cred);
-                    } else {
-                        revoked.unshift(cred);
-                    }
+                    wallet.unshift(cred);
                 });
             })
             .catch((err) => {
@@ -48,7 +42,7 @@ function Wallet() {
                                 intent: Intent.PRIMARY,
                             },
                             m(CredentialList, {
-                                credentials: issued,
+                                credentials: wallet,
                                 emptyStateHeader: 'No Credentials',
                                 isWallet: true,
                             })

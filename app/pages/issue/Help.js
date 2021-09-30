@@ -8,7 +8,7 @@ function Help() {
             link: 'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/gleif-vLEI-credential.json',
         },
         {
-            title: 'Qualified vLEI Issuer Credential',
+            title: 'Qualified vLEI Issuer vLEI Credential',
             link: 'https://github.com/WebOfTrust/vLEI/blob/main/schema/acdc/qualified-vLEI-issuer-vLEI-credential.json',
         },
         {

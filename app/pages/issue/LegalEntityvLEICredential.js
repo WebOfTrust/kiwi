@@ -90,7 +90,7 @@ function LegalEntityvLEICredential() {
                                     m('p', `${AddressBook[recipient].name} (${recipient})`),
                                 ]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
-                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer Credential'), m('p', issuerPrefix)]),
+                                m(FormGroup, [m(FormLabel, 'Authorizing Qualified vLEI Issuer vLEI Credential'), m('p', issuerPrefix)]),
                             ]),
                         ]),
                         m(

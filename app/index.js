@@ -148,7 +148,7 @@ function Layout() {
                               })
                           )
                         : null,
-                    UserTypes.userTypeIn(['developer'])
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])
                         ? m(
                               m.route.Link,
                               { href: 'group' },
@@ -163,7 +163,7 @@ function Layout() {
                               })
                           )
                         : null,
-                    UserTypes.userTypeIn(['developer'])
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])
                         ? m(
                               m.route.Link,
                               {
@@ -238,7 +238,7 @@ m.route(root, defaultRouteForUserType(), {
     },
     '/group': {
         render: (vnode) => {
-            if (!UserTypes.userTypeIn(['developer'])) {
+            if (!UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])) {
                 m.route.set(defaultRouteForUserType());
                 return;
             }
@@ -247,7 +247,7 @@ m.route(root, defaultRouteForUserType(), {
     },
     '/settings': {
         render: (vnode) => {
-            if (!UserTypes.userTypeIn(['developer'])) {
+            if (!UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])) {
                 m.route.set(defaultRouteForUserType());
                 return;
             }
