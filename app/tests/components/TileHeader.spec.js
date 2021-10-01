@@ -40,9 +40,9 @@ describe('TileHeader component', () => {
         );
         let tileHeader2Div = out2.first('.tileHeader');
 
-        expect(tileHeader1Div.style['background']).toBe(Colors.INDIGO400);
+        expect(tileHeader1Div.style['background']).toBe(process.env.PRIMARY_COLOR);
         expect(tileHeader1Div.style['color']).toBe(Colors.WHITE);
         expect(tileHeader2Div.style['background']).toBe(Colors.GREY200);
-        expect(tileHeader2Div.style['color']).toBe(Colors.INDIGO400);
+        expect(tileHeader2Div.style['color']).toBe(process.env.PRIMARY_COLOR);
     });
 });

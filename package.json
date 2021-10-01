@@ -13,10 +13,14 @@
         "mithril": "^2.0.4"
     },
     "scripts": {
-        "build": "parcel build app/index.js",
+        "build": "yarn clear-build-cache; parcel build app/index.html",
+        "build:gleif": "NODE_ENV=gleif; yarn clear-build-cache; rm -rf dist-gleif/; parcel build app/index.html; mv dist/ dist-gleif/",
+        "build:legal-entity": "NODE_ENV=legal-entity; yarn clear-build-cache; rm -rf dist-legal-entity/; parcel build app/index.html; mv dist/ dist-legal-entity/",
+        "build:qvi": "NODE_ENV=qvi; yarn clear-build-cache; rm -rf dist-qvi/; parcel build app/index.html; mv dist/ dist-qvi/",
+        "build:all": "yarn build:gleif; yarn build:legal-entity; yarn build:qvi",
         "serve": "parcel ./app/index.html",
         "test": "jest",
         "prettier": "prettier --write 'app/**/*.{js,html,jsx,json,scss,css,md}'",
-        "clear-build-cache": "rm -rf .cache/ dist/"
+        "clear-build-cache": "rm -rf .parcel-cache/ dist/"
     }
 }

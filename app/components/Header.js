@@ -9,7 +9,7 @@ function Header() {
                 'div',
                 {
                     style: {
-                        background: Colors.INDIGO400,
+                        background: process.env.PRIMARY_COLOR,
                         color: Colors.WHITE,
                         paddingTop: '16px',
                         paddingBottom: '16px',

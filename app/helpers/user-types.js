@@ -1,7 +1,8 @@
 import { storing } from './storing';
 
 export default class UserTypes {
-    static selectedType = localStorage.getItem('userType') || 'developer';
+    // static selectedType = localStorage.getItem('userType') || 'developer';
+    static selectedType = process.env.USER_TYPE;
 
     static USER_TYPES = ['developer', 'gleif', 'qvi', 'legal-entity', 'person', 'lei-data-user'];
 

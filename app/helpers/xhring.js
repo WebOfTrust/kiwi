@@ -2,7 +2,7 @@ import m from 'mithril';
 import { UserTypes } from '../helpers';
 
 export default class xhring {
-    static port = 5623;
+    static port = process.env.CONTROLLER_PORT;
 
     static exnRequest(body) {
         return m
