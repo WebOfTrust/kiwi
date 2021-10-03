@@ -14,7 +14,7 @@ export default class UserTypes {
     }
 
     static getUserType() {
-       return this.selectedType
+        return this.selectedType;
     }
 
     static setUserType(type) {

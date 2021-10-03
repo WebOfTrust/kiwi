@@ -1,6 +1,6 @@
 import m from 'mithril';
-import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem,} from 'construct-ui';
-import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
+import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem } from 'construct-ui';
+import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
 
 function Credential() {
     return {
@@ -97,7 +97,7 @@ function Credential() {
                                 size: 5,
                                 style: 'font-size: 14px',
                             },
-                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, {label: index + 1 + '.  ' + key}))
+                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, { label: index + 1 + '.  ' + key }))
                         ),
                     ]
                 ),
@@ -111,7 +111,7 @@ function Credential() {
                             span: 12,
                         },
                         [
-                            m(FormLabel, {style: 'margin-bottom: 0px'}, 'Credential Provenance Chain:'),
+                            m(FormLabel, { style: 'margin-bottom: 0px' }, 'Credential Provenance Chain:'),
                             m(
                                 List,
                                 {
@@ -119,18 +119,25 @@ function Credential() {
                                     size: 5,
                                     style: 'font-size: 14px',
                                 },
-                                vnode.attrs.cred.sad.p.map((p, index) => m(
-                                    ListItem, {
+                                vnode.attrs.cred.sad.p.map((p, index) =>
+                                    m(ListItem, {
                                         contentLeft: [
-                                            m("div", {style: 'vertical-align: text-top;'}, "Qualified vLEI Issuer vLEI Credential"),
-                                            m("div", "Issued By: " + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name),
-                                            m("div", "Credential SAID: " + p.qualifiedvLEIIssuervLEICredential.i)
+                                            m(
+                                                'div',
+                                                { style: 'vertical-align: text-top;' },
+                                                'Qualified vLEI Issuer vLEI Credential'
+                                            ),
+                                            m(
+                                                'div',
+                                                'Issued By: ' + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name
+                                            ),
+                                            m('div', 'Credential SAID: ' + p.qualifiedvLEIIssuervLEICredential.i),
                                         ],
                                     })
                                 )
                             ),
                         ]
-                    ),
+                    )
                 );
             }
 

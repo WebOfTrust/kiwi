@@ -1,7 +1,6 @@
 import m from 'mithril';
 import { UserTypes } from '../helpers';
 
-
 export default class xhring {
     static port = 5623;
 
@@ -40,24 +39,6 @@ export default class xhring {
                 console.log('presentationRequest error: ', e);
             });
     }
-
-    static agentPost(date, attachment, body) {
-        return m
-            .request({
-                method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/exn/cmd/credential/issue`,
-                headers: {
-                    'CESR-DATE': date,
-                    'CESR-ATTACHMENT': attachment,
-                    'Content-Type': 'application/cesr+json',
-                },
-                body: body,
-            })
-            .catch(function (e) {
-                console.log('agentPost error: ', e);
-            });
-    }
-
     static multisigInceptPost(body) {
         return m
             .request({
@@ -70,7 +51,7 @@ export default class xhring {
                 body: body,
             })
             .catch(function (e) {
-                console.log('agentPost error: ', e);
+                console.log('multisigInceptPost error: ', e);
             });
     }
 
@@ -86,7 +67,7 @@ export default class xhring {
                 body: body,
             })
             .catch(function (e) {
-                console.log('agentPost error: ', e);
+                console.log('multisigRotatePost error: ', e);
             });
     }
 
@@ -101,27 +82,27 @@ export default class xhring {
                 },
             })
             .catch(function (e) {
-                console.log('agentPost error: ', e);
+                console.log('identifiers error: ', e);
             });
     }
 
     static credentials(type) {
-        let userType = UserTypes.getUserType()
-        let registry = "gleif"
-        if (userType === "gleif") {
-            registry = "root"
+        let userType = UserTypes.getUserType();
+        let registry = 'gleif';
+        if (userType === 'gleif') {
+            registry = 'root';
         }
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/`+type+`?registry=`+registry,
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/` + type + `?registry=` + registry,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
                 },
             })
             .catch(function (e) {
-                console.log('agentPost error: ', e);
+                console.log('credentials error: ', e);
             });
     }
 
@@ -136,7 +117,7 @@ export default class xhring {
                 },
             })
             .catch(function (e) {
-                console.log('agentPost error: ', e);
+                console.log('multisig error: ', e);
             });
     }
 }
