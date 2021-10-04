@@ -23,7 +23,7 @@ describe('Tile component', () => {
         expect(tileHeader.innerHTML).toContain(attrs.title);
     });
     it('Should pass "intent" vnode attr to TileHeader', () => {
-        expect(tileHeader.style['background']).toBe(Colors.INDIGO400);
+        expect(tileHeader.style['background']).toBe(process.env.PRIMARY_COLOR);
     });
     it('Should render vnode.children', () => {
         expect(out.rootEl.innerHTML).toContain('<p>Tile content</p>');

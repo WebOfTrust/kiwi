@@ -3,7 +3,7 @@ import { toaster, xhring } from '../helpers';
 
 export default class mailbox {
     static MINSNIFFSIZE = 30;
-    static _port = 5623;
+    static _port = process.env.CONTROLLER_PORT;
 
     static groupName = '';
     static messages = [];

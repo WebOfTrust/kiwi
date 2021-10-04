@@ -9,7 +9,7 @@ function Footer() {
                 'div',
                 {
                     style: {
-                        background: Colors.INDIGO400,
+                        background: process.env.PRIMARY_COLOR,
                         color: Colors.WHITE,
                         padding: '16px 0',
                     },

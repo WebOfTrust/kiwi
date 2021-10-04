@@ -9,6 +9,11 @@ import 'construct-ui/lib/index.css';
 
 let root = document.body;
 
+console.log('CONTROLLER_URL   =', process.env.CONTROLLER_URL);
+console.log('CONTROLLER_PORT  =', process.env.CONTROLLER_PORT);
+console.log('USER_TYPE        =', process.env.USER_TYPE);
+console.log('PRIMARY_COLOR    =', process.env.PRIMARY_COLOR);
+
 function UserTypeInput() {
     return {
         view: (vnode) => {
@@ -71,12 +76,12 @@ function Layout() {
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
-                    m('div', { style: { marginBottom: '1rem' } }, [m(UserTypeInput)]),
+                    // m('div', { style: { marginBottom: '1rem' } }, [m(UserTypeInput)]),
                     m('div', [
                         m(Mailbox, {
                             port: xhring.port,
                         }),
-                        m(PortInput),
+                        // m(PortInput),
                     ]),
                 ]),
                 m(
