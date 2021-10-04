@@ -19,7 +19,7 @@ import { AddressBook, toaster, xhring } from '../../helpers';
 
 function QualifiedvLEIIssuervLEICredential() {
     const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
-    let recipient = 'EfgJrn1lbMu5c728soUqOzVbC7XmdfHvYdSJl8jyDroQ';
+    let recipient = 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q';
     let lei = '254900OPPU84GM83MG36';
 
     let isSubmitting = false;
@@ -45,7 +45,7 @@ function QualifiedvLEIIssuervLEICredential() {
                 },
                 schema: schemaSAID,
                 type: 'QualifiedvLEIIssuervLEICredential',
-                registry: 'root',
+                registry: 'gleif',
                 recipient,
             })
             .then((res) => {

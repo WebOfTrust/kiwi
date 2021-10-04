@@ -5,13 +5,13 @@ function Recipient() {
     return {
         view: function () {
             return m(FormGroup, [
-                m(FormLabel, 'Holder: (Jordan Price)'),
+                m(FormLabel, 'Holder:'),
                 m(Input, {
                     contentLeft: m(Icon, { name: Icons.HASH }),
                     fluid: true,
                     readOnly: true,
                     type: 'text',
-                    value: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
+                    value: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
                 }),
             ]);
         },

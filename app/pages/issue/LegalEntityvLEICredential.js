@@ -53,7 +53,7 @@ function LegalEntityvLEICredential() {
                 ],
                 schema: schemaSAID,
                 type: 'LegalEntityvLEICredential',
-                registry: 'gleif',
+                registry: 'qvi',
                 recipient,
             })
             .then((res) => {

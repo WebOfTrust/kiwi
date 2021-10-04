@@ -40,7 +40,7 @@ function PresentationRequest() {
         xhring
             .presentationRequest({
                 schema: schema,
-                recipient: 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8',
+                recipient: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
             })
             .then((res) => {
                 isSubmitting = false;
