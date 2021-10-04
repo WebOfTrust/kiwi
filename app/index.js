@@ -35,16 +35,18 @@ function Layout() {
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
-                    // m('div', { style: { marginBottom: '1rem' } }, [
-                    //     m(UserTypeInput, {
-                    //         defaultRoute: defaultRouteForUserType(),
-                    //     }),
-                    // ]),
+                    process.env.USER_TYPE === 'developer'
+                        ? m('div', { style: { marginBottom: '1rem' } }, [
+                              m(UserTypeInput, {
+                                  defaultRoute: defaultRouteForUserType(),
+                              }),
+                          ])
+                        : null,
                     m('div', [
                         m(Mailbox, {
                             port: xhring.port,
                         }),
-                        // m(PortInput),
+                        process.env.USER_TYPE === 'developer' ? m(PortInput) : null,
                     ]),
                 ]),
                 m(
