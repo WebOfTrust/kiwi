@@ -7,7 +7,7 @@ export default class UserTypes {
     static USER_TYPES = ['developer', 'gleif', 'qvi', 'legal-entity', 'person', 'lei-data-user'];
 
     static toDisplay(type) {
-        return (type.charAt(0).toUpperCase() + type.slice(1)).replaceAll(/-/g, ' ');
+        return (type.charAt(0).toUpperCase() + type.slice(1)).replace(/-/g, ' ');
     }
 
     static userTypeIn(arr) {

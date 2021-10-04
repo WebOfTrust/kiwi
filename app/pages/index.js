@@ -1,3 +1,4 @@
+export { default as GetStarted } from './GetStarted';
 export { default as Manage } from './Manage';
 export { default as Revoke } from './Revoke';
 export { default as Verify } from './Verify';

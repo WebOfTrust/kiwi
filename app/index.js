@@ -1,71 +1,30 @@
 import m from 'mithril';
 import { Button, Colors, Icon, Icons, Input, Intent, Select, TabItem, Tabs } from 'construct-ui';
 
-import { Footer, Header } from './components';
-import { Group, Mailbox, Manage, Revoke, Settings, Verify, Wallet } from './pages';
+import { Footer, Header, PortInput, UserTypeInput } from './components';
+import { GetStarted, Group, Mailbox, Manage, Revoke, Settings, Verify, Wallet } from './pages';
 import { mailbox, toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
 
 let root = document.body;
 
-console.log('CONTROLLER_URL   =', process.env.CONTROLLER_URL);
-console.log('CONTROLLER_PORT  =', process.env.CONTROLLER_PORT);
-console.log('USER_TYPE        =', process.env.USER_TYPE);
-console.log('PRIMARY_COLOR    =', process.env.PRIMARY_COLOR);
-
-function UserTypeInput() {
-    return {
-        view: (vnode) => {
-            return m(Select, {
-                options: UserTypes.USER_TYPES.map((type) => {
-                    return {
-                        label: `${UserTypes.toDisplay(type)}`,
-                        value: type,
-                    };
-                }),
-                defaultValue: UserTypes.selectedType,
-                onchange: (e) => {
-                    let newType = e.currentTarget.value;
-                    UserTypes.setUserType(newType);
-                    m.route.set(defaultRouteForUserType());
-                },
-            });
-        },
-    };
-}
-
-function PortInput() {
-    let inputValue = xhring.port;
-
-    return {
-        view: (vnode) => {
-            return m(Input, {
-                contentRight: m(Button, {
-                    label: 'Set Port',
-                    intent: Intent.PRIMARY,
-                    onclick: (e) => {
-                        xhring.port = parseInt(inputValue);
-                        mailbox.port = parseInt(inputValue);
-                    },
-                }),
-                defaultValue: inputValue,
-                style: {
-                    marginLeft: '1rem',
-                },
-                type: 'number',
-                onchange: (e) => {
-                    inputValue = e.target.value;
-                },
-            });
-        },
-    };
-}
+console.log({
+    CONTROLLER_URL: process.env.CONTROLLER_URL,
+    CONTROLLER_PORT: process.env.CONTROLLER_PORT,
+    USER_TYPE: process.env.USER_TYPE,
+    PRIMARY_COLOR: process.env.PRIMARY_COLOR,
+});
 
 function Layout() {
     let active = 'Manage';
 
     return {
+        oninit: () => {
+            if (UserTypes.userTypeIn(['developer', 'qvi'])) {
+                active = 'Get Started';
+            }
+        },
         view: (vnode) => {
             return m('main', [
                 m(toaster.AppToaster, {
@@ -76,7 +35,11 @@ function Layout() {
                 m(Header, [
                     m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
-                    // m('div', { style: { marginBottom: '1rem' } }, [m(UserTypeInput)]),
+                    // m('div', { style: { marginBottom: '1rem' } }, [
+                    //     m(UserTypeInput, {
+                    //         defaultRoute: defaultRouteForUserType(),
+                    //     }),
+                    // ]),
                     m('div', [
                         m(Mailbox, {
                             port: xhring.port,
@@ -93,6 +56,26 @@ function Layout() {
                         size: 'lg',
                         style: { background: Colors.GREY50, overflowX: 'auto' },
                     },
+                    UserTypes.userTypeIn(['developer', 'qvi'])
+                        ? m(
+                              m.route.Link,
+                              {
+                                  href: 'get-started',
+                                  outline: 'none',
+                              },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.FAST_FORWARD,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Get Started',
+                                  ],
+                                  active: active === 'Get Started',
+                                  onclick: () => (active = 'Get Started'),
+                              })
+                          )
+                        : null,
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity'])
                         ? m(
                               m.route.Link,
@@ -199,17 +182,29 @@ let defaultRouteForUserType = () => {
     switch (UserTypes.selectedType) {
         case 'developer':
         case 'gleif':
-        case 'qvi':
         case 'legal-entity':
             return '/manage';
+        case 'qvi':
+            return '/get-started';
         case 'person':
             return '/revoke';
         case 'lei-data-user':
             return '/verify';
+        default:
+            return '/manage';
     }
 };
 
 m.route(root, defaultRouteForUserType(), {
+    '/get-started': {
+        render: (vnode) => {
+            if (!UserTypes.userTypeIn(['developer', 'qvi'])) {
+                m.route.set(defaultRouteForUserType());
+                return;
+            }
+            return m(Layout, m(GetStarted, vnode.attrs));
+        },
+    },
     '/manage': {
         render: (vnode) => {
             if (UserTypes.userTypeIn(['person', 'lei-data-user'])) {

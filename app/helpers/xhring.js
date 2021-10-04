@@ -9,7 +9,7 @@ export default class xhring {
             .request({
                 method: 'POST',
                 url: `${process.env.CONTROLLER_URL}:${this.port}/credential/issue`,
-                body: body,
+                body,
             })
             .catch(function (e) {
                 console.log('gaccRequest error: ', e);
@@ -21,7 +21,7 @@ export default class xhring {
             .request({
                 method: 'POST',
                 url: `${process.env.CONTROLLER_URL}:${this.port}/credential/revoke`,
-                body: body,
+                body,
             })
             .catch(function (e) {
                 console.log('revokeRequest error: ', e);
@@ -33,7 +33,7 @@ export default class xhring {
             .request({
                 method: 'POST',
                 url: `${process.env.CONTROLLER_URL}:${this.port}/presentation/request`,
-                body: body,
+                body,
             })
             .catch(function (e) {
                 console.log('presentationRequest error: ', e);
@@ -48,7 +48,7 @@ export default class xhring {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
                 },
-                body: body,
+                body,
             })
             .catch(function (e) {
                 console.log('multisigInceptPost error: ', e);
@@ -64,7 +64,7 @@ export default class xhring {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
                 },
-                body: body,
+                body,
             })
             .catch(function (e) {
                 console.log('multisigRotatePost error: ', e);
@@ -118,6 +118,22 @@ export default class xhring {
             })
             .catch(function (e) {
                 console.log('multisig error: ', e);
+            });
+    }
+
+    static apply(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/apply`,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                },
+                body,
+            })
+            .catch(function (e) {
+                console.log('apply error: ', e);
             });
     }
 }

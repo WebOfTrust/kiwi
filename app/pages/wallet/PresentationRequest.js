@@ -40,7 +40,6 @@ function PresentationRequest() {
                     m('div', [m('span', m('b', 'Type: ')), m('span', vnode.attrs.msg.vc.d.type[1])]),
                 ]);
             } else {
-                console.log(msg.r);
                 return m(Card, cardOptions, m('h3', 'Proof Received'), [
                     m('div', m('b', 'From: '), m('span', vnode.attrs.msg.vc.ti)),
                     m('div', m('b', 'To: '), m('span', vnode.attrs.msg.vc.d.si)),
