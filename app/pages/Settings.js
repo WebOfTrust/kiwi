@@ -41,6 +41,7 @@ function Settings() {
                             },
                             m(IdentifierList, {
                                 identifiers: identifiers,
+                                loadIdentifiers: loadIdentifiers,
                                 emptyStateHeader: 'No Identifiers',
                             })
                         )

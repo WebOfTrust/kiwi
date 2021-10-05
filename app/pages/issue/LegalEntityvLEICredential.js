@@ -19,7 +19,7 @@ import { AddressBook, toaster, xhring } from '../../helpers';
 
 function LegalEntityvLEICredential() {
     const schemaSAID = 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ';
-    let recipient = 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8';
+    let recipient = 'EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0';
     let lei = '506700GE1G29325QX363';
 
     let isSubmitting = false;

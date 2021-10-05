@@ -8,7 +8,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/issue`,
+                url: `/credential/issue`,
                 body,
             })
             .catch(function (e) {
@@ -20,7 +20,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/revoke`,
+                url: `/credential/revoke`,
                 body,
             })
             .catch(function (e) {
@@ -32,18 +32,33 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/presentation/request`,
+                url: `/presentation/request`,
                 body,
             })
             .catch(function (e) {
                 console.log('presentationRequest error: ', e);
             });
     }
+    static rotatePost(body) {
+        return m
+            .request({
+                method: 'POST',
+                url: `/rotate`,
+                headers: {
+                    'Signature': 'no-sig',
+                    'Content-Type': 'application/json',
+                },
+                body,
+            })
+            .catch(function (e) {
+                console.log('multisigInceptPost error: ', e);
+            });
+    }
     static multisigInceptPost(body) {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig/incept`,
+                url: `/multisig/incept`,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
@@ -59,7 +74,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig/rotate`,
+                url: `/multisig/rotate`,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
@@ -75,7 +90,7 @@ export default class xhring {
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/id`,
+                url: `/id`,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
@@ -95,7 +110,7 @@ export default class xhring {
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credentials/` + type + `?registry=` + registry,
+                url: `/credentials/` + type + `?registry=` + registry,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
@@ -110,7 +125,7 @@ export default class xhring {
         return m
             .request({
                 method: 'GET',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/multisig`,
+                url: `/multisig`,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
@@ -125,7 +140,7 @@ export default class xhring {
         return m
             .request({
                 method: 'POST',
-                url: `${process.env.CONTROLLER_URL}:${this.port}/credential/apply`,
+                url: `/credential/apply`,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',

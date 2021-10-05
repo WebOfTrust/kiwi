@@ -21,7 +21,7 @@ import { AddressBook, CredentialNames, storing, toaster, UserTypes, xhring } fro
 import { CredentialList } from './revoke';
 
 function Manage() {
-    let recipient = 'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg';
+    let recipient = 'EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0';
     let lei = '506700GE1G29325QX363';
     let personLegalName = '';
     let officialRole = '';
@@ -34,6 +34,7 @@ function Manage() {
         GLEIFvLEICredential: {
             label: 'GLEIF vLEI Credential',
             schema: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
+            defaultRecipient: "EZNNZO-Sa41t-ps_jwOeeDmo2x_nPNavwOEl1QbN7O7s",
             credData: () => {
                 return {
                     LEI: lei,
@@ -44,6 +45,7 @@ function Manage() {
         QualifiedvLEIIssuervLEICredential: {
             label: 'Qualified vLEI Issuer vLEI Credential',
             schema: 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8',
+            defaultRecipient: "EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q",
             credData: () => {
                 return {
                     LEI: lei,
@@ -54,6 +56,7 @@ function Manage() {
         LegalEntityvLEICredential: {
             label: 'Legal Entity vLEI Credential',
             schema: 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ',
+            defaultRecipient: "EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0",
             credData: () => {
                 return {
                     LEI: lei,
@@ -73,6 +76,7 @@ function Manage() {
         LegalEntityOfficialOrganizationalRolevLEICredential: {
             label: 'Legal Entity Official Organizational Role vLEI Credential',
             schema: 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw',
+            defaultRecipient: "EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0",
             credData: () => {
                 return {
                     LEI: lei,
@@ -94,6 +98,7 @@ function Manage() {
         LegalEntityEngagementContextRolevLEICredential: {
             label: 'Legal Entity Engagement Context Role vLEI Credential',
             schema: 'EmaEqu_zIkxXKsrNJFTJq_s2c96McS8yzHhcvYDW8u5A',
+            defaultRecipient: "EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0",
             credData: () => {
                 return {
                     LEI: lei,
@@ -140,7 +145,7 @@ function Manage() {
         [UserTypes.LEI_DATA_USER]: {},
     };
 
-    let credentialType = 'GLEIFvLEICredential';
+    let credentialType = UserTypes.getUserType() === UserTypes.GLEIF ? "GLEIFvLEICredential" : 'LegalEntityvLEICredential';
     let wallet = [];
     let qualifiedvLEIIssuerCred = undefined;
 
@@ -293,7 +298,7 @@ function Manage() {
                                                     value: key,
                                                 };
                                             }),
-                                            defaultValue: recipient,
+                                            defaultValue: CredentialTypes[credentialType].defaultRecipient,
                                             onchange: (e) => {
                                                 recipient = e.target.value;
                                             },

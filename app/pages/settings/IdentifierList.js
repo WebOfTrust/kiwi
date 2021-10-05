@@ -21,7 +21,8 @@ function IdentifierList() {
                 vnode.attrs.identifiers.length > 0
                     ? vnode.attrs.identifiers.map((identifier) =>
                           m(Identifier, {
-                              identifier,
+                              identifier: identifier,
+                              loadIdentifiers: vnode.attrs.loadIdentifiers,
                           })
                       )
                     : m(EmptyState, {

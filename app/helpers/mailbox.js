@@ -34,6 +34,16 @@ export default class mailbox {
         m.redraw();
     };
 
+    static displayDelegateNotices = (e) => {
+        let size = this.sniff(e.data);
+
+        let evt = e.data.slice(0, size);
+        let ked = JSON.parse(evt);
+
+        this.messages.unshift(ked);
+        m.redraw();
+    };
+
     static displayData = (e) => {
         let size = this.sniff(e.data);
 
@@ -48,19 +58,18 @@ export default class mailbox {
 
     static initEventSource = () => {
         this.source = new EventSource(
-            process.env.CONTROLLER_URL +
-                ':' +
-                this.port +
-                '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0'
+            '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0'
         );
         this.source.addEventListener('/credential', this.displayData, false);
         this.source.addEventListener('/multisig', this.displayMultisig, false);
+        this.source.addEventListener('/delegate', this.displayDelegateNotices, false);
     };
 
     static closeEventSource = () => {
         this.messages = [];
         this.source.removeEventListener('/credential', this.displayData, false);
         this.source.removeEventListener('/multisig', this.displayMultisig, false);
+        this.source.removeEventListener('/delegate', this.displayDelegateNotices, false);
         this.source.close();
         this.source = null;
     };
