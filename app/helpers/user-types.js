@@ -1,10 +1,21 @@
-import { storing } from './storing';
-
 export default class UserTypes {
-    // static selectedType = localStorage.getItem('userType') || 'developer';
     static selectedType = process.env.USER_TYPE;
 
-    static USER_TYPES = ['developer', 'gleif', 'qvi', 'legal-entity', 'person', 'lei-data-user'];
+    static DEVELOPER = 'developer';
+    static GLEIF = 'gleif';
+    static QVI = 'qvi';
+    static LEGAL_ENTITY = 'legal-entity';
+    static PERSON = 'person';
+    static LEI_DATA_USER = 'lei-data-user';
+
+    static USER_TYPES = [
+        UserTypes.DEVELOPER,
+        UserTypes.GLEIF,
+        UserTypes.QVI,
+        UserTypes.LEGAL_ENTITY,
+        UserTypes.PERSON,
+        UserTypes.LEI_DATA_USER,
+    ];
 
     static toDisplay(type) {
         return (type.charAt(0).toUpperCase() + type.slice(1)).replace(/-/g, ' ');

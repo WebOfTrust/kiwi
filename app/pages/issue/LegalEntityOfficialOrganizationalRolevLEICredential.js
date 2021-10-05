@@ -84,11 +84,11 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                 m(Dialog, {
                     isOpen: previewOpen,
                     onClose: () => closePreview(),
-                    title: 'Issue Legal Entity Offical Organizational Role vLEI Credential',
+                    title: 'Issue Legal Entity Official Organizational Role vLEI Credential',
                     content: [
                         m(
                             'p',
-                            'This Legal Entity Offical Organizational Role vLEI Credential will be issued to the following entity:'
+                            'This Legal Entity Official Organizational Role vLEI Credential will be issued to the following entity:'
                         ),
                         m(Card, { fluid: true }, [
                             m(Form, [
