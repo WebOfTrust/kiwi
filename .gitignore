@@ -4,6 +4,7 @@ dist
 dist-gleif
 dist-legal-entity
 dist-qvi
+dist-lei-data-user
 .parcel-cache
 
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
