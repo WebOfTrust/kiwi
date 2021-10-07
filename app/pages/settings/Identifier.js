@@ -13,9 +13,9 @@ import {
     Dialog,
     Input,
     List,
-    Size
+    Size,
 } from 'construct-ui';
-import {AddressBook, xhring} from "../../helpers";
+import { AddressBook, xhring } from '../../helpers';
 
 function Identifier() {
     let isSubmitting = false;
@@ -28,7 +28,7 @@ function Identifier() {
     let witnesses = [];
 
     return {
-        oninit: function(vnode) {
+        oninit: function (vnode) {
             isith = vnode.attrs.identifier.isith;
             count = vnode.attrs.identifier.public_keys.length;
             toad = vnode.attrs.identifier.toad;
@@ -58,33 +58,33 @@ function Identifier() {
                     .then((res) => {
                         isOpen = false;
                         isSubmitting = false;
-                        vnode.attrs.loadIdentifiers()
+                        vnode.attrs.loadIdentifiers();
                     })
                     .catch((err) => {
                         console.log('caught', err);
                     });
             };
 
-
-            let delegator = vnode.attrs.identifier.delegated ?
-                m(
-                    FormGroup,
-                    {
-                        span: 6,
-                    },
-                    [
-                        m(
-                            FormLabel,
-                            {},
-                            'Delegator:'
-                        ),
-                        m('div', AddressBook[vnode.attrs.identifier.delegator].name + " (" + vnode.attrs.identifier.delegator + ")"),
-                    ]
-                )
-                :
-                m(FormGroup, {
-                    span: 6,
-                });
+            let delegator = vnode.attrs.identifier.delegated
+                ? m(
+                      FormGroup,
+                      {
+                          span: 6,
+                      },
+                      [
+                          m(FormLabel, {}, 'Delegator:'),
+                          m(
+                              'div',
+                              AddressBook[vnode.attrs.identifier.delegator].name +
+                                  ' (' +
+                                  vnode.attrs.identifier.delegator +
+                                  ')'
+                          ),
+                      ]
+                  )
+                : m(FormGroup, {
+                      span: 6,
+                  });
 
             let fields = [
                 m(
@@ -93,7 +93,7 @@ function Identifier() {
                         gutter: 16,
                         onsubmit: (e) => {
                             e.preventDefault();
-                        }
+                        },
                     },
                     [
                         m(
@@ -139,7 +139,7 @@ function Identifier() {
                                         size: 5,
                                     },
                                     vnode.attrs.identifier.public_keys.map((key, index) =>
-                                        m(ListItem, {label: index + 1 + '.  ' + key})
+                                        m(ListItem, { label: index + 1 + '.  ' + key })
                                     )
                                 ),
                             ]
@@ -157,10 +157,10 @@ function Identifier() {
                                     FormLabel,
                                     {},
                                     'Witnesses: (Threshold: ' +
-                                    vnode.attrs.identifier.toad +
-                                    '  /  Current Receipts: ' +
-                                    vnode.attrs.identifier.receipts +
-                                    ')'
+                                        vnode.attrs.identifier.toad +
+                                        '  /  Current Receipts: ' +
+                                        vnode.attrs.identifier.receipts +
+                                        ')'
                                 ),
                                 m(
                                     'List',
@@ -168,7 +168,7 @@ function Identifier() {
                                         interactive: true,
                                         size: 5,
                                     },
-                                    vnode.attrs.identifier.witnesses.map((wit) => m(ListItem, {label: wit}))
+                                    vnode.attrs.identifier.witnesses.map((wit) => m(ListItem, { label: wit }))
                                 ),
                             ]
                         ),
@@ -185,20 +185,22 @@ function Identifier() {
                                     intent: Intent.PRIMARY,
                                     onclick: () => {
                                         isOpen = !isOpen;
-                                        console.log(isOpen)
+                                        console.log(isOpen);
                                     },
                                 }),
                                 m(Dialog, {
                                     isOpen: isOpen,
                                     onClose: close,
-                                    title: vnode.attrs.identifier.delegated ? 'Identifier Rotation Request' : "Rotate Identifier",
+                                    title: vnode.attrs.identifier.delegated
+                                        ? 'Identifier Rotation Request'
+                                        : 'Rotate Identifier',
                                     content: [
-                                        m(Form, {gutter: 16}, [
+                                        m(Form, { gutter: 16 }, [
                                             m(FormGroup, [
-                                                m(FormLabel, {for: 'witness'}, 'Witnesses'),
+                                                m(FormLabel, { for: 'witness' }, 'Witnesses'),
                                                 m(Input, {
                                                     disabled: true,
-                                                    contentLeft: m(Icon, {name: Icons.CROSSHAIR}),
+                                                    contentLeft: m(Icon, { name: Icons.CROSSHAIR }),
                                                     contentRight: m(Button, {
                                                         iconLeft: Icons.PLUS_CIRCLE,
                                                         label: 'Add',
@@ -238,10 +240,10 @@ function Identifier() {
                                                 ),
                                             ]),
 
-                                            m(FormGroup, {span: {xs: 12, sm: 12, md: 6, lg: 4}}, [
-                                                m(FormLabel, {for: 'count'}, 'Next Number of Keys'),
+                                            m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
+                                                m(FormLabel, { for: 'count' }, 'Next Number of Keys'),
                                                 m(Input, {
-                                                    contentLeft: m(Icon, {name: Icons.HASH}),
+                                                    contentLeft: m(Icon, { name: Icons.HASH }),
                                                     id: 'count',
                                                     name: 'count',
                                                     type: 'number',
@@ -254,10 +256,10 @@ function Identifier() {
                                                     },
                                                 }),
                                             ]),
-                                            m(FormGroup, {span: {xs: 12, sm: 12, md: 6, lg: 4}}, [
-                                                m(FormLabel, {for: 'toad'}, 'Withness Threshold'),
+                                            m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
+                                                m(FormLabel, { for: 'toad' }, 'Withness Threshold'),
                                                 m(Input, {
-                                                    contentLeft: m(Icon, {name: Icons.USERS}),
+                                                    contentLeft: m(Icon, { name: Icons.USERS }),
                                                     id: 'toad',
                                                     name: 'toad',
                                                     type: 'number',
@@ -270,10 +272,10 @@ function Identifier() {
                                                     },
                                                 }),
                                             ]),
-                                            m(FormGroup, {span: {xs: 12, sm: 12, md: 6, lg: 4}}, [
-                                                m(FormLabel, {for: 'isith'}, 'Next Signature Threshold'),
+                                            m(FormGroup, { span: { xs: 12, sm: 12, md: 6, lg: 4 } }, [
+                                                m(FormLabel, { for: 'isith' }, 'Next Signature Threshold'),
                                                 m(Input, {
-                                                    contentLeft: m(Icon, {name: Icons.USERS}),
+                                                    contentLeft: m(Icon, { name: Icons.USERS }),
                                                     id: 'isith',
                                                     name: 'isith',
                                                     type: 'number',
@@ -305,7 +307,7 @@ function Identifier() {
                         ),
                     ]
                 ),
-            ]
+            ];
 
             return m(
                 Card,

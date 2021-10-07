@@ -1,11 +1,11 @@
 import m from 'mithril';
-import {Colors, Icon, Icons, TabItem, Tabs} from 'construct-ui';
+import { Colors, Icon, Icons, TabItem, Tabs } from 'construct-ui';
 
-import {Footer, Header, PortInput, UserTypeInput} from './components';
-import {toaster, UserTypes, xhring} from './helpers';
+import { Footer, Header, PortInput, UserTypeInput } from './components';
+import { toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
-import {GetStarted, Group, Mailbox, Manage, Settings, Verify, Wallet} from './pages';
+import { GetStarted, Group, Mailbox, Manage, Settings, Verify, Wallet } from './pages';
 
 let root = document.body;
 
@@ -33,14 +33,14 @@ function Layout() {
                     position: 'top-end',
                 }),
                 m(Header, [
-                    m('h1', {style: {color: Colors.WHITE}}, 'KIWI'),
+                    m('h1', { style: { color: Colors.WHITE } }, 'KIWI'),
                     m('p', 'KERI Interactive Web Interface'),
                     process.env.USER_TYPE === 'developer'
-                        ? m('div', {style: {marginBottom: '1rem'}}, [
-                            m(UserTypeInput, {
-                                defaultRoute: defaultRouteForUserType(),
-                            }),
-                        ])
+                        ? m('div', { style: { marginBottom: '1rem' } }, [
+                              m(UserTypeInput, {
+                                  defaultRoute: defaultRouteForUserType(),
+                              }),
+                          ])
                         : null,
                     m('div', [
                         m(Mailbox, {
@@ -56,101 +56,101 @@ function Layout() {
                         align: 'left',
                         bordered: true,
                         size: 'lg',
-                        style: {background: Colors.GREY50, overflowX: 'auto'},
+                        style: { background: Colors.GREY50, overflowX: 'auto' },
                     },
                     UserTypes.userTypeIn(['developer', 'qvi'])
                         ? m(
-                            m.route.Link,
-                            {
-                                href: 'get-started',
-                                outline: 'none',
-                            },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.FAST_FORWARD,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Get Started',
-                                ],
-                                active: active === 'Get Started',
-                                onclick: () => (active = 'Get Started'),
-                            })
-                        )
+                              m.route.Link,
+                              {
+                                  href: 'get-started',
+                                  outline: 'none',
+                              },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.FAST_FORWARD,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Get Started',
+                                  ],
+                                  active: active === 'Get Started',
+                                  onclick: () => (active = 'Get Started'),
+                              })
+                          )
                         : null,
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity'])
                         ? m(
-                            m.route.Link,
-                            {
-                                href: 'manage',
-                                outline: 'none',
-                            },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.LAYERS,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Manage',
-                                ],
-                                active: active === 'Manage',
-                                onclick: () => (active = 'Manage'),
-                            })
-                        )
+                              m.route.Link,
+                              {
+                                  href: 'manage',
+                                  outline: 'none',
+                              },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.LAYERS,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Manage',
+                                  ],
+                                  active: active === 'Manage',
+                                  onclick: () => (active = 'Manage'),
+                              })
+                          )
                         : null,
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'person'])
                         ? m(
-                            m.route.Link,
-                            {
-                                href: 'wallet',
-                                outline: 'none',
-                            },
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.BOOK_OPEN,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Wallet',
-                                ],
-                                active: active === 'Wallet',
-                                onclick: () => (active = 'Wallet'),
-                            })
-                        )
+                              m.route.Link,
+                              {
+                                  href: 'wallet',
+                                  outline: 'none',
+                              },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.BOOK_OPEN,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Wallet',
+                                  ],
+                                  active: active === 'Wallet',
+                                  onclick: () => (active = 'Wallet'),
+                              })
+                          )
                         : null,
                     UserTypes.userTypeIn(['developer', 'qvi', 'legal-entity', 'lei-data-user'])
                         ? m(
-                            m.route.Link,
-                            {href: 'verify'},
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.CHECK_CIRCLE,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Verify',
-                                ],
-                                active: active === 'Verify',
-                                onclick: () => (active = 'Verify'),
-                            })
-                        )
+                              m.route.Link,
+                              { href: 'verify' },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.CHECK_CIRCLE,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Verify',
+                                  ],
+                                  active: active === 'Verify',
+                                  onclick: () => (active = 'Verify'),
+                              })
+                          )
                         : null,
                     UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])
                         ? m(
-                            m.route.Link,
-                            {href: 'group'},
-                            m(TabItem, {
-                                label: [
-                                    m(Icon, {
-                                        name: Icons.USERS,
-                                        style: 'margin-right: 10px',
-                                    }),
-                                    'Group Identifier',
-                                ],
-                                active: active === 'Group Identifier',
-                                onclick: () => (active = 'Group Identifier'),
-                            })
-                        )
+                              m.route.Link,
+                              { href: 'group' },
+                              m(TabItem, {
+                                  label: [
+                                      m(Icon, {
+                                          name: Icons.USERS,
+                                          style: 'margin-right: 10px',
+                                      }),
+                                      'Group Identifier',
+                                  ],
+                                  active: active === 'Group Identifier',
+                                  onclick: () => (active = 'Group Identifier'),
+                              })
+                          )
                         : null,
                     m(
                         m.route.Link,

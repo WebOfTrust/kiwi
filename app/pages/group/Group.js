@@ -1,6 +1,6 @@
 import m from 'mithril';
-import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem} from 'construct-ui';
-import {AddressBook, xhring} from '../../helpers';
+import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, ListItem } from 'construct-ui';
+import { AddressBook, xhring } from '../../helpers';
 
 function Group() {
     return {
@@ -9,26 +9,23 @@ function Group() {
                 return null;
             }
 
-            let delegator = vnode.attrs.group.delegated ?
-                m(
-                    FormGroup,
-                    {
-                        span: 6,
-                    },
-                    [
-                        m(
-                            FormLabel,
-                            {},
-                            'Delegator:'
-                        ),
-                        m('div', AddressBook[vnode.attrs.group.delegator].name + " (" + vnode.attrs.group.delegator + ")"),
-                    ]
-                )
-                :
-                m(FormGroup, {
-                    span: 6,
-                });
-
+            let delegator = vnode.attrs.group.delegated
+                ? m(
+                      FormGroup,
+                      {
+                          span: 6,
+                      },
+                      [
+                          m(FormLabel, {}, 'Delegator:'),
+                          m(
+                              'div',
+                              AddressBook[vnode.attrs.group.delegator].name + ' (' + vnode.attrs.group.delegator + ')'
+                          ),
+                      ]
+                  )
+                : m(FormGroup, {
+                      span: 6,
+                  });
 
             let fields = [
                 m(
@@ -41,8 +38,7 @@ function Group() {
                                 .multisigRotatePost({
                                     group: vnode.attrs.group.name,
                                 })
-                                .then((res) => {
-                                })
+                                .then((res) => {})
                                 .catch((err) => {
                                     console.log('caught', err);
                                 });
@@ -55,11 +51,7 @@ function Group() {
                                 span: 6,
                             },
                             [
-                                m(
-                                    FormLabel,
-                                    {},
-                                    vnode.attrs.group.delegated ? 'Delegated Identifier' : 'Identifier:'
-                                ),
+                                m(FormLabel, {}, vnode.attrs.group.delegated ? 'Delegated Identifier' : 'Identifier:'),
                                 m('div', vnode.attrs.group.prefix),
                             ]
                         ),
@@ -88,7 +80,7 @@ function Group() {
                                         size: 5,
                                     },
                                     vnode.attrs.group.aids.map((aid, index) =>
-                                        m(ListItem, {label: index + 1 + '.  ' + aid})
+                                        m(ListItem, { label: index + 1 + '.  ' + aid })
                                     )
                                 ),
                             ]
@@ -110,7 +102,7 @@ function Group() {
                                         size: 5,
                                     },
                                     vnode.attrs.group.public_keys.map((key, index) =>
-                                        m(ListItem, {label: index + 1 + '.  ' + key})
+                                        m(ListItem, { label: index + 1 + '.  ' + key })
                                     )
                                 ),
                             ]
@@ -128,10 +120,10 @@ function Group() {
                                     FormLabel,
                                     {},
                                     'Witnesses: (Threshold: ' +
-                                    vnode.attrs.group.toad +
-                                    '  /  Current Receipts: ' +
-                                    vnode.attrs.group.receipts +
-                                    ')'
+                                        vnode.attrs.group.toad +
+                                        '  /  Current Receipts: ' +
+                                        vnode.attrs.group.receipts +
+                                        ')'
                                 ),
                                 m(
                                     'List',
@@ -139,7 +131,7 @@ function Group() {
                                         interactive: true,
                                         size: 5,
                                     },
-                                    vnode.attrs.group.witnesses.map((wit) => m(ListItem, {label: wit}))
+                                    vnode.attrs.group.witnesses.map((wit) => m(ListItem, { label: wit }))
                                 ),
                             ]
                         ),
@@ -159,7 +151,7 @@ function Group() {
                         ),
                     ]
                 ),
-            ]
+            ];
 
             return m(
                 Card,
