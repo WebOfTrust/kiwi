@@ -19,7 +19,7 @@ import { AddressBook, toaster, xhring } from '../../helpers';
 
 function LegalEntityOfficialOrganizationalRolevLEICredential() {
     const schemaSAID = 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw';
-    let recipient = 'EpXprWFWmvJx4dP7CqDyXRgoigTVFwEUh6i-6jUCcoU8';
+    let recipient = 'EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0';
     let lei = '506700GE1G29325QX363';
     let personLegalName = '';
     let officialRole = '';
