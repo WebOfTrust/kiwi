@@ -16,9 +16,9 @@ import {
     Intent,
     Select,
 } from 'construct-ui';
-import { Container, Tile } from '../components';
-import { AddressBook, CredentialNames, storing, toaster, UserTypes, xhring } from '../helpers';
-import { CredentialList } from './revoke';
+import {Container, Tile} from '../components';
+import {AddressBook, CredentialNames, storing, toaster, UserTypes, xhring} from '../helpers';
+import {CredentialList} from './revoke';
 
 function Manage() {
     let recipient = 'EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0';
@@ -27,8 +27,8 @@ function Manage() {
     let officialRole = '';
     let engagementContextRole = '';
 
-    const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
-    const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
+    const gridAttrs = {gutter: {xs: 0, sm: 8, md: 16, lg: 32, xl: 32}};
+    const colAttrs = {span: {xs: 12, md: 6}, style: {margin: '16px 0'}};
 
     let CredentialTypes = {
         GLEIFvLEICredential: {
@@ -40,7 +40,8 @@ function Manage() {
                     LEI: lei,
                 };
             },
-            source: () => {},
+            source: () => {
+            },
         },
         QualifiedvLEIIssuervLEICredential: {
             label: 'Qualified vLEI Issuer vLEI Credential',
@@ -51,7 +52,8 @@ function Manage() {
                     LEI: lei,
                 };
             },
-            source: () => {},
+            source: () => {
+            },
         },
         LegalEntityvLEICredential: {
             label: 'Legal Entity vLEI Credential',
@@ -125,9 +127,9 @@ function Manage() {
             QualifiedvLEIIssuervLEICredential: CredentialTypes.QualifiedvLEIIssuervLEICredential,
             LegalEntityvLEICredential: CredentialTypes.LegalEntityvLEICredential,
             LegalEntityOfficialOrganizationalRolevLEICredential:
-                CredentialTypes.LegalEntityOfficialOrganizationalRolevLEICredential,
+            CredentialTypes.LegalEntityOfficialOrganizationalRolevLEICredential,
             LegalEntityEngagementContextRolevLEICredential:
-                CredentialTypes.LegalEntityEngagementContextRolevLEICredential,
+            CredentialTypes.LegalEntityEngagementContextRolevLEICredential,
         },
         [UserTypes.GLEIF]: {
             GLEIFvLEICredential: CredentialTypes.GLEIFvLEICredential,
@@ -136,9 +138,9 @@ function Manage() {
         [UserTypes.QVI]: {
             LegalEntityvLEICredential: CredentialTypes.LegalEntityvLEICredential,
             LegalEntityOfficialOrganizationalRolevLEICredential:
-                CredentialTypes.LegalEntityOfficialOrganizationalRolevLEICredential,
+            CredentialTypes.LegalEntityOfficialOrganizationalRolevLEICredential,
             LegalEntityEngagementContextRolevLEICredential:
-                CredentialTypes.LegalEntityEngagementContextRolevLEICredential,
+            CredentialTypes.LegalEntityEngagementContextRolevLEICredential,
         },
         [UserTypes.LEGAL_ENTITY]: {},
         [UserTypes.PERSON]: {},
@@ -204,8 +206,8 @@ function Manage() {
                 credentialData: CredentialTypes[credentialType].credData(),
                 schema: CredentialTypes[credentialType].schema,
                 type: credentialType,
-                registry: 'gleif',
-                source: CredentialTypes[credentialType].source,
+                registry: UserTypes.getUserType(),
+                source: CredentialTypes[credentialType].source(),
                 recipient,
             })
             .then((res) => {
@@ -224,7 +226,7 @@ function Manage() {
         xhring
             .revokeRequest({
                 said: cred.d,
-                registry: 'gleif',
+                registry: UserTypes.getUserType(),
             })
             .then((res) => {
                 storing.revokeCredential(cred.d);
@@ -255,18 +257,18 @@ function Manage() {
                                 title: 'Issue Credentials',
                                 intent: Intent.PRIMARY,
                             },
-                            m(Container, { style: { padding: '16px' } }, [
+                            m(Container, {style: {padding: '16px'}}, [
                                 m(
                                     Form,
                                     {
                                         gutter: 16,
-                                        style: { marginTop: '16px' },
+                                        style: {marginTop: '16px'},
                                     },
                                     m(
                                         FormGroup,
-                                        m(FormLabel, { for: 'type' }, 'Credential'),
+                                        m(FormLabel, {for: 'type'}, 'Credential'),
                                         m(Select, {
-                                            contentLeft: m(Icon, { name: Icons.FILE }),
+                                            contentLeft: m(Icon, {name: Icons.FILE}),
                                             id: 'typ',
                                             name: 'typ',
                                             fluid: true,
@@ -286,9 +288,9 @@ function Manage() {
                                     ),
                                     m(
                                         FormGroup,
-                                        m(FormLabel, { for: 'entity' }, 'Entity'),
+                                        m(FormLabel, {for: 'entity'}, 'Entity'),
                                         m(Select, {
-                                            contentLeft: m(Icon, { name: Icons.USER }),
+                                            contentLeft: m(Icon, {name: Icons.USER}),
                                             id: 'entity',
                                             name: 'entity',
                                             fluid: true,
@@ -306,9 +308,9 @@ function Manage() {
                                     ),
                                     m(
                                         FormGroup,
-                                        m(FormLabel, { for: 'lei' }, 'LEI'),
+                                        m(FormLabel, {for: 'lei'}, 'LEI'),
                                         m(Input, {
-                                            contentLeft: m(Icon, { name: Icons.HASH }),
+                                            contentLeft: m(Icon, {name: Icons.HASH}),
                                             id: 'lei',
                                             name: 'lei',
                                             fluid: true,
@@ -324,7 +326,7 @@ function Manage() {
                                         {
                                             style: `display:${
                                                 credentialType ===
-                                                    'LegalEntityOfficialOrganizationalRolevLEICredential' ||
+                                                'LegalEntityOfficialOrganizationalRolevLEICredential' ||
                                                 credentialType === 'LegalEntityEngagementContextRolevLEICredential'
                                                     ? 'inline'
                                                     : 'none'
@@ -335,7 +337,7 @@ function Manage() {
                                             m(
                                                 'p',
                                                 m(Input, {
-                                                    contentLeft: m(Icon, { name: Icons.USER }),
+                                                    contentLeft: m(Icon, {name: Icons.USER}),
                                                     id: 'personLegalName',
                                                     name: 'personLegalName',
                                                     placeholder: '',
@@ -361,7 +363,7 @@ function Manage() {
                                             m(
                                                 'p',
                                                 m(Input, {
-                                                    contentLeft: m(Icon, { name: Icons.GLOBE }),
+                                                    contentLeft: m(Icon, {name: Icons.GLOBE}),
                                                     id: 'officialRole',
                                                     name: 'officialRole',
                                                     placeholder: '',
@@ -387,7 +389,7 @@ function Manage() {
                                             m(
                                                 'p',
                                                 m(Input, {
-                                                    contentLeft: m(Icon, { name: Icons.TAG }),
+                                                    contentLeft: m(Icon, {name: Icons.TAG}),
                                                     id: 'engagementContextRole',
                                                     name: 'engagementContextRole',
                                                     placeholder: '',
@@ -399,7 +401,7 @@ function Manage() {
                                             ),
                                         ]
                                     ),
-                                    m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
+                                    m(FormGroup, {class: Classes.ALIGN_RIGHT}, [
                                         m(Button, {
                                             type: 'button',
                                             label: 'Issue',
@@ -417,7 +419,7 @@ function Manage() {
                                             'p',
                                             `This ${CredentialTypes[credentialType].label} will be issued to the following entity:`
                                         ),
-                                        m(Card, { fluid: true }, [
+                                        m(Card, {fluid: true}, [
                                             m(Form, [
                                                 m(FormGroup, [
                                                     m(FormLabel, 'Entity'),
@@ -428,7 +430,7 @@ function Manage() {
                                         ]),
                                         m(
                                             'p',
-                                            { style: { color: Colors.RED700, marginTop: '1rem' } },
+                                            {style: {color: Colors.RED700, marginTop: '1rem'}},
                                             'Verify that the information above is correct before issuing!'
                                         ),
                                     ],

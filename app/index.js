@@ -78,7 +78,7 @@ function Layout() {
                             })
                         )
                         : null,
-                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity'])
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi'])
                         ? m(
                             m.route.Link,
                             {
@@ -183,7 +183,7 @@ let defaultRouteForUserType = () => {
         case 'developer':
         case 'gleif':
         case 'legal-entity':
-            return '/manage';
+            return '/wallet';
         case 'qvi':
             return '/get-started';
         case 'person':

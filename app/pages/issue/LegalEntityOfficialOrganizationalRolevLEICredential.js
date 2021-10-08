@@ -16,6 +16,7 @@ import {
 } from 'construct-ui';
 import { Container } from '../../components';
 import { AddressBook, toaster, xhring } from '../../helpers';
+import UserTypes from "../../helpers/user-types";
 
 function LegalEntityOfficialOrganizationalRolevLEICredential() {
     const schemaSAID = 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw';
@@ -57,7 +58,7 @@ function LegalEntityOfficialOrganizationalRolevLEICredential() {
                     },
                 ],
                 type: 'LegalEntityOfficialOrganizationalRolevLEICredential',
-                registry: 'gleif',
+                registry: UserTypes.getUserType(),
                 recipient,
             })
             .then((res) => {
