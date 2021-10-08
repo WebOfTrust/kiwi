@@ -8,6 +8,7 @@ export default class mailbox {
 
     static groupName = '';
     static messages = [];
+    static presentations = [];
     static source = null;
 
     static sniff = (raw) => {
@@ -57,11 +58,21 @@ export default class mailbox {
         m.redraw();
     };
 
+    static displayPresentation = (e) => {
+        let size = this.sniff(e.data);
+
+        let evt = e.data.slice(0, size);
+        let ked = JSON.parse(evt);
+        this.presentations.unshift(ked['d']);
+        m.redraw();
+    };
+
     static initEventSource = () => {
         this.source = new EventSource(
-            '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0'
+            '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0&topics=/presentation%3D0'
         );
         this.source.addEventListener('/credential', this.displayData, false);
+        this.source.addEventListener('/presentation', this.displayPresentation, false);
         this.source.addEventListener('/multisig', this.displayMultisig, false);
         this.source.addEventListener('/delegate', this.displayDelegateNotices, false);
     };
@@ -69,6 +80,7 @@ export default class mailbox {
     static closeEventSource = () => {
         this.messages = [];
         this.source.removeEventListener('/credential', this.displayData, false);
+        this.source.removeEventListener('/presentation', this.displayPresentation, false);
         this.source.removeEventListener('/multisig', this.displayMultisig, false);
         this.source.removeEventListener('/delegate', this.displayDelegateNotices, false);
         this.source.close();

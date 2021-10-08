@@ -48,22 +48,7 @@ function Wallet() {
                                 isWallet: true,
                             })
                         )
-                    ),
-                    m(
-                        Col,
-                        colAttrs,
-                        m(
-                            Tile,
-                            {
-                                title: 'Presentation Requests',
-                                intent: Intent.PRIMARY,
-                            },
-                            m(PresentationRequestList, {
-                                msgs: mailbox.messages,
-                                emptyStateHeader: 'No requests',
-                            })
-                        )
-                    ),
+                    )
                 ])
             );
         },

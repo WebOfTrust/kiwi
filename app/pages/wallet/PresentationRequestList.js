@@ -20,7 +20,7 @@ function PresentationRequestList() {
                 vnode.attrs.msgs && vnode.attrs.msgs.length > 0
                     ? vnode.attrs.msgs.map((msg) =>
                           m(PresentationRequest, {
-                              cred: msg,
+                              msg: msg,
                               isRevoked: vnode.attrs.isRevoked,
                               revokeCredential: vnode.attrs.revokeCredential,
                               isWallet: vnode.attrs.isWallet,
