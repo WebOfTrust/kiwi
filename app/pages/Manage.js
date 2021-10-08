@@ -153,7 +153,6 @@ function Manage() {
     let qualifiedvLEIIssuerCred = undefined;
 
     let issued = [];
-    let revoked = [];
 
     let isSubmitting = false;
     let previewOpen = false;
@@ -184,11 +183,7 @@ function Manage() {
             .credentials('issued')
             .then((credentials) => {
                 credentials.map((cred) => {
-                    if (cred.status === 'issued') {
-                        issued.unshift(cred);
-                    } else {
-                        revoked.unshift(cred);
-                    }
+                    issued.unshift(cred);
                 });
                 m.redraw();
             })

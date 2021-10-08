@@ -1,6 +1,6 @@
 import m from 'mithril';
-import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem } from 'construct-ui';
-import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
+import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem} from 'construct-ui';
+import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
 
 function Credential() {
     return {
@@ -97,7 +97,7 @@ function Credential() {
                                 size: 5,
                                 style: 'font-size: 14px',
                             },
-                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, { label: index + 1 + '.  ' + key }))
+                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, {label: index + 1 + '.  ' + key}))
                         ),
                     ]
                 ),
@@ -111,20 +111,20 @@ function Credential() {
                             span: 12,
                         },
                         [
-                            m(FormLabel, { style: 'margin-bottom: 0px' }, 'Credential Provenance Chain:'),
+                            m(FormLabel, {style: 'margin-bottom: 0px'}, 'Credential Provenance Chain:'),
                             m(
                                 List,
                                 {
                                     interactive: true,
                                     size: 5,
-                                    style: 'font-size: 14px',
+                                    style: 'font-size: 14px; background: "transparent"',
                                 },
                                 vnode.attrs.cred.sad.p.map((p, index) =>
                                     m(ListItem, {
                                         contentLeft: [
                                             m(
                                                 'div',
-                                                { style: 'vertical-align: text-top;' },
+                                                {style: 'vertical-align: text-top;'},
                                                 'Qualified vLEI Issuer vLEI Credential'
                                             ),
                                             m(
@@ -154,6 +154,8 @@ function Credential() {
                                     iconLeft: Icons.X_CIRCLE,
                                     label: 'Revoke',
                                     type: 'submit',
+                                    disabled: vnode.attrs.cred.status === "revoked",
+                                    title: vnode.attrs.cred.status === "revoked" ? 'Already Revoked' : '',
                                     intent: Intent.NEGATIVE,
                                 }),
                             ]
@@ -162,13 +164,19 @@ function Credential() {
                 }
             }
 
+            let style = {
+                marginBottom: '16px',
+            }
+
+            if (vnode.attrs.cred.status === "revoked") {
+                style['background-color'] = '#c1c4c7'
+            }
+
             return m(
                 Card,
                 {
                     fluid: true,
-                    style: {
-                        marginBottom: '16px',
-                    },
+                    style: style,
                 },
                 [
                     m(
