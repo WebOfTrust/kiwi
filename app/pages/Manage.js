@@ -226,17 +226,17 @@ function Manage() {
     function revokeCredential(cred) {
         xhring
             .revokeRequest({
-                said: cred.d,
+                said: cred.sad.d,
                 registry: UserTypes.getUserType(),
             })
             .then((res) => {
-                storing.revokeCredential(cred.d);
-                toaster.success(`Revoked ${CredentialNames[cred.s]}`);
+                storing.revokeCredential(cred.sad.d);
+                toaster.success(`Revoked ${CredentialNames[cred.sad.s]}`);
                 loadCreds();
                 m.redraw();
             })
             .catch(() => {
-                toaster.error(`Failed to revoke ${CredentialNames[cred.s]}`);
+                toaster.error(`Failed to revoke ${CredentialNames[cred.sad.s]}`);
                 console.log(e);
             });
     }
