@@ -98,7 +98,7 @@ function Layout() {
                               })
                           )
                         : null,
-                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'person'])
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'lei-data-user'])
                         ? m(
                               m.route.Link,
                               {
@@ -198,8 +198,8 @@ let defaultRouteForUserType = () => {
 m.route(root, defaultRouteForUserType(), {
     '/get-started': {
         render: (vnode) => {
-            if (!UserTypes.userTypeIn(['developer', 'qvi'])) {
-                m.route.set(defaultRouteForUserType());
+            if (!UserTypes.userTypeIn(['developer', 'qvi', 'lei-data-user'])) {
+                m.route.set(defaultRouteForUserType());``
                 return;
             }
             return m(Layout, m(GetStarted, vnode.attrs));
@@ -221,7 +221,7 @@ m.route(root, defaultRouteForUserType(), {
     },
     '/verify': {
         render: (vnode) => {
-            if (UserTypes.userTypeIn(['gleif', 'person', 'lei-data-user'])) {
+            if (UserTypes.userTypeIn(['gleif', 'person'])) {
                 m.route.set(defaultRouteForUserType());
                 return;
             }
