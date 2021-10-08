@@ -1,5 +1,6 @@
 import m from 'mithril';
 import { toaster, xhring } from '../helpers';
+import UserTypes from "./user-types";
 
 export default class mailbox {
     static MINSNIFFSIZE = 30;
@@ -99,7 +100,7 @@ export default class mailbox {
                 credentialData: data,
                 schema: schema,
                 type: typ,
-                registry: 'gleif',
+                registry: UserTypes.getUserType(),
                 recipient: recipient,
                 source: source,
                 notify: false,

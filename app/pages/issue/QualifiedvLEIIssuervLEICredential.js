@@ -16,6 +16,7 @@ import {
 } from 'construct-ui';
 import { Container } from '../../components';
 import { AddressBook, toaster, xhring } from '../../helpers';
+import UserTypes from "../../helpers/user-types";
 
 function QualifiedvLEIIssuervLEICredential() {
     const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
@@ -45,7 +46,7 @@ function QualifiedvLEIIssuervLEICredential() {
                 },
                 schema: schemaSAID,
                 type: 'QualifiedvLEIIssuervLEICredential',
-                registry: 'gleif',
+                registry: UserTypes.getUserType(),
                 recipient,
             })
             .then((res) => {

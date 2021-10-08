@@ -16,6 +16,7 @@ import {
 } from 'construct-ui';
 import { Container } from '../../components';
 import { AddressBook, toaster, xhring } from '../../helpers';
+import UserTypes from "../../helpers/user-types";
 
 function LegalEntityvLEICredential() {
     const schemaSAID = 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ';
@@ -53,7 +54,7 @@ function LegalEntityvLEICredential() {
                 ],
                 schema: schemaSAID,
                 type: 'LegalEntityvLEICredential',
-                registry: 'qvi',
+                registry: UserTypes.getUserType(),
                 recipient,
             })
             .then((res) => {

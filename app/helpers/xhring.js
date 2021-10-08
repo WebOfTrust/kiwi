@@ -103,14 +103,10 @@ export default class xhring {
 
     static credentials(type) {
         let userType = UserTypes.getUserType();
-        let registry = 'gleif';
-        if (userType === 'gleif') {
-            registry = 'root';
-        }
         return m
             .request({
                 method: 'GET',
-                url: `/credentials/` + type + `?registry=` + registry,
+                url: `/credentials/` + type + `?registry=` + userType,
                 headers: {
                     'Signature': 'no-sig',
                     'Content-Type': 'application/json',
