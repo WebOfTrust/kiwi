@@ -18,7 +18,7 @@
         "build:legal-entity": "NODE_ENV=legal-entity; yarn clear-build-cache; rm -rf dist-legal-entity/; parcel build app/index.html; mv dist/ dist-legal-entity/",
         "build:lei-data-user": "NODE_ENV=lei-data-user; yarn clear-build-cache; rm -rf dist-lei-data-user/; parcel build app/index.html; mv dist/ dist-lei-data-user/",
         "build:qvi": "NODE_ENV=qvi; yarn clear-build-cache; rm -rf dist-qvi/; parcel build app/index.html; mv dist/ dist-qvi/",
-        "build:all": "yarn build:gleif; yarn build:legal-entity; yarn build:qvi",
+        "build:all": "yarn build:gleif; yarn build:legal-entity; yarn build:qvi; yarn build:lei-data-user",
         "serve": "parcel ./app/index.html",
         "test": "jest",
         "prettier": "prettier --write 'app/**/*.{js,html,jsx,json,scss,css,md}'",

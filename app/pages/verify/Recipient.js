@@ -9,9 +9,8 @@ function Recipient() {
                 m(Input, {
                     contentLeft: m(Icon, { name: Icons.HASH }),
                     fluid: true,
-                    readOnly: true,
                     type: 'text',
-                    value: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
+                    placeholder: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
                 }),
             ]);
         },

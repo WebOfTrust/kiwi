@@ -1,11 +1,11 @@
 import m from 'mithril';
-import { Button, Classes, Form, FormGroup, FormLabel, Icons, Select } from 'construct-ui';
-import { Container } from '../../components';
-import Recipient from './Recipient';
-import { toaster, xhring } from '../../helpers';
+import {Button, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input, Select} from 'construct-ui';
+import {Container} from '../../components';
+import {toaster, xhring} from '../../helpers';
 
 function PresentationRequest() {
     let schema = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
+    let recipient = '';
     let schemaOptions = [
         {
             value: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
@@ -35,12 +35,16 @@ function PresentationRequest() {
     }
 
     function handleSubmit(e) {
+        if (recipient === '') {
+            toaster.warning("Recipient is required.")
+            return;
+        }
         e.preventDefault();
         isSubmitting = true;
         xhring
             .presentationRequest({
                 schema: schema,
-                recipient: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
+                recipient: recipient,
             })
             .then((res) => {
                 isSubmitting = false;
@@ -60,10 +64,21 @@ function PresentationRequest() {
                     Form,
                     {
                         onsubmit: handleSubmit,
-                        style: { paddingTop: '16px', paddingBottom: '16px' },
+                        style: {paddingTop: '16px', paddingBottom: '16px'},
                     },
                     [
-                        m(Recipient),
+                        m(FormGroup, [
+                            m(FormLabel, 'Holder:'),
+                            m(Input, {
+                                contentLeft: m(Icon, {name: Icons.HASH}),
+                                fluid: true,
+                                type: 'text',
+                                onchange: (e) => {
+                                    recipient = e.currentTarget.value
+                                },
+                                placeholder: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
+                            }),
+                        ]),
                         m(FormGroup, [
                             m(FormLabel, 'Schema'),
                             m(Select, {
@@ -75,7 +90,7 @@ function PresentationRequest() {
                                 options: schemaOptions,
                             }),
                         ]),
-                        m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
+                        m(FormGroup, {class: Classes.ALIGN_RIGHT}, [
                             m(Button, {
                                 iconRight: Icons.CHEVRON_RIGHT,
                                 label: 'Request',
