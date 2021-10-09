@@ -1,5 +1,5 @@
 import m from 'mithril';
-import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem} from 'construct-ui';
+import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem, Tag} from 'construct-ui';
 import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
 
 function Credential() {
@@ -29,6 +29,25 @@ function Credential() {
                         span: 6,
                     },
                     [m(FormLabel, {}, 'LEI:'), m('div', vnode.attrs.cred.sad.a.LEI)]
+                ),
+                m(
+                    FormGroup,
+                    {
+                        span: 6,
+                        color: "red"
+                    },
+                    [
+                        m(FormLabel, {}, 'Status:'),
+                        m('div', [
+                            m(Tag, {
+                                label: vnode.attrs.cred.status === "revoked" ? "Revoked" : "Valid",
+                                intent: vnode.attrs.cred.status === "revoked" ? Intent.NEGATIVE : Intent.POSITIVE,
+                                rounded: false,
+                                onRemove: undefined,
+                                style: "padding-left: 10px"
+                            })
+                        ]),
+                    ]
                 ),
             ];
 
@@ -168,15 +187,12 @@ function Credential() {
                 marginBottom: '16px',
             }
 
-            if (vnode.attrs.cred.status === "revoked") {
-                style['background-color'] = '#c1c4c7'
-            }
-
             return m(
                 Card,
                 {
                     fluid: true,
                     style: style,
+                    disabled: vnode.attrs.cred.status === "revoked"
                 },
                 [
                     m(
