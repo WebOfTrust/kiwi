@@ -199,7 +199,8 @@ m.route(root, defaultRouteForUserType(), {
     '/get-started': {
         render: (vnode) => {
             if (!UserTypes.userTypeIn(['developer', 'qvi', 'lei-data-user'])) {
-                m.route.set(defaultRouteForUserType());``
+                m.route.set(defaultRouteForUserType());
+                ``;
                 return;
             }
             return m(Layout, m(GetStarted, vnode.attrs));

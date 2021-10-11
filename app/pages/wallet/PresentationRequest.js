@@ -1,6 +1,6 @@
 import m from 'mithril';
-import {Card} from 'construct-ui';
-import Credential from "../revoke/Credential";
+import { Card } from 'construct-ui';
+import Credential from '../revoke/Credential';
 
 function PresentationRequest() {
     let cardOptions = {
@@ -13,12 +13,13 @@ function PresentationRequest() {
 
     return {
         view: function (vnode) {
-            console.log(vnode.attrs.msg)
+            console.log(vnode.attrs.msg);
+            console.log(vnode.attrs);
             return m(Card, cardOptions, m('h3', 'Proof Received'), [
                 m(Credential, {
                     cred: vnode.attrs.msg,
                     isWallet: true,
-                })
+                }),
             ]);
         },
     };

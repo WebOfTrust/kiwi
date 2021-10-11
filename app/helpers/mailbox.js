@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { toaster, xhring } from '../helpers';
-import UserTypes from "./user-types";
+import UserTypes from './user-types';
 
 export default class mailbox {
     static MINSNIFFSIZE = 30;

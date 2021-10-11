@@ -12,6 +12,16 @@ describe('PresentationRequest component', () => {
                             type: 'LegalEntityEngagementContextRolevLEICredential',
                         },
                     },
+                    sad: {
+                        a: {
+                            i: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
+                            t: ['mock', 'LegalEntityOfficialOrganizationalRolevLEICredential'],
+                        },
+                        p:[],
+                    },
+                    sigers: [
+                        'signature'
+                    ],
                 },
             })
         );

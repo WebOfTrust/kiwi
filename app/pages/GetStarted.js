@@ -42,7 +42,7 @@ function GetStarted() {
             })
             .then((res) => {
                 isSubmitting = false;
-                toaster.success('Application Successfully Submitted');
+                toaster.success('Get started!');
             })
             .catch((err) => {
                 isSubmitting = false;
@@ -63,7 +63,7 @@ function GetStarted() {
                         m(
                             Tile,
                             {
-                                title: 'Apply for Qualified vLEI Issuer vLEI Credential',
+                                title: 'Get started with your Qualified vLEI Issuer vLEI Credential',
                                 intent: Intent.PRIMARY,
                             },
                             m(Container, { style: { padding: '16px' } }, [
@@ -96,7 +96,7 @@ function GetStarted() {
                                     m(FormGroup, { class: Classes.ALIGN_RIGHT }, [
                                         m(Button, {
                                             type: 'submit',
-                                            label: 'Apply',
+                                            label: 'Get Started',
                                             intent: 'primary',
                                         }),
                                     ])

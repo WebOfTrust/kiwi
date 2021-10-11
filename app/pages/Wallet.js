@@ -48,7 +48,7 @@ function Wallet() {
                                 isWallet: true,
                             })
                         )
-                    )
+                    ),
                 ])
             );
         },

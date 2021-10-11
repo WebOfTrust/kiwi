@@ -16,7 +16,7 @@ import {
 } from 'construct-ui';
 import { Container } from '../../components';
 import { AddressBook, toaster, xhring } from '../../helpers';
-import UserTypes from "../../helpers/user-types";
+import UserTypes from '../../helpers/user-types';
 
 function LegalEntityEngagementContextRolevLEICredential() {
     const schemaSAID = 'EmaEqu_zIkxXKsrNJFTJq_s2c96McS8yzHhcvYDW8u5A';

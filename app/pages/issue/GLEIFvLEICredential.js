@@ -16,7 +16,7 @@ import {
 } from 'construct-ui';
 import { Container } from '../../components';
 import { AddressBook, toaster, xhring } from '../../helpers';
-import UserTypes from "../../helpers/user-types";
+import UserTypes from '../../helpers/user-types';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
