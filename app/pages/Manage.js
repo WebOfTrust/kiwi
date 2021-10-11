@@ -208,13 +208,13 @@ function Manage() {
             })
             .then((res) => {
                 isSubmitting = false;
-                toaster.success(`${CredentialOptions[UserTypes.getUserType()].label} issued.`);
+                toaster.success(`${CredentialTypes[credentialType].label} issued.`);
                 closePreview();
             })
             .catch((err) => {
                 isSubmitting = false;
                 console.log('caught', err);
-                toaster.error('Failed to issue GLEIFvLEICredential');
+                toaster.error(`Failed to issue ${CredentialTypes[credentialType].label}`);
             });
     }
 
