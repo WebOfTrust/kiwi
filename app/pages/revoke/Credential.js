@@ -96,7 +96,7 @@ function Credential() {
                         {
                             span: 6,
                         },
-                        [m(FormLabel, {}, 'Engagement Role:'), m('div', vnode.attrs.cred.sad.a.engagementContextRole)]
+                        [m(FormLabel, {}, 'Engagement Context Role:'), m('div', vnode.attrs.cred.sad.a.engagementContextRole)]
                     ),
                 ]);
             }

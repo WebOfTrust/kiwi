@@ -32,12 +32,12 @@ function Verify() {
                         m(
                             Tile,
                             {
-                                title: 'Presentation Requests',
+                                title: 'Presentation Responses',
                                 intent: Intent.PRIMARY,
                             },
                             m(PresentationRequestList, {
                                 msgs: mailbox.presentations,
-                                emptyStateHeader: 'No requests',
+                                emptyStateHeader: 'No responses',
                             })
                         )
                     ),
