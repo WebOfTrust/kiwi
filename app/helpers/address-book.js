@@ -1,5 +1,5 @@
 export const AddressBook = {
-    'EZNNZO-Sa41t-ps_jwOeeDmo2x_nPNavwOEl1QbN7O7s': {
+    'EZ921Tv_rdgIiHURHiWwyG8vW6R69QN2sCOYUDUvfCN0': {
         name: 'GLEIF',
     },
     'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q': {
