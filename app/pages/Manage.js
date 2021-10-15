@@ -353,7 +353,7 @@ function Manage() {
                                             }`,
                                         },
                                         [
-                                            m(FormLabel, 'Official Role'),
+                                            m(FormLabel, 'Official Organizational Role'),
                                             m(
                                                 'p',
                                                 m(Input, {
