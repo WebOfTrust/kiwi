@@ -1,11 +1,16 @@
 import m from 'mithril';
 import { Button, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input, Select } from 'construct-ui';
 import { Container } from '../../components';
-import { toaster, xhring } from '../../helpers';
+import {AddressBook, toaster, xhring} from '../../helpers';
 
 function PresentationRequest() {
     let schema = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
-    let recipient = '';
+    let defaultRecipient = Object.keys(AddressBook.book).find((key) => {
+        return AddressBook.get(key) === "Legal Entity";
+    });
+
+
+    let recipient = defaultRecipient;
     let schemaOptions = [
         {
             value: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
@@ -67,18 +72,26 @@ function PresentationRequest() {
                         style: { paddingTop: '16px', paddingBottom: '16px' },
                     },
                     [
-                        m(FormGroup, [
-                            m(FormLabel, 'Holder:'),
-                            m(Input, {
-                                contentLeft: m(Icon, { name: Icons.HASH }),
+                        m(
+                            FormGroup,
+                            m(FormLabel, { for: 'holer' }, 'Holder'),
+                            m(Select, {
+                                contentLeft: m(Icon, { name: Icons.USER }),
+                                id: 'holder',
+                                name: 'holder',
                                 fluid: true,
-                                type: 'text',
+                                options: Object.keys(AddressBook.book).map((key) => {
+                                    return {
+                                        label: `${AddressBook.get(key)} (${key})`,
+                                        value: key,
+                                    };
+                                }),
+                                defaultValue: defaultRecipient,
                                 onchange: (e) => {
-                                    recipient = e.currentTarget.value;
+                                    recipient = e.target.value;
                                 },
-                                placeholder: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
-                            }),
-                        ]),
+                            })
+                        ),
                         m(FormGroup, [
                             m(FormLabel, 'Schema'),
                             m(Select, {

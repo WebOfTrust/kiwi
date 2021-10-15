@@ -95,6 +95,7 @@ function GroupList() {
                                   iconLeft: Icons.USER_PLUS,
                                   label: 'Join',
                                   type: 'submit',
+                                  disabled: true,
                                   intent: Intent.PRIMARY,
                                   onclick: () => {
                                       isOpen = !isOpen;
