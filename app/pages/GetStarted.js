@@ -14,14 +14,14 @@ import {
     Intent,
 } from 'construct-ui';
 import { Container, Tile } from '../components';
-import { toaster, xhring } from '../helpers';
+import {AddressBook, toaster, xhring} from '../helpers';
 
 function GetStarted() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
     const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
-    const issuer = 'EZNNZO-Sa41t-ps_jwOeeDmo2x_nPNavwOEl1QbN7O7s';
+    const issuer = 'EZ921Tv_rdgIiHURHiWwyG8vW6R69QN2sCOYUDUvfCN0';
     let lei = '254900OPPU84GM83MG36';
 
     let isSubmitting = false;

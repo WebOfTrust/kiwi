@@ -20,7 +20,7 @@ import UserTypes from '../../helpers/user-types';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
-    let recipient = 'EZNNZO-Sa41t-ps_jwOeeDmo2x_nPNavwOEl1QbN7O7s';
+    let recipient = 'EZ921Tv_rdgIiHURHiWwyG8vW6R69QN2sCOYUDUvfCN0';
     let lei = '506700GE1G29325QX363';
 
     let isSubmitting = false;
