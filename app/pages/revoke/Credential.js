@@ -1,6 +1,6 @@
 import m from 'mithril';
-import {Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem, Tag} from 'construct-ui';
-import {AddressBook, CredentialNames, UserTypes} from '../../helpers';
+import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem, Tag } from 'construct-ui';
+import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
 
 function Credential() {
     return {
@@ -34,18 +34,18 @@ function Credential() {
                     FormGroup,
                     {
                         span: 6,
-                        color: "red"
+                        color: 'red',
                     },
                     [
                         m(FormLabel, {}, 'Status:'),
                         m('div', [
                             m(Tag, {
-                                label: vnode.attrs.cred.status === "revoked" ? "Revoked" : "Valid",
-                                intent: vnode.attrs.cred.status === "revoked" ? Intent.NEGATIVE : Intent.POSITIVE,
+                                label: vnode.attrs.cred.status === 'revoked' ? 'Revoked' : 'Valid',
+                                intent: vnode.attrs.cred.status === 'revoked' ? Intent.NEGATIVE : Intent.POSITIVE,
                                 rounded: false,
                                 onRemove: undefined,
-                                style: "padding-left: 10px"
-                            })
+                                style: 'padding-left: 10px',
+                            }),
                         ]),
                     ]
                 ),
@@ -56,23 +56,16 @@ function Credential() {
                     m(
                         FormGroup,
                         {
-                            span: 6,
-                        },
-                        [m(FormLabel, {}, ''), m('div', '')]
-                    ),
-                    m(
-                        FormGroup,
-                        {
-                            span: 6,
+                            span: 12,
                         },
                         [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.sad.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
-                            span: 6,
+                            span: 12,
                         },
-                        [m(FormLabel, {}, 'Official Role:'), m('div', vnode.attrs.cred.sad.a.officialRole)]
+                        [m(FormLabel, {}, 'Official Organizational Role:'), m('div', vnode.attrs.cred.sad.a.officialRole)]
                     ),
                 ]);
             } else if (vnode.attrs.cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {
@@ -80,23 +73,19 @@ function Credential() {
                     m(
                         FormGroup,
                         {
-                            span: 6,
-                        },
-                        [m(FormLabel, {}, ''), m('div', '')]
-                    ),
-                    m(
-                        FormGroup,
-                        {
-                            span: 6,
+                            span: 12,
                         },
                         [m(FormLabel, {}, 'Legal Name:'), m('div', vnode.attrs.cred.sad.a.personLegalName)]
                     ),
                     m(
                         FormGroup,
                         {
-                            span: 6,
+                            span: 12,
                         },
-                        [m(FormLabel, {}, 'Engagement Context Role:'), m('div', vnode.attrs.cred.sad.a.engagementContextRole)]
+                        [
+                            m(FormLabel, {}, 'Engagement Context Role:'),
+                            m('div', vnode.attrs.cred.sad.a.engagementContextRole),
+                        ]
                     ),
                 ]);
             }
@@ -116,7 +105,7 @@ function Credential() {
                                 size: 5,
                                 style: 'font-size: 14px',
                             },
-                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, {label: index + 1 + '.  ' + key}))
+                            vnode.attrs.cred.sigers.map((key, index) => m(ListItem, { label: index + 1 + '.  ' + key }))
                         ),
                     ]
                 ),
@@ -130,7 +119,7 @@ function Credential() {
                             span: 12,
                         },
                         [
-                            m(FormLabel, {style: 'margin-bottom: 0px'}, 'Credential Provenance Chain:'),
+                            m(FormLabel, { style: 'margin-bottom: 0px' }, 'Credential Provenance Chain:'),
                             m(
                                 List,
                                 {
@@ -143,7 +132,7 @@ function Credential() {
                                         contentLeft: [
                                             m(
                                                 'div',
-                                                {style: 'vertical-align: text-top;'},
+                                                { style: 'vertical-align: text-top;' },
                                                 'Qualified vLEI Issuer vLEI Credential'
                                             ),
                                             m(
@@ -173,8 +162,8 @@ function Credential() {
                                     iconLeft: Icons.X_CIRCLE,
                                     label: 'Revoke',
                                     type: 'submit',
-                                    disabled: vnode.attrs.cred.status === "revoked",
-                                    title: vnode.attrs.cred.status === "revoked" ? 'Already Revoked' : '',
+                                    disabled: vnode.attrs.cred.status === 'revoked',
+                                    title: vnode.attrs.cred.status === 'revoked' ? 'Already Revoked' : '',
                                     intent: Intent.NEGATIVE,
                                 }),
                             ]
@@ -185,14 +174,14 @@ function Credential() {
 
             let style = {
                 marginBottom: '16px',
-            }
+            };
 
             return m(
                 Card,
                 {
                     fluid: true,
                     style: style,
-                    disabled: vnode.attrs.cred.status === "revoked"
+                    disabled: vnode.attrs.cred.status === 'revoked',
                 },
                 [
                     m(

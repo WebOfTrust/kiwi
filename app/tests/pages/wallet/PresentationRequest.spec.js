@@ -17,11 +17,9 @@ describe('PresentationRequest component', () => {
                             i: 'EyR75fE1ZmuCSfDwKPfbLowUWLqqi0ZX4502DLIo857Q',
                             t: ['mock', 'LegalEntityOfficialOrganizationalRolevLEICredential'],
                         },
-                        p:[],
+                        p: [],
                     },
-                    sigers: [
-                        'signature'
-                    ],
+                    sigers: ['signature'],
                 },
             })
         );

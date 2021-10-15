@@ -326,22 +326,20 @@ function Manage() {
                                                     : 'none'
                                             }`,
                                         },
-                                        [
-                                            m(FormLabel, 'Legal Name'),
-                                            m(
-                                                'p',
-                                                m(Input, {
-                                                    contentLeft: m(Icon, { name: Icons.USER }),
-                                                    id: 'personLegalName',
-                                                    name: 'personLegalName',
-                                                    placeholder: '',
-                                                    fluid: true,
-                                                    oninput: (e) => {
-                                                        personLegalName = e.target.value;
-                                                    },
-                                                })
-                                            ),
-                                        ]
+                                        m(FormLabel, 'Legal Name'),
+                                        m(
+                                            'p',
+                                            m(Input, {
+                                                contentLeft: m(Icon, { name: Icons.USER }),
+                                                id: 'personLegalName',
+                                                name: 'personLegalName',
+                                                placeholder: '',
+                                                fluid: true,
+                                                oninput: (e) => {
+                                                    personLegalName = e.target.value;
+                                                },
+                                            })
+                                        )
                                     ),
                                     m(
                                         FormGroup,
