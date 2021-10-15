@@ -21,7 +21,9 @@ import { AddressBook, CredentialNames, storing, toaster, UserTypes, xhring } fro
 import { CredentialList } from './revoke';
 
 function Manage() {
-    let recipient = 'EJ89uFMBC9r0S4Lrkj8NmbRx5Cz1ApXa47PJ_23Bz4h0';
+    let recipient = Object.keys(AddressBook.book).find((key) => {
+        return AddressBook.get(key) === "Legal Entity";
+    });
     let lei = '506700GE1G29325QX363';
     let personLegalName = '';
     let officialRole = '';
@@ -240,8 +242,8 @@ function Manage() {
         },
         view: function () {
             let issuerCredentialIdentifier = '';
-            let isIssuer = qualifiedvLEIIssuerCred !== undefined;
-            if (isIssuer) {
+            let isIssuer = UserTypes.getUserType() === UserTypes.GLEIF || qualifiedvLEIIssuerCred !== undefined;
+            if (qualifiedvLEIIssuerCred !== undefined) {
                 issuerCredentialIdentifier = qualifiedvLEIIssuerCred.sad.d;
             }
             return m(
@@ -299,7 +301,7 @@ function Manage() {
                                                     value: key,
                                                 };
                                             }),
-                                            defaultValue: CredentialTypes[credentialType].defaultRecipient,
+                                            defaultValue: recipient,
                                             onchange: (e) => {
                                                 recipient = e.target.value;
                                             },
@@ -313,7 +315,7 @@ function Manage() {
                                             id: 'lei',
                                             name: 'lei',
                                             fluid: true,
-                                            readOnly: true,
+                                            readOnly: false,
                                             defaultValue: lei,
                                             oninput: (e) => {
                                                 lei = e.target.value;
