@@ -402,7 +402,9 @@ function Manage() {
                                         m(Button, {
                                             type: 'button',
                                             label: 'Issue',
-                                            title: isIssuer ? 'Issue Credential' : 'Qualified vLEI Issuer vLEI Credential Required',
+                                            title: isIssuer
+                                                ? 'Issue Credential'
+                                                : 'Qualified vLEI Issuer vLEI Credential Required',
                                             disabled: !isIssuer,
                                             intent: 'primary',
                                             onclick: (e) => openPreview(),
@@ -425,13 +427,15 @@ function Manage() {
                                                     m('p', `${AddressBook[recipient].name} (${recipient})`),
                                                 ]),
                                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
-                                                isIssuer ?
-                                                    m(FormGroup, [
-                                                        m(FormLabel, 'Authorizing Qualified vLEI Issuer vLEI Credential'),
-                                                        m('p', issuerCredentialIdentifier),
-                                                    ])
-                                                    :
-                                                    m('p')
+                                                isIssuer
+                                                    ? m(FormGroup, [
+                                                          m(
+                                                              FormLabel,
+                                                              'Authorizing Qualified vLEI Issuer vLEI Credential'
+                                                          ),
+                                                          m('p', issuerCredentialIdentifier),
+                                                      ])
+                                                    : m('p'),
                                             ]),
                                         ]),
                                         m(

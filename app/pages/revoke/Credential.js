@@ -65,7 +65,10 @@ function Credential() {
                         {
                             span: 12,
                         },
-                        [m(FormLabel, {}, 'Official Organizational Role:'), m('div', vnode.attrs.cred.sad.a.officialRole)]
+                        [
+                            m(FormLabel, {}, 'Official Organizational Role:'),
+                            m('div', vnode.attrs.cred.sad.a.officialRole),
+                        ]
                     ),
                 ]);
             } else if (vnode.attrs.cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {

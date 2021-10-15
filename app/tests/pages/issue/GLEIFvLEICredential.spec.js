@@ -3,9 +3,15 @@ import mq from 'mithril-query';
 import xhring from '../../../helpers/xhring';
 import GLEIFvLEICredential from '../../../pages/issue/GLEIFvLEICredential';
 import { GLEIF_CREDENTIAL_ISSUE_RESPONSE } from '../../mocks';
+import { AddressBook } from '../../../helpers';
 
 describe('GLEIFvLEICredential component', () => {
     let exnRequestSpy;
+
+    // probably a better way to mock this.
+    AddressBook['EZNNZO-Sa41t-ps_jwOeeDmo2x_nPNavwOEl1QbN7O7s'] = {
+        name: 'test',
+    };
 
     beforeEach(() => {
         exnRequestSpy = jest.spyOn(xhring, 'exnRequest').mockImplementation(() => {
