@@ -75,7 +75,7 @@ function GLEIFvLEICredential() {
                             m(Form, [
                                 m(FormGroup, [
                                     m(FormLabel, 'Entity'),
-                                    m('p', `${AddressBook[recipient].name} (${recipient})`),
+                                    m('p', `${AddressBook.get(recipient)} (${recipient})`),
                                 ]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
                             ]),
@@ -117,9 +117,9 @@ function GLEIFvLEICredential() {
                             id: 'entity',
                             name: 'entity',
                             fluid: true,
-                            options: Object.keys(AddressBook).map((key) => {
+                            options: Object.keys(AddressBook.book).map((key) => {
                                 return {
-                                    label: `${AddressBook[key].name} (${key})`,
+                                    label: `${AddressBook.get(key)} (${key})`,
                                     value: key,
                                 };
                             }),

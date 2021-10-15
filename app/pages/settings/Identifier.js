@@ -75,7 +75,7 @@ function Identifier() {
                           m(FormLabel, {}, 'Delegator:'),
                           m(
                               'div',
-                              AddressBook[vnode.attrs.identifier.delegator].name +
+                              AddressBook.get(vnode.attrs.identifier.delegator) +
                                   ' (' +
                                   vnode.attrs.identifier.delegator +
                                   ')'

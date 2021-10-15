@@ -71,7 +71,7 @@ function Mailbox() {
                           return m(Card, cardOptions, m('h3', 'Delegator Approval'), [
                               m('div', [
                                   m('span', m('b', 'Delegator: ')),
-                                  m('span', AddressBook[msg.d.delegator].name),
+                                  m('span', AddressBook.get(msg.d.delegator)),
                               ]),
                               m('br'),
                               m('div', [m('span', m('b', 'Operation: ')), m('span', DelegationTypes[msg.d.t])]),
@@ -92,7 +92,7 @@ function Mailbox() {
                           ]);
                       } else if (msg.r === '/issue') {
                           return m(Card, cardOptions, m('h3', 'Group Credential Issuance Proposal'), [
-                              m('div', [m('span', m('b', 'To: ')), m('span', AddressBook[msg.data.si])]),
+                              m('div', [m('span', m('b', 'To: ')), m('span', AddressBook.get(msg.data.si))]),
                               m('div', [m('span', m('b', 'Credential: ')), m('span', CredentialNames[msg.schema])]),
                               m('br'),
                               m('div', [m('span', m('b', 'LEI: ')), m('span', msg.data.LEI)]),

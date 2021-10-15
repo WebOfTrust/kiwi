@@ -14,7 +14,7 @@ function Credential() {
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'Holder:'), m('div', AddressBook[vnode.attrs.cred.sad.a.i].name)]
+                    [m(FormLabel, {}, 'Holder:'), m('div', AddressBook.get(vnode.attrs.cred.sad.a.i))]
                 ),
                 m(
                     FormGroup,
@@ -140,7 +140,7 @@ function Credential() {
                                             ),
                                             m(
                                                 'div',
-                                                'Issued By: ' + AddressBook[p.qualifiedvLEIIssuervLEICredential.i].name
+                                                'Issued By: ' + AddressBook.get(p.qualifiedvLEIIssuervLEICredential.i)
                                             ),
                                             m('div', 'Credential SAID: ' + p.qualifiedvLEIIssuervLEICredential.i),
                                         ],

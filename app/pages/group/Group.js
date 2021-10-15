@@ -19,7 +19,7 @@ function Group() {
                           m(FormLabel, {}, 'Delegator:'),
                           m(
                               'div',
-                              AddressBook[vnode.attrs.group.delegator].name + ' (' + vnode.attrs.group.delegator + ')'
+                              AddressBook.get(vnode.attrs.group.delegator) + ' (' + vnode.attrs.group.delegator + ')'
                           ),
                       ]
                   )
