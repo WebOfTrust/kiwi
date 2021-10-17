@@ -225,7 +225,6 @@ function Manage() {
                 registry: UserTypes.getUserType(),
             })
             .then((res) => {
-                storing.revokeCredential(cred.sad.d);
                 toaster.success(`Revoked ${CredentialNames[cred.sad.s]}`);
                 loadCreds();
                 m.redraw();
