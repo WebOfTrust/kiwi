@@ -167,6 +167,7 @@ function Manage() {
 
     function loadCreds() {
         wallet = [];
+        issued = []
         xhring
             .credentials('received')
             .then((credentials) => {
