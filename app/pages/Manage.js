@@ -36,7 +36,7 @@ function Manage() {
         GLEIFvLEICredential: {
             label: 'GLEIF vLEI Credential',
             schema: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
-            defaultRecipient: 'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg',
+            defaultRecipient: 'EZ921Tv_rdgIiHURHiWwyG8vW6R69QN2sCOYUDUvfCN0',
             credData: () => {
                 return {
                     LEI: lei,
