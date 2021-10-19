@@ -2,7 +2,7 @@ import m from 'mithril';
 
 export default class AddressBook {
     static book = {
-        'EZ921Tv_rdgIiHURHiWwyG8vW6R69QN2sCOYUDUvfCN0': {
+        'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg': {
             name: 'GLEIF',
         },
     }
