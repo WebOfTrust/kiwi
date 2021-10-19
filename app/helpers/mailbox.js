@@ -69,7 +69,7 @@ export default class mailbox {
 
     static initEventSource = () => {
         this.source = new EventSource(
-            '/req/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0&topics=/presentation%3D0'
+            '/qry/mbx?s=0&i=E4Zq5dxbnWKq5K-Bssn4g_qhBbSwNSI2MH4QYnkEUFDM&topics=/credential%3D0&topics=/multisig%3D0&topics=/delegate%3D0&topics=/presentation%3D0'
         );
         this.source.addEventListener('/credential', this.displayData, false);
         this.source.addEventListener('/presentation', this.displayPresentation, false);
