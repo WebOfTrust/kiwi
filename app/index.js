@@ -15,6 +15,7 @@ console.log({
     CONTROLLER_PORT: process.env.CONTROLLER_PORT,
     USER_TYPE: process.env.USER_TYPE,
     PRIMARY_COLOR: process.env.PRIMARY_COLOR,
+    GLEIF_IDENTIFIER: process.env.GLEIF_IDENTIFIER,
 });
 
 function Layout() {

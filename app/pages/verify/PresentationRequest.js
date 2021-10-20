@@ -6,7 +6,7 @@ import {AddressBook, toaster, xhring} from '../../helpers';
 function PresentationRequest() {
     let schema = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
     let defaultRecipient = Object.keys(AddressBook.book).find((key) => {
-        return AddressBook.get(key) === "Legal Entity";
+        return AddressBook.get(key) === "ACME Corp. (Legal Entity)";
     });
 
 
@@ -21,15 +21,15 @@ function PresentationRequest() {
             label: 'Qualified vLEI Issuer vLEI Credential',
         },
         {
-            value: 'EJEY6JAAVfAh8-yBTV37rHaJ9b_VKvkZunz_oJupzsvQ',
+            value: 'EC9rQ-xi_3cRrjANStL6tn6Kn4Z444r9rvTr_Vfi-750',
             label: 'Legal Entity vLEI Credential',
         },
         {
-            value: 'E3n2Od38xMVDoM6Km-Awse_Cw9z0RtUJN-j0MQo642xw',
+            value: 'EFBMQwQ1fv_bEBpqrom0EHLytFZiP5tWAs5HUpaa-WUg',
             label: 'Legal Entity Official Organizational Role vLEI Credential',
         },
         {
-            value: 'EmaEqu_zIkxXKsrNJFTJq_s2c96McS8yzHhcvYDW8u5A',
+            value: 'EMNumLS-O9ScGskk8h4xHvoiAeQf-CDW6KU3LoDUiz3o',
             label: 'Legal Entity Engagement Context Role vLEI Credential',
         },
     ];

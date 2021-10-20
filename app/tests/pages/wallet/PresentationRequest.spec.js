@@ -20,6 +20,7 @@ describe('PresentationRequest component', () => {
                         p: [],
                     },
                     sigers: ['signature'],
+                    chains: [],
                 },
             })
         );

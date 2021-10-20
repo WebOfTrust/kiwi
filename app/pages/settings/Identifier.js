@@ -75,10 +75,7 @@ function Identifier() {
                           m(FormLabel, {}, 'Delegator:'),
                           m(
                               'div',
-                              AddressBook.get(vnode.attrs.identifier.delegator) +
-                                  ' (' +
-                                  vnode.attrs.identifier.delegator +
-                                  ')'
+                              AddressBook.get(vnode.attrs.identifier.delegator)
                           ),
                       ]
                   )
@@ -107,7 +104,7 @@ function Identifier() {
                                     {},
                                     vnode.attrs.identifier.delegated ? 'Delegated Identifier' : 'Identifier:'
                                 ),
-                                m('div', vnode.attrs.identifier.name),
+                                m('div', AddressBook.get(vnode.attrs.identifier.prefix)),
                             ]
                         ),
                         m(

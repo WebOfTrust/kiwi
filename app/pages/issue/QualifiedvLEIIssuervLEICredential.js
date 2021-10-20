@@ -75,7 +75,7 @@ function QualifiedvLEIIssuervLEICredential() {
                             m(Form, [
                                 m(FormGroup, [
                                     m(FormLabel, 'Entity'),
-                                    m('p', `${AddressBook.get(recipient)} (${recipient})`),
+                                    m('p', `${AddressBook.get(recipient)}`),
                                 ]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
                             ]),

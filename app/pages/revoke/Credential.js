@@ -1,8 +1,18 @@
 import m from 'mithril';
 import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem, Tag } from 'construct-ui';
 import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
+import {Chain} from "./index";
 
 function Credential() {
+
+    function holderName(cred) {
+        if (cred.sad.a.t[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential' ||
+            cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {
+            return cred.sad.a.personLegalName
+        }
+        return AddressBook.get(cred.sad.a.i)
+    }
+
     return {
         view: function (vnode) {
             if (!vnode.attrs.cred) {
@@ -14,7 +24,7 @@ function Credential() {
                     {
                         span: 6,
                     },
-                    [m(FormLabel, {}, 'Holder:'), m('div', AddressBook.get(vnode.attrs.cred.sad.a.i))]
+                    [m(FormLabel, {}, 'Holder:'), m('div', holderName(vnode.attrs.cred))]
                 ),
                 m(
                     FormGroup,
@@ -114,7 +124,7 @@ function Credential() {
                 ),
             ]);
 
-            if (vnode.attrs.cred.sad.p.length > 0) {
+            if (vnode.attrs.cred.chains.length > 0) {
                 fields.push(
                     m(
                         FormGroup,
@@ -130,20 +140,9 @@ function Credential() {
                                     size: 5,
                                     style: 'font-size: 14px; background: "transparent"',
                                 },
-                                vnode.attrs.cred.sad.p.map((p, index) =>
-                                    m(ListItem, {
-                                        contentLeft: [
-                                            m(
-                                                'div',
-                                                { style: 'vertical-align: text-top;' },
-                                                'Qualified vLEI Issuer vLEI Credential'
-                                            ),
-                                            m(
-                                                'div',
-                                                'Issued By: ' + AddressBook.get(p.qualifiedvLEIIssuervLEICredential.i)
-                                            ),
-                                            m('div', 'Credential SAID: ' + p.qualifiedvLEIIssuervLEICredential.i),
-                                        ],
+                                vnode.attrs.cred.chains.map((p, index) =>
+                                    m(Chain, {
+                                        cred: p,
                                     })
                                 )
                             ),

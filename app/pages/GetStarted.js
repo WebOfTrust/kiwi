@@ -21,7 +21,7 @@ function GetStarted() {
     const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
-    const issuer = 'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg';
+    const issuer = process.env.GLEIF_IDENTIFIER;
     let lei = '254900OPPU84GM83MG36';
 
     let isSubmitting = false;

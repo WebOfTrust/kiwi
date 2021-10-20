@@ -20,7 +20,7 @@ import UserTypes from '../../helpers/user-types';
 
 function GLEIFvLEICredential() {
     const schemaSAID = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
-    let recipient = 'EeS834LMlGVEOGR8WU3rzZ9M6HUv_vtF32pSXQXKP7jg';
+    let recipient = process.env.GLEIF_IDENTIFIER;
     let lei = '506700GE1G29325QX363';
 
     let isSubmitting = false;
