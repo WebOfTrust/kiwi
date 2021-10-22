@@ -1,14 +1,13 @@
 import m from 'mithril';
 import { Button, Classes, Form, FormGroup, FormLabel, Icon, Icons, Input, Select } from 'construct-ui';
 import { Container } from '../../components';
-import {AddressBook, toaster, xhring} from '../../helpers';
+import { AddressBook, toaster, xhring } from '../../helpers';
 
 function PresentationRequest() {
     let schema = 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc';
     let defaultRecipient = Object.keys(AddressBook.book).find((key) => {
-        return AddressBook.get(key) === "ACME Corp. (Legal Entity)";
+        return AddressBook.get(key) === 'ACME Corp. (Legal Entity)';
     });
-
 
     let recipient = defaultRecipient;
     let schemaOptions = [

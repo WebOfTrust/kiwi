@@ -6,7 +6,7 @@ import { toaster, UserTypes, xhring } from './helpers';
 
 import 'construct-ui/lib/index.css';
 import { GetStarted, Group, Mailbox, Manage, Settings, Verify, Wallet } from './pages';
-import AddressBook from "./helpers/address-book";
+import AddressBook from './helpers/address-book';
 
 let root = document.body;
 
@@ -26,7 +26,7 @@ function Layout() {
             if (UserTypes.userTypeIn(['developer', 'qvi'])) {
                 active = 'Get Started';
             }
-            AddressBook.initAddressBook()
+            AddressBook.initAddressBook();
         },
         view: (vnode) => {
             return m('main', [
@@ -101,7 +101,7 @@ function Layout() {
                               })
                           )
                         : null,
-                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'lei-data-user'])
+                    UserTypes.userTypeIn(['developer', 'gleif', 'qvi', 'legal-entity', 'lei-data-user', 'person'])
                         ? m(
                               m.route.Link,
                               {

@@ -71,13 +71,7 @@ function Identifier() {
                       {
                           span: 6,
                       },
-                      [
-                          m(FormLabel, {}, 'Delegator:'),
-                          m(
-                              'div',
-                              AddressBook.get(vnode.attrs.identifier.delegator)
-                          ),
-                      ]
+                      [m(FormLabel, {}, 'Delegator:'), m('div', AddressBook.get(vnode.attrs.identifier.delegator))]
                   )
                 : m(FormGroup, {
                       span: 6,

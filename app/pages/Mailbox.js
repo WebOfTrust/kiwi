@@ -69,10 +69,7 @@ function Mailbox() {
                           ]);
                       } else if (msg.r === '/delegate') {
                           return m(Card, cardOptions, m('h3', 'Delegator Approval'), [
-                              m('div', [
-                                  m('span', m('b', 'Delegator: ')),
-                                  m('span', AddressBook.get(msg.d.delegator)),
-                              ]),
+                              m('div', [m('span', m('b', 'Delegator: ')), m('span', AddressBook.get(msg.d.delegator))]),
                               m('br'),
                               m('div', [m('span', m('b', 'Operation: ')), m('span', DelegationTypes[msg.d.t])]),
                               m('div', [m('span', m('b', 'Seq No: ')), m('span', msg.d.s)]),

@@ -14,7 +14,7 @@ import {
     Intent,
 } from 'construct-ui';
 import { Container, Tile } from '../components';
-import {AddressBook, toaster, xhring} from '../helpers';
+import { AddressBook, toaster, xhring } from '../helpers';
 
 function GetStarted() {
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };

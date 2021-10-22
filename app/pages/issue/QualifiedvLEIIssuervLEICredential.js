@@ -73,10 +73,7 @@ function QualifiedvLEIIssuervLEICredential() {
                         m('p', 'This Qualified vLEI Issuer vLEI Credential will be issued to the following entity:'),
                         m(Card, { fluid: true }, [
                             m(Form, [
-                                m(FormGroup, [
-                                    m(FormLabel, 'Entity'),
-                                    m('p', `${AddressBook.get(recipient)}`),
-                                ]),
+                                m(FormGroup, [m(FormLabel, 'Entity'), m('p', `${AddressBook.get(recipient)}`)]),
                                 m(FormGroup, [m(FormLabel, 'LEI'), m('p', lei)]),
                             ]),
                         ]),

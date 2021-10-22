@@ -1,16 +1,17 @@
 import m from 'mithril';
 import { Button, Card, Classes, Form, FormGroup, FormLabel, Icons, Intent, List, ListItem, Tag } from 'construct-ui';
 import { AddressBook, CredentialNames, UserTypes } from '../../helpers';
-import {Chain} from "./index";
+import { Chain } from './index';
 
 function Credential() {
-
     function holderName(cred) {
-        if (cred.sad.a.t[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential' ||
-            cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential') {
-            return cred.sad.a.personLegalName
+        if (
+            cred.sad.a.t[1] === 'LegalEntityOfficialOrganizationalRolevLEICredential' ||
+            cred.sad.a.t[1] === 'LegalEntityEngagementContextRolevLEICredential'
+        ) {
+            return cred.sad.a.personLegalName;
         }
-        return AddressBook.get(cred.sad.a.i)
+        return AddressBook.get(cred.sad.a.i);
     }
 
     return {
