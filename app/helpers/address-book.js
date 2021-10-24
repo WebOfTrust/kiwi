@@ -5,6 +5,7 @@ export default class AddressBook {
 
     static portMap = new Map(
         Object.entries({
+            'GLEIF': 5923,
             'QVI, Inc (Qualified vLEI Issuer)': 5623,
             'ACME Corp. (Legal Entity)': 5223,
             'DataTech (External Verifier)': 5123,
@@ -23,7 +24,7 @@ export default class AddressBook {
     };
 
     static initAddressBook = () => {
-        this.book[process.env.GLEIF_IDENTIFIER] = { name: 'GLEIF' };
+        // this.book[process.env.GLEIF_IDENTIFIER] = { name: 'GLEIF' };
         let addressBook = this.book;
         this.portMap.forEach(function (port, name) {
             m.request({

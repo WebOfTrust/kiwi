@@ -21,7 +21,6 @@ function GetStarted() {
     const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
 
     const schemaSAID = 'E-_XCbf1LJ0v9CR7g-_gOknf5dpoZROgF7qG5T8mXCv8';
-    const issuer = process.env.GLEIF_IDENTIFIER;
     let lei = '254900OPPU84GM83MG36';
 
     let isSubmitting = false;
@@ -31,6 +30,10 @@ function GetStarted() {
             e.preventDefault();
         }
         isSubmitting = true;
+        let issuer = Object.keys(AddressBook.book).find((key) => {
+            return AddressBook.get(key) === 'GLEIF';
+        });
+
         xhring
             .apply({
                 schema: schemaSAID,

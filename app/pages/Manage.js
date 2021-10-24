@@ -28,6 +28,9 @@ function Manage() {
     let personLegalName = '';
     let officialRole = '';
     let engagementContextRole = '';
+    let issuer = Object.keys(AddressBook.book).find((key) => {
+        return AddressBook.get(key) === 'GLEIF';
+    });
 
     const gridAttrs = { gutter: { xs: 0, sm: 8, md: 16, lg: 32, xl: 32 } };
     const colAttrs = { span: { xs: 12, md: 6 }, style: { margin: '16px 0' } };
@@ -36,7 +39,7 @@ function Manage() {
         GLEIFvLEICredential: {
             label: 'GLEIF vLEI Credential',
             schema: 'ES63gXI-FmM6yQ7ISVIH__hOEhyE6W6-Ev0cArldsxuc',
-            defaultRecipient: process.env.GLEIF_IDENTIFIER,
+            defaultRecipient: issuer,
             credData: () => {
                 return {
                     LEI: lei,
